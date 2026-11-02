@@ -16,7 +16,7 @@ Python 标准库 + SQLite + 原生 Responses API 工具调用，不依赖 Agent 
 
 ## 环境与运行
 
-Python **3.9 或以上**。本次实测 Python 3.9.6 / macOS；CI 配置了 3.9、3.11、3.13，尚未在 GitHub 执行。无需安装第三方运行依赖。以下命令均在仓库根目录执行，macOS/Linux shell：
+Python **3.9 或以上**。本地实测 Python 3.9.6 / macOS；CI 配置了 3.9、3.11、3.13，最新执行状态见 [GitHub Actions](https://github.com/1070297054/material-schedule-agent/actions)。无需安装第三方运行依赖。以下命令均在仓库根目录执行，macOS/Linux shell：
 
 ```bash
 # 一键验证，无需 API 密钥或网络
@@ -136,4 +136,4 @@ docs/05-retrospective.md  实现复盘与下一步
 scripts/                 一键验证、可切换真实模型的评估脚本
 ```
 
-GitHub URL 尚未生成；最终 commit SHA 可用 `git rev-parse HEAD` 获取，见 [提交清单](docs/submission.md)。本仓库尚未推送远程。不要将当前 Mock 证据描述为真实模型决策结果；候选人需要亲自运行、理解和修改，并如实补充个人贡献。
+GitHub 仓库：[1070297054/material-schedule-agent](https://github.com/1070297054/material-schedule-agent)。最终 commit SHA 可用 `git rev-parse HEAD` 获取，见 [提交清单](docs/submission.md)。不要将当前 Mock 证据描述为真实模型决策结果；候选人需要亲自运行、理解和修改，并如实补充个人贡献。
