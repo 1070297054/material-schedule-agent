@@ -1,0 +1,163 @@
+{
+  "schema_version": "1.0",
+  "request_id": "risk-001",
+  "task_status": "blocked",
+  "provider": {
+    "mode": "mock",
+    "model": "deterministic-offline-simulator",
+    "is_real_model": false
+  },
+  "started_at": "2026-11-02T09:14:44+00:00",
+  "finished_at": "2026-11-02T09:14:44+00:00",
+  "input": {
+    "request_id": "risk-001",
+    "items": [
+      {
+        "material_id": "M04",
+        "requested_slot": "2026-11-03T19:00:00+08:00",
+        "approved_slot": null
+      }
+    ]
+  },
+  "limits": {
+    "max_steps": 24,
+    "steps_used": 3,
+    "scope": "entire_request"
+  },
+  "fault_injection": {},
+  "items": [
+    {
+      "material_id": "M04",
+      "task_status": "blocked",
+      "review": {
+        "status": "blocked",
+        "missing_fields": [],
+        "risks": [
+          {
+            "code": "BLOCKED_CLAIM",
+            "detail": "命中禁止声明：100%保证",
+            "severity": "block"
+          }
+        ],
+        "rules_version": "synthetic-2026-11-01.v1",
+        "material_version": "2026-11-01.v1"
+      },
+      "requested_slot": "2026-11-03T19:00:00+08:00",
+      "approved_slot": null,
+      "suggested_slot": null,
+      "pending_items": [],
+      "save_status": "not_attempted",
+      "draft": null,
+      "duplicate": false,
+      "errors": [],
+      "stop_reason": "model_finish",
+      "outcome_reason": "审核存在阻断风险或人工复核项，未继续安排。",
+      "published": false,
+      "notice": "仅处理草稿，未发布任何内容。"
+    }
+  ],
+  "trace": [
+    {
+      "step": 1,
+      "material_id": "M04",
+      "decision_source": "mock",
+      "tool": "read_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "先获取素材的真实元数据",
+      "observation": {
+        "ok": true,
+        "source": "base",
+        "material": {
+          "id": "M04",
+          "title": "100%保证涨粉",
+          "description": "无数据支持的效果保证。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "supplement_found": null
+      },
+      "return_summary": "已读取素材=M04; 来源=base",
+      "next_action": "check_rules"
+    },
+    {
+      "step": 2,
+      "material_id": "M04",
+      "decision_source": "mock",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "已读到素材，核对规则与缺失字段",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "blocked",
+          "missing_fields": [],
+          "risks": [
+            {
+              "code": "BLOCKED_CLAIM",
+              "detail": "命中禁止声明：100%保证",
+              "severity": "block"
+            }
+          ],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=blocked",
+      "next_action": "finish"
+    },
+    {
+      "step": 3,
+      "material_id": "M04",
+      "decision_source": "mock",
+      "tool": "finish",
+      "parameters": {
+        "status": "blocked",
+        "suggested_slot": null
+      },
+      "decision_basis": "规则检查发现阻断风险或需要人工复核",
+      "observation": {
+        "ok": true,
+        "status": "blocked",
+        "published": false
+      },
+      "return_summary": "状态=blocked",
+      "next_action": "stop:blocked"
+    }
+  ],
+  "usage": [
+    {},
+    {},
+    {}
+  ],
+  "validation_boundary": "离线模拟器只验证流程和工程约束，不证明真实模型决策效果。",
+  "published": false,
+  "evaluation_fixture": {
+    "case": "risk",
+    "input_file": "examples/inputs/risk.json",
+    "occupied": [
+      {
+        "platform": "douyin",
+        "slot": "2026-11-03T18:00:00+08:00"
+      }
+    ],
+    "slots": [
+      "2026-11-03T18:00:00+08:00",
+      "2026-11-03T19:00:00+08:00",
+      "2026-11-03T20:00:00+08:00"
+    ],
+    "expected_task_status": "blocked",
+    "assertions": {
+      "expected_status": true,
+      "never_published": true,
+      "bounded": true,
+      "trace_records_actual_calls": true,
+      "no_draft": true,
+      "risk_reported": true
+    },
+    "database_group": "risk",
+    "database_rows_after": []
+  }
+}

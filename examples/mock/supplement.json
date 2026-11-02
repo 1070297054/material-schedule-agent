@@ -1,0 +1,292 @@
+{
+  "schema_version": "1.0",
+  "request_id": "supplement-001",
+  "task_status": "completed",
+  "provider": {
+    "mode": "mock",
+    "model": "deterministic-offline-simulator",
+    "is_real_model": false
+  },
+  "started_at": "2026-11-02T09:14:44+00:00",
+  "finished_at": "2026-11-02T09:14:44+00:00",
+  "input": {
+    "request_id": "supplement-001",
+    "items": [
+      {
+        "material_id": "M02",
+        "requested_slot": "2026-11-03T19:00:00+08:00",
+        "approved_slot": null
+      }
+    ]
+  },
+  "limits": {
+    "max_steps": 24,
+    "steps_used": 7,
+    "scope": "entire_request"
+  },
+  "fault_injection": {},
+  "items": [
+    {
+      "material_id": "M02",
+      "task_status": "completed",
+      "review": {
+        "status": "passed",
+        "missing_fields": [],
+        "risks": [],
+        "rules_version": "synthetic-2026-11-01.v1",
+        "material_version": "2026-11-01.v2"
+      },
+      "requested_slot": "2026-11-03T19:00:00+08:00",
+      "approved_slot": null,
+      "suggested_slot": "2026-11-03T19:00:00+08:00",
+      "pending_items": [],
+      "save_status": "saved",
+      "draft": {
+        "draft_id": 1,
+        "request_id": "supplement-001",
+        "material_id": "M02",
+        "platform": "douyin",
+        "requested_slot": "2026-11-03T19:00:00+08:00",
+        "suggested_slot": "2026-11-03T19:00:00+08:00",
+        "reserved_slot": "2026-11-03T19:00:00+08:00",
+        "confirmation_status": "confirmed",
+        "audit": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v2"
+        },
+        "published": false
+      },
+      "duplicate": false,
+      "errors": [],
+      "stop_reason": "model_finish",
+      "outcome_reason": "审核通过，已保存符合用户要求或既有确认的草稿。",
+      "published": false,
+      "notice": "仅处理草稿，未发布任何内容。"
+    }
+  ],
+  "trace": [
+    {
+      "step": 1,
+      "material_id": "M02",
+      "decision_source": "mock",
+      "tool": "read_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "先获取素材的真实元数据",
+      "observation": {
+        "ok": true,
+        "source": "base",
+        "material": {
+          "id": "M02",
+          "title": "旅行剪辑演示",
+          "description": "使用自制旅行素材演示剪辑。",
+          "platform": "douyin",
+          "version": "2026-11-01.v1"
+        },
+        "supplement_found": null
+      },
+      "return_summary": "已读取素材=M02; 来源=base",
+      "next_action": "check_rules"
+    },
+    {
+      "step": 2,
+      "material_id": "M02",
+      "decision_source": "mock",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "已读到素材，核对规则与缺失字段",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "missing_info",
+          "missing_fields": [
+            "rights"
+          ],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=missing_info",
+      "next_action": "read_material"
+    },
+    {
+      "step": 3,
+      "material_id": "M02",
+      "decision_source": "mock",
+      "tool": "read_material",
+      "parameters": {
+        "source": "supplement"
+      },
+      "decision_basis": "规则检查指出字段缺失，尝试补查资料",
+      "observation": {
+        "ok": true,
+        "source": "supplement",
+        "material": {
+          "id": "M02",
+          "title": "旅行剪辑演示",
+          "description": "使用自制旅行素材演示剪辑。",
+          "platform": "douyin",
+          "version": "2026-11-01.v2",
+          "rights": "owned"
+        },
+        "supplement_found": true
+      },
+      "return_summary": "已读取素材=M02; 来源=supplement",
+      "next_action": "check_rules"
+    },
+    {
+      "step": 4,
+      "material_id": "M02",
+      "decision_source": "mock",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "已读到素材，核对规则与缺失字段",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v2"
+        }
+      },
+      "return_summary": "审核=passed",
+      "next_action": "query_slots"
+    },
+    {
+      "step": 5,
+      "material_id": "M02",
+      "decision_source": "mock",
+      "tool": "query_slots",
+      "parameters": {
+        "mode": "requested"
+      },
+      "decision_basis": "素材审核通过，查询用户指定时段",
+      "observation": {
+        "ok": true,
+        "mode": "requested",
+        "target_slot": "2026-11-03T19:00:00+08:00",
+        "available_slots": [
+          "2026-11-03T19:00:00+08:00"
+        ],
+        "unavailable_reason": null,
+        "requires_confirmation": false,
+        "timezone": "Asia/Shanghai"
+      },
+      "return_summary": "可用时段=2026-11-03T19:00:00+08:00",
+      "next_action": "save_draft"
+    },
+    {
+      "step": 6,
+      "material_id": "M02",
+      "decision_source": "mock",
+      "tool": "save_draft",
+      "parameters": {
+        "slot": "2026-11-03T19:00:00+08:00"
+      },
+      "decision_basis": "查询得到可用时段，保存并由工具判断是否待确认",
+      "observation": {
+        "ok": true,
+        "draft": {
+          "draft_id": 1,
+          "request_id": "supplement-001",
+          "material_id": "M02",
+          "platform": "douyin",
+          "requested_slot": "2026-11-03T19:00:00+08:00",
+          "suggested_slot": "2026-11-03T19:00:00+08:00",
+          "reserved_slot": "2026-11-03T19:00:00+08:00",
+          "confirmation_status": "confirmed",
+          "audit": {
+            "status": "passed",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1",
+            "material_version": "2026-11-01.v2"
+          },
+          "published": false
+        },
+        "duplicate": false
+      },
+      "return_summary": "草稿=1; confirmed",
+      "next_action": "finish"
+    },
+    {
+      "step": 7,
+      "material_id": "M02",
+      "decision_source": "mock",
+      "tool": "finish",
+      "parameters": {
+        "status": "completed",
+        "suggested_slot": "2026-11-03T19:00:00+08:00"
+      },
+      "decision_basis": "保存工具已返回实际草稿与确认状态",
+      "observation": {
+        "ok": true,
+        "status": "completed",
+        "published": false
+      },
+      "return_summary": "状态=completed",
+      "next_action": "stop:completed"
+    }
+  ],
+  "usage": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "validation_boundary": "离线模拟器只验证流程和工程约束，不证明真实模型决策效果。",
+  "published": false,
+  "evaluation_fixture": {
+    "case": "supplement",
+    "input_file": "examples/inputs/supplement.json",
+    "occupied": [
+      {
+        "platform": "douyin",
+        "slot": "2026-11-03T18:00:00+08:00"
+      }
+    ],
+    "slots": [
+      "2026-11-03T18:00:00+08:00",
+      "2026-11-03T19:00:00+08:00",
+      "2026-11-03T20:00:00+08:00"
+    ],
+    "expected_task_status": "completed",
+    "assertions": {
+      "expected_status": true,
+      "never_published": true,
+      "bounded": true,
+      "trace_records_actual_calls": true
+    },
+    "database_group": "supplement",
+    "database_rows_after": [
+      {
+        "draft_id": 1,
+        "request_id": "supplement-001",
+        "material_id": "M02",
+        "platform": "douyin",
+        "requested_slot": "2026-11-03T19:00:00+08:00",
+        "suggested_slot": "2026-11-03T19:00:00+08:00",
+        "reserved_slot": "2026-11-03T19:00:00+08:00",
+        "confirmation_status": "confirmed",
+        "audit": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v2"
+        },
+        "published": false
+      }
+    ]
+  }
+}

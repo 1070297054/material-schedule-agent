@@ -1,0 +1,7 @@
+{
+  "version": "synthetic-2026-11-01.v1",
+  "required_fields": ["title", "platform", "rights"],
+  "allowed_rights": ["owned", "licensed"],
+  "blocked_terms": ["100%保证", "永久免费", "官方唯一"],
+  "manual_review_terms": ["抽奖", "医疗"]
+}

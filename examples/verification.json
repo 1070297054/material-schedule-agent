@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-11-02T09:14:44+00:00",
+  "python": "3.9.6",
+  "platform": "macOS-26.4.1-arm64-arm-64bit",
+  "test_command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
+  "tests_exit_code": 0,
+  "test_log": "test-results.txt",
+  "mock_cases_total": 18,
+  "mock_cases_passed": 18,
+  "real_model_validation": "not_run",
+  "real_model_reason": "此命令仅执行离线测试；真实模型请运行 scripts/evaluate.py --provider openai"
+}

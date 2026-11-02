@@ -1,0 +1,264 @@
+{
+  "generated_at": "2026-11-02T09:14:44+00:00",
+  "provider": "mock",
+  "model": "deterministic-offline-simulator",
+  "is_real_model": false,
+  "cases_total": 18,
+  "cases_passed": 18,
+  "cases": [
+    {
+      "case": "normal",
+      "file": "normal.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "one_reserved_draft": true
+      }
+    },
+    {
+      "case": "missing_info",
+      "file": "missing_info.json",
+      "expected": "needs_input",
+      "actual": "needs_input",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "no_draft": true,
+        "missing_rights": true
+      }
+    },
+    {
+      "case": "supplement",
+      "file": "supplement.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true
+      }
+    },
+    {
+      "case": "risk",
+      "file": "risk.json",
+      "expected": "blocked",
+      "actual": "blocked",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "no_draft": true,
+        "risk_reported": true
+      }
+    },
+    {
+      "case": "manual_review",
+      "file": "manual_review.json",
+      "expected": "blocked",
+      "actual": "blocked",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true
+      }
+    },
+    {
+      "case": "conflict",
+      "file": "conflict.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "requirement_preserved": true,
+        "proposal_not_reserved": true,
+        "suggests_19": true
+      }
+    },
+    {
+      "case": "changed_occupancy",
+      "file": "changed_occupancy.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "suggests_20": true
+      }
+    },
+    {
+      "case": "no_slots",
+      "file": "no_slots.json",
+      "expected": "incomplete",
+      "actual": "incomplete",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "no_draft": true
+      }
+    },
+    {
+      "case": "save_failure",
+      "file": "save_failure.json",
+      "expected": "failed",
+      "actual": "failed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "no_draft": true,
+        "save_failed": true
+      }
+    },
+    {
+      "case": "read_recovery",
+      "file": "read_recovery.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true
+      }
+    },
+    {
+      "case": "duplicate_first",
+      "file": "duplicate_first.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true
+      }
+    },
+    {
+      "case": "duplicate_repeat",
+      "file": "duplicate_repeat.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "one_row": true,
+        "duplicate_reported": true
+      }
+    },
+    {
+      "case": "confirmation_before",
+      "file": "confirmation_before.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true
+      }
+    },
+    {
+      "case": "confirmation_after",
+      "file": "confirmation_after.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "same_row_updated": true
+      }
+    },
+    {
+      "case": "confirmation_replay",
+      "file": "confirmation_replay.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "consent_not_revoked": true
+      }
+    },
+    {
+      "case": "missing_time",
+      "file": "missing_time.json",
+      "expected": "needs_input",
+      "actual": "needs_input",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true
+      }
+    },
+    {
+      "case": "step_limit",
+      "file": "step_limit.json",
+      "expected": "incomplete",
+      "actual": "incomplete",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "explicit_limit": true,
+        "no_draft": true
+      }
+    },
+    {
+      "case": "batch",
+      "file": "batch.json",
+      "expected": "partial",
+      "actual": "partial",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "per_item_status": true
+      }
+    }
+  ],
+  "boundary": "Mock only: validates engineering, not real model decisions."
+}

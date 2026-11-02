@@ -1,0 +1,48 @@
+test_actual_sql_failure_rolls_back_transaction (test_business.BusinessTests) ... ok
+test_batch_reservations_prevent_conflict_and_preserve_partial_results (test_business.BusinessTests) ... ok
+test_cannot_save_without_reading_and_review (test_business.BusinessTests) ... ok
+test_change_occupancy_changes_selected_slot (test_business.BusinessTests) ... ok
+test_changed_content_changes_rule_result (test_business.BusinessTests) ... ok
+test_conflict_keeps_hard_requirement_and_does_not_reserve_proposal (test_business.BusinessTests) ... ok
+test_data_text_cannot_change_tool_authorization (test_business.BusinessTests) ... ok
+test_database_survives_process_connection_restart (test_business.BusinessTests) ... ok
+test_global_step_limit_preserves_save_without_claiming_completion (test_business.BusinessTests) ... ok
+test_missing_material_information_stays_unsaved (test_business.BusinessTests) ... ok
+test_model_cannot_supply_fake_approval_or_fake_success (test_business.BusinessTests) ... ok
+test_no_available_slot_returns_incomplete (test_business.BusinessTests) ... ok
+test_normal_draft_is_saved_never_published (test_business.BusinessTests) ... ok
+test_pending_draft_confirmation_updates_same_row (test_business.BusinessTests) ... ok
+test_persistent_read_failure_stops (test_business.BusinessTests) ... ok
+test_read_failure_changes_next_action_and_can_recover (test_business.BusinessTests) ... ok
+test_repeat_request_returns_same_draft (test_business.BusinessTests) ... ok
+test_replay_before_confirmation_does_not_revoke_saved_consent (test_business.BusinessTests) ... ok
+test_rules_risk_and_manual_review_block_saving (test_business.BusinessTests) ... ok
+test_same_request_id_cannot_change_original_requirement (test_business.BusinessTests) ... ok
+test_save_failure_never_claims_success (test_business.BusinessTests) ... ok
+test_slot_taken_between_query_and_save_is_rechecked (test_business.BusinessTests) ... ok
+test_stale_material_review_cannot_authorize_save (test_business.BusinessTests) ... ok
+test_stale_rules_cannot_authorize_save (test_business.BusinessTests) ... ok
+test_supplement_then_recheck_succeeds (test_business.BusinessTests) ... ok
+test_two_connections_cannot_reserve_same_slot_concurrently (test_business.BusinessTests) ... ok
+test_unknown_material_and_missing_time_request_input (test_business.BusinessTests) ... ok
+test_unknown_tool_and_unqueried_slot_rejected (test_business.BusinessTests) ... ok
+test_equivalent_iso_inputs_are_normalized (test_business.InputTests) ... ok
+test_invalid_inputs_fail_early (test_business.InputTests) ... ok
+test_model_or_user_cannot_add_undeclared_fields (test_business.InputTests) ... ok
+test_cli_invalid_json_and_invalid_fault_are_explicit (test_runtime.CliTests) ... ok
+test_cli_normal_conflict_and_failure_exit_codes (test_runtime.CliTests) ... ok
+test_http_error_is_redacted_and_does_not_fallback_to_mock (test_runtime.RuntimeTests) ... ok
+test_incomplete_or_invalid_provider_responses_stop (test_runtime.RuntimeTests) ... ok
+test_infinite_model_loop_is_bounded (test_runtime.RuntimeTests) ... ok
+test_malformed_tool_arguments_are_observed_by_next_turn (test_runtime.RuntimeTests) ... ok
+test_missing_key_and_insecure_remote_endpoint_are_rejected (test_runtime.RuntimeTests) ... ok
+test_model_cannot_finish_completed_before_saving (test_runtime.RuntimeTests) ... ok
+test_native_responses_roundtrip_returns_tool_observations_to_provider (test_runtime.RuntimeTests) ... ok
+test_parallel_tool_calls_are_not_executed (test_runtime.RuntimeTests) ... ok
+test_plain_text_claim_does_not_become_success (test_runtime.RuntimeTests) ... ok
+test_repeated_call_id_stops_before_second_execution (test_runtime.RuntimeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 43 tests in 0.430s
+
+OK
