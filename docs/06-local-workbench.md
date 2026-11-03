@@ -81,3 +81,23 @@ curl --fail-with-body http://127.0.0.1:8765/api/runs/TASK_ID \
 单进程、单任务工作线程，最多 8 个排队/运行任务，满时 HTTP 429。内存最多保留 100 个任务，历史最终结果可从本地文件读取；磁盘历史没有自动清理策略。每个任务默认 24 次模型调用，上限 48；网页固定 60000 Token 和 180 秒软预算。短期历史在内存；草稿 SQLite 持久化；请求/结果 JSON 与步骤 JSONL 在运行目录持久化。
 
 任务中断不会自动续跑；重启后仅有请求记录但无最终结果的任务标记 interrupted。一次数据库提交可能早于最终报告写入，所以报告保存失败或崩溃时须查询草稿，复用业务 request_id 重试。没有发布接口，所有业务输出都标记 published=false。
+
+## 跨天多平台活动工作台与接口
+
+在原页面点击“跨天多平台活动”打开 `/campaign`，沿用同一访问口令。填写硬窗口、平台顺序/间隔与模型服务；“演示与执行预算”可将上限改为 11，完成审核后暂停，再改回 64 点击“从检查点继续”。活动列表从 SQLite 加载，服务重启后重新登录即可打开原活动继续。不会自动在次日运行。
+
+待确认时逐项核对素材、平台与时间，勾选明确批准，再确认整组草稿；UI 提交页面显示的版本和哈希。输入框改动不会暗中改变原活动，修改硬要求须新建活动。已确认结果只是草稿。
+
+所有下列 API 沿用本机 Bearer / Host / Origin 检查：
+
+| 方法与路径 | 内容 |
+| --- | --- |
+| POST /api/campaigns | request 为活动输入；可选 provider、max_steps、演示专用 fail_save |
+| GET /api/campaigns | 最近 100 个持久活动 |
+| GET /api/campaigns/{request_id} | 原要求、当前检查点与草稿 |
+| POST /api/campaigns/{request_id}/resume | 可选 provider、max_steps、fail_save；不允许覆盖 request |
+| POST /api/campaigns/{request_id}/confirm | 必须精确提供 plan_version 与 plan_hash |
+
+request_id 在 URL 中须编码。三个 POST 均返回 202 与运行 ID，轮询既有 `/api/runs/{id}` 读取实际执行结果；202 只表示已接收，不能当作保存成功。确认任务由本机队列执行，不调用模型。`/api/drafts` 返回单项与活动草稿，活动行带 `workflow=campaign`，单项网页以 C 前缀区分 ID。
+
+输入格式、CLI 复现、11 个工具、恢复和安全边界见 [08-campaign-runtime.md](08-campaign-runtime.md)。

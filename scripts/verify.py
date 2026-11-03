@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 from schedule_agent.cli import write_json
 from evaluate import evaluate
+from evaluate_campaign import evaluate_campaign
 
 
 def main():
@@ -28,15 +29,17 @@ def main():
     (output / "test-results.txt").write_text(log, encoding="utf-8")
     print(log, end="")
     summary = evaluate(output / "mock")
+    campaign = evaluate_campaign(output / "campaign-mock")
     evidence = {"generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
                 "python": platform.python_version(), "platform": platform.platform(),
                 "test_command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
                 "tests_exit_code": proc.returncode, "test_log": "test-results.txt",
                 "mock_cases_total": summary["cases_total"], "mock_cases_passed": summary["cases_passed"],
+                "campaign_cases_total": campaign["cases_total"], "campaign_cases_passed": campaign["cases_passed"],
                 "real_model_validation": "not_run_by_this_command", "real_model_reason": "此命令仅执行离线测试；已有真实证据见 examples/live，复现使用 scripts/evaluate.py --provider deepseek --env-file .env"}
     write_json(output / "verification.json", evidence)
     print(json.dumps(evidence, ensure_ascii=False, indent=2))
-    return 0 if proc.returncode == 0 and summary["cases_passed"] == summary["cases_total"] else 1
+    return 0 if proc.returncode == 0 and summary["cases_passed"] == summary["cases_total"] and campaign["cases_passed"] == campaign["cases_total"] else 1
 
 
 if __name__ == "__main__":

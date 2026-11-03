@@ -1,0 +1,24 @@
+{
+  "date": "2026-11-03",
+  "method": "AI 助手通过本机浏览器实际操作，使用合成数据与 Mock；不作为真实模型证据",
+  "request_id": "activity-1793677792054",
+  "steps": [
+    {
+      "action": "预算 11 提交",
+      "actual": "incomplete；两平台已审核、未保存草稿",
+      "evidence": "paused.result.json"
+    },
+    {
+      "action": "预算改为 64 从检查点继续",
+      "actual": "复用 2 项审核；抖音 11-04 18:00，小红书 11-04 20:00；整组待确认",
+      "evidence": "resumed.result.json"
+    },
+    {
+      "action": "勾选核对范围并点击明确确认",
+      "actual": "两行均 confirmed；具体 v3/哈希匹配；仅草稿，无发布",
+      "evidence": "confirmed.result.json"
+    }
+  ],
+  "screenshot": "workbench.png",
+  "real_model_evidence": "../live/campaign-release/summary.json"
+}

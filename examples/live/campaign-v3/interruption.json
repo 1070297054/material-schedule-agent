@@ -1,0 +1,12 @@
+{
+  "status": "interrupted",
+  "reason": "开发期间发现历史告警被重复交接，主动中断此旧代码版本评估，避免继续消耗额度；已有案例原样保留，不作完整通过声明。",
+  "completed_case_files": [
+    "confirm_exact.json",
+    "cross_day.json",
+    "missing_info.json",
+    "repeat_pending.json",
+    "replay_confirmed.json"
+  ],
+  "replacement": "../campaign-release/summary.json"
+}

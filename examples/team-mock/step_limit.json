@@ -9,8 +9,8 @@
     "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-03T02:58:06+00:00",
-  "finished_at": "2026-11-03T02:58:06+00:00",
+  "started_at": "2026-11-03T03:45:18+00:00",
+  "finished_at": "2026-11-03T03:45:18+00:00",
   "input": {
     "request_id": "normal-001",
     "items": [
@@ -85,8 +85,8 @@
       "next_action": "check_rules",
       "model_ms": 0.01,
       "response_id": null,
-      "tool_ms": 0.04,
-      "elapsed_ms": 0.07
+      "tool_ms": 0.05,
+      "elapsed_ms": 0.09
     },
     {
       "agent_id": "reviewer",
@@ -108,7 +108,7 @@
       },
       "return_summary": "审核=passed",
       "next_action": "stop:incomplete",
-      "model_ms": 0.01,
+      "model_ms": 0.02,
       "response_id": null,
       "tool_ms": 0.01,
       "elapsed_ms": 0.04

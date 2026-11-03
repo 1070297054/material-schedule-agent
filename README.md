@@ -4,7 +4,7 @@
 
 Python 标准库 + SQLite + 原生 Responses API 工具调用，不依赖 Agent 框架。提供真实模型接入和可复现的离线模拟入口。
 
-> **当前验证：67 个自动化测试通过，单 Agent / 双 Agent 离线验收各 21/21，真实 DeepSeek 双 Agent 最终验收 21/21。** [最终真实汇总](examples/live/deepseek-team-final/summary.json)包含更换占用后重复提交、确认边界和保存失败。早期单 Agent 的真实 18 组记录也保留。详见[评估与失败分析](docs/03-evaluation.md)。
+> **当前验证：92 个自动化测试通过；单/双 Agent 离线各 21/21；跨天三角色活动离线与真实 DeepSeek 各 14/14。** 既有真实双 Agent 21/21 记录保留。见[跨天真实汇总](examples/live/campaign-release/summary.json)及[评估与失败分析](docs/03-evaluation.md)。这些是有限开发/回归用例，不代表通用成功率。
 
 ## 本机网页工作台
 
@@ -22,7 +22,7 @@ PYTHONPATH=src python3 -m schedule_agent.server --env-file .env --demo
 
 网页默认双 Agent（审核 → 排期），也可选择单 Agent 对照。CLI 默认仍为单 Agent，可加 `--orchestration team`。不使用 LangGraph，角色工具权限和交接契约由原生运行器执行。
 
-详见[本机运行与 HTTP API](docs/06-local-workbench.md)；[跨天、多平台与安全扩展设计](docs/07-scaling-design.md)是未来设计，不是当前功能。
+新增“跨天多平台活动”入口 `/campaign`：规划、审核、排期三个角色，支持持久检查点恢复、平台顺序/间隔、每日额度、整组版本确认。仍只保存草稿。详见[可复制的跨天 CLI 与设计](docs/08-campaign-runtime.md)、[本机 HTTP API](docs/06-local-workbench.md)和[扩展设计实现边界](docs/07-scaling-design.md)。
 
 ## 评审入口
 
@@ -59,7 +59,7 @@ CLI 退出码：`0` 所有素材完成草稿保存；`2` 待确认、缺信息�
 
 Windows PowerShell 可先执行 `$env:PYTHONPATH="src"`，再运行 `python -m schedule_agent ...`。也可在虚拟环境中 `python3 -m pip install -e .`，然后使用 `schedule-agent` 命令；此安装方式可能需要下载 setuptools，离线评审推荐上面的免安装方式。
 
-## 输入与确认
+## 单项模式的输入与确认
 
 ```json
 {
@@ -109,6 +109,10 @@ PYTHONPATH=src python3 -m schedule_agent \
 # 先只运行正常与冲突两条路径
 python3 scripts/evaluate.py --provider deepseek --env-file .env \
   --cases normal conflict --output .runtime/live-smoke
+
+# 全部 14 组跨天活动验收，包含显式模拟操作者确认，会消耗 API 额度
+python3 scripts/evaluate_campaign.py --provider deepseek --env-file .env \
+  --output .runtime/live-campaign
 
 # 全部 21 组真实双 Agent 验收，会消耗 API 额度
 python3 scripts/evaluate.py --provider deepseek --env-file .env \

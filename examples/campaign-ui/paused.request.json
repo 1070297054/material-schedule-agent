@@ -1,0 +1,25 @@
+{
+  "workflow": "campaign",
+  "request": {
+    "request_id": "activity-1793677792054",
+    "material_ids": [
+      "M01"
+    ],
+    "platforms": [
+      "douyin",
+      "xiaohongshu"
+    ],
+    "window_start": "2026-11-03T18:00:00+08:00",
+    "window_end": "2026-11-04T20:00:00+08:00",
+    "preferred_slot": "2026-11-03T18:00:00+08:00",
+    "timezone": "Asia/Shanghai",
+    "platform_order": [
+      "douyin",
+      "xiaohongshu"
+    ],
+    "min_gap_hours": 2
+  },
+  "provider": "mock",
+  "max_steps": 11,
+  "failures": {}
+}

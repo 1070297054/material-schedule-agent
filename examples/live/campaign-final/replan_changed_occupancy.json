@@ -1,0 +1,4337 @@
+{
+  "request_id": "cross-day-001",
+  "task_status": "incomplete",
+  "stop_reason": "token_budget",
+  "campaign_state": {
+    "tasks": {
+      "M01@douyin": {
+        "task_id": "M01@douyin",
+        "material_id": "M01",
+        "platform": "douyin",
+        "status": "proposed",
+        "material": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "supplement": false,
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+          "material_version": "2026-11-01.v1"
+        },
+        "slot": "2026-11-05T18:00:00+08:00"
+      },
+      "M01@xiaohongshu": {
+        "task_id": "M01@xiaohongshu",
+        "material_id": "M01",
+        "platform": "xiaohongshu",
+        "status": "reviewed",
+        "material": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "xiaohongshu",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "supplement": false,
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+          "material_version": "2026-11-01.v1"
+        },
+        "slot": null
+      }
+    },
+    "source_version": "bcb5101e83c8d70227702836e4956418338c3a6a18b57ae8b92fe5fd114464c0",
+    "plan_version": 9,
+    "plan_hash": null,
+    "plan_created_at": null,
+    "status": "planning",
+    "confirmed_hash": null,
+    "task_order": [
+      "M01@douyin",
+      "M01@xiaohongshu"
+    ]
+  },
+  "resume_info": {
+    "loaded_revision": 80,
+    "invalidated": [
+      "source_version_changed"
+    ],
+    "reused_reviews": []
+  },
+  "errors": [],
+  "items": [
+    {
+      "task_id": "M01@douyin",
+      "material_id": "M01",
+      "platform": "douyin",
+      "status": "proposed",
+      "material": {
+        "id": "M01",
+        "title": "字幕编辑功能介绍",
+        "description": "演示如何添加和编辑字幕。",
+        "platform": "douyin",
+        "rights": "owned",
+        "version": "2026-11-01.v1"
+      },
+      "supplement": false,
+      "review": {
+        "status": "passed",
+        "missing_fields": [],
+        "risks": [],
+        "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+        "material_version": "2026-11-01.v1"
+      },
+      "slot": "2026-11-05T18:00:00+08:00",
+      "draft": {
+        "draft_id": 1,
+        "request_id": "cross-day-001",
+        "task_id": "M01@douyin",
+        "material_id": "M01",
+        "platform": "douyin",
+        "suggested_slot": "2026-11-04T18:00:00+08:00",
+        "reserved_slot": null,
+        "confirmation_status": "stale",
+        "plan_version": 3,
+        "plan_hash": "048e5a66218285126307134b627a52cfc2091087988bc37b3d39d5facc36107e",
+        "workflow": "campaign",
+        "published": false
+      },
+      "published": false
+    },
+    {
+      "task_id": "M01@xiaohongshu",
+      "material_id": "M01",
+      "platform": "xiaohongshu",
+      "status": "reviewed",
+      "material": {
+        "id": "M01",
+        "title": "字幕编辑功能介绍",
+        "description": "演示如何添加和编辑字幕。",
+        "platform": "xiaohongshu",
+        "rights": "owned",
+        "version": "2026-11-01.v1"
+      },
+      "supplement": false,
+      "review": {
+        "status": "passed",
+        "missing_fields": [],
+        "risks": [],
+        "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+        "material_version": "2026-11-01.v1"
+      },
+      "slot": null,
+      "draft": {
+        "draft_id": 2,
+        "request_id": "cross-day-001",
+        "task_id": "M01@xiaohongshu",
+        "material_id": "M01",
+        "platform": "xiaohongshu",
+        "suggested_slot": "2026-11-04T20:00:00+08:00",
+        "reserved_slot": null,
+        "confirmation_status": "stale",
+        "plan_version": 3,
+        "plan_hash": "048e5a66218285126307134b627a52cfc2091087988bc37b3d39d5facc36107e",
+        "workflow": "campaign",
+        "published": false
+      },
+      "published": false
+    }
+  ],
+  "drafts": [
+    {
+      "draft_id": 1,
+      "request_id": "cross-day-001",
+      "task_id": "M01@douyin",
+      "material_id": "M01",
+      "platform": "douyin",
+      "suggested_slot": "2026-11-04T18:00:00+08:00",
+      "reserved_slot": null,
+      "confirmation_status": "stale",
+      "plan_version": 3,
+      "plan_hash": "048e5a66218285126307134b627a52cfc2091087988bc37b3d39d5facc36107e",
+      "workflow": "campaign",
+      "published": false
+    },
+    {
+      "draft_id": 2,
+      "request_id": "cross-day-001",
+      "task_id": "M01@xiaohongshu",
+      "material_id": "M01",
+      "platform": "xiaohongshu",
+      "suggested_slot": "2026-11-04T20:00:00+08:00",
+      "reserved_slot": null,
+      "confirmation_status": "stale",
+      "plan_version": 3,
+      "plan_hash": "048e5a66218285126307134b627a52cfc2091087988bc37b3d39d5facc36107e",
+      "workflow": "campaign",
+      "published": false
+    }
+  ],
+  "published": false,
+  "workflow": "campaign",
+  "schema_version": "2.0",
+  "orchestration": "campaign",
+  "execution_id": "4de558889fa145c9a72b26d787904035",
+  "input": {
+    "request_id": "cross-day-001",
+    "material_ids": [
+      "M01"
+    ],
+    "platforms": [
+      "douyin",
+      "xiaohongshu"
+    ],
+    "window_start": "2026-11-03T18:00:00+08:00",
+    "window_end": "2026-11-05T20:00:00+08:00",
+    "preferred_slot": "2026-11-03T18:00:00+08:00",
+    "timezone": "Asia/Shanghai",
+    "platform_order": [
+      "douyin",
+      "xiaohongshu"
+    ],
+    "min_gap_hours": 2
+  },
+  "provider": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "service": "deepseek",
+    "is_real_model": true
+  },
+  "started_at": "2026-11-03T03:41:10+00:00",
+  "finished_at": "2026-11-03T03:42:14+00:00",
+  "trace": [
+    {
+      "step": 1,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "inspect_campaign",
+      "parameters": {},
+      "decision_basis": "交接显示 plan_version 4 且恢复信息含 source_version_changed，需重新读取活动状态与素材版本",
+      "response_id": "0769bf63-7c78-480d-af92-4d459dffbaee",
+      "decision_source": "live",
+      "model_ms": 1075.13,
+      "tool_ms": 1.09,
+      "observation": {
+        "ok": true,
+        "schema_version": "campaign-handoff-v1",
+        "request": {
+          "request_id": "cross-day-001",
+          "material_ids": [
+            "M01"
+          ],
+          "platforms": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "window_start": "2026-11-03T18:00:00+08:00",
+          "window_end": "2026-11-05T20:00:00+08:00",
+          "preferred_slot": "2026-11-03T18:00:00+08:00",
+          "timezone": "Asia/Shanghai",
+          "platform_order": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "min_gap_hours": 2
+        },
+        "active_task": null,
+        "task_order": null,
+        "plan_version": 4,
+        "status": "planning",
+        "tasks": [
+          {
+            "task_id": "M01@douyin",
+            "material_id": "M01",
+            "platform": "douyin",
+            "status": "unreviewed",
+            "material": null,
+            "supplement": false,
+            "review": null,
+            "slot": null
+          },
+          {
+            "task_id": "M01@xiaohongshu",
+            "material_id": "M01",
+            "platform": "xiaohongshu",
+            "status": "unreviewed",
+            "material": null,
+            "supplement": false,
+            "review": null,
+            "slot": null
+          }
+        ],
+        "errors": [],
+        "resume_info": {
+          "loaded_revision": 80,
+          "invalidated": [
+            "source_version_changed"
+          ],
+          "reused_reviews": []
+        }
+      },
+      "return_summary": "状态=planning",
+      "elapsed_ms": 1076.29,
+      "next_action": "plan_tasks"
+    },
+    {
+      "step": 2,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "plan_tasks",
+      "parameters": {
+        "task_ids": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ]
+      },
+      "decision_basis": "尚无 task_order，按平台顺序 douyin 先于 xiaohongshu 规划两个未审核任务",
+      "response_id": "04d02c09-4bb9-4c04-8dfc-6c5b27474c26",
+      "decision_source": "live",
+      "model_ms": 1324.96,
+      "tool_ms": 5.72,
+      "observation": {
+        "ok": true,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "task_count": 2
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1330.82,
+      "next_action": "delegate_review"
+    },
+    {
+      "step": 3,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "delegate_review",
+      "parameters": {
+        "task_id": "M01@douyin"
+      },
+      "decision_basis": "任务顺序首项 M01@douyin 处于 unreviewed，需先审核",
+      "response_id": "cf746173-42c5-48dc-a201-b6e6ce738a15",
+      "decision_source": "live",
+      "model_ms": 992.03,
+      "tool_ms": 1.16,
+      "observation": {
+        "ok": true,
+        "to_agent": "reviewer",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": "M01@douyin",
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 4,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "unreviewed",
+              "material": null,
+              "supplement": false,
+              "review": null,
+              "slot": null
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "unreviewed",
+              "material": null,
+              "supplement": false,
+              "review": null,
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 993.26,
+      "next_action": "read_campaign_material"
+    },
+    {
+      "step": 4,
+      "agent_id": "reviewer",
+      "task_id": "M01@douyin",
+      "tool": "read_campaign_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "当前任务 M01@douyin 尚未审核且素材为空，需先读取基础素材",
+      "response_id": "f4a621b1-f4df-4b52-85fb-85b14525977f",
+      "decision_source": "live",
+      "model_ms": 1144.67,
+      "tool_ms": 0.63,
+      "observation": {
+        "ok": true,
+        "material": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "source": "base",
+        "platform": "douyin"
+      },
+      "return_summary": "已读取素材=M01; 来源=base",
+      "elapsed_ms": 1145.34,
+      "next_action": "check_platform_rules"
+    },
+    {
+      "step": 5,
+      "agent_id": "reviewer",
+      "task_id": "M01@douyin",
+      "tool": "check_platform_rules",
+      "parameters": {},
+      "decision_basis": "已读取 M01 基础素材，需按抖音实际规则审核",
+      "response_id": "cf33ebad-12bf-42b4-8086-7ddb3bc8cee5",
+      "decision_source": "live",
+      "model_ms": 1264.99,
+      "tool_ms": 0.93,
+      "observation": {
+        "ok": true,
+        "platform": "douyin",
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=passed",
+      "elapsed_ms": 1265.97,
+      "next_action": "return_to_planner"
+    },
+    {
+      "step": 6,
+      "agent_id": "reviewer",
+      "task_id": "M01@douyin",
+      "tool": "return_to_planner",
+      "parameters": {},
+      "decision_basis": "M01@douyin 审核通过（rules_version synthetic-2026-11-01.v1，素材版本未变），交回规划 Agent 继续处理下一任务",
+      "response_id": "e4fea9bc-d997-4f12-a497-aed504b3d43b",
+      "decision_source": "live",
+      "model_ms": 1719.62,
+      "tool_ms": 1.42,
+      "observation": {
+        "ok": true,
+        "from_agent": "reviewer",
+        "to_agent": "planner",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": null,
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 4,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "unreviewed",
+              "material": null,
+              "supplement": false,
+              "review": null,
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1721.14,
+      "next_action": "inspect_campaign"
+    },
+    {
+      "step": 7,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "inspect_campaign",
+      "parameters": {},
+      "decision_basis": "交接包显示计划版本4、M01@douyin已审核，但需确认当前活动状态与恢复信息",
+      "response_id": "b22408d5-abc8-4640-8068-e9ceac9980ef",
+      "decision_source": "live",
+      "model_ms": 2023.91,
+      "tool_ms": 1.23,
+      "observation": {
+        "ok": true,
+        "schema_version": "campaign-handoff-v1",
+        "request": {
+          "request_id": "cross-day-001",
+          "material_ids": [
+            "M01"
+          ],
+          "platforms": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "window_start": "2026-11-03T18:00:00+08:00",
+          "window_end": "2026-11-05T20:00:00+08:00",
+          "preferred_slot": "2026-11-03T18:00:00+08:00",
+          "timezone": "Asia/Shanghai",
+          "platform_order": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "min_gap_hours": 2
+        },
+        "active_task": null,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "plan_version": 4,
+        "status": "planning",
+        "tasks": [
+          {
+            "task_id": "M01@douyin",
+            "material_id": "M01",
+            "platform": "douyin",
+            "status": "reviewed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "douyin",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          },
+          {
+            "task_id": "M01@xiaohongshu",
+            "material_id": "M01",
+            "platform": "xiaohongshu",
+            "status": "unreviewed",
+            "material": null,
+            "supplement": false,
+            "review": null,
+            "slot": null
+          }
+        ],
+        "errors": [],
+        "resume_info": {
+          "loaded_revision": 80,
+          "invalidated": [
+            "source_version_changed"
+          ],
+          "reused_reviews": []
+        }
+      },
+      "return_summary": "状态=planning",
+      "elapsed_ms": 2025.21,
+      "next_action": "plan_tasks"
+    },
+    {
+      "step": 8,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "plan_tasks",
+      "parameters": {
+        "task_ids": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ]
+      },
+      "decision_basis": "已确认task_order覆盖两个任务，抖音在前依赖顺序，先规划再送审核",
+      "response_id": "5c74d6d8-2f87-4843-b071-1e1b5844933f",
+      "decision_source": "live",
+      "model_ms": 1247.23,
+      "tool_ms": 2.37,
+      "observation": {
+        "ok": true,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "task_count": 2
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1249.68,
+      "next_action": "delegate_review"
+    },
+    {
+      "step": 9,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "delegate_review",
+      "parameters": {
+        "task_id": "M01@xiaohongshu"
+      },
+      "decision_basis": "M01@xiaohongshu仍为unreviewed且无素材信息，需审核补齐",
+      "response_id": "7a387a75-a754-4f4e-9c12-59c59e89d62f",
+      "decision_source": "live",
+      "model_ms": 1216.77,
+      "tool_ms": 0.77,
+      "observation": {
+        "ok": true,
+        "to_agent": "reviewer",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": "M01@xiaohongshu",
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 4,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "unreviewed",
+              "material": null,
+              "supplement": false,
+              "review": null,
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1217.59,
+      "next_action": "read_campaign_material"
+    },
+    {
+      "step": 10,
+      "agent_id": "reviewer",
+      "task_id": "M01@xiaohongshu",
+      "tool": "read_campaign_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "当前任务 M01@xiaohongshu 状态为 unreviewed 且 material 为空，需读取素材",
+      "response_id": "1243833e-38dd-4e20-837c-0dde2f9f8340",
+      "decision_source": "live",
+      "model_ms": 1073.97,
+      "tool_ms": 2.04,
+      "observation": {
+        "ok": true,
+        "material": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "xiaohongshu",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "source": "base",
+        "platform": "xiaohongshu"
+      },
+      "return_summary": "已读取素材=M01; 来源=base",
+      "elapsed_ms": 1076.15,
+      "next_action": "check_platform_rules"
+    },
+    {
+      "step": 11,
+      "agent_id": "reviewer",
+      "task_id": "M01@xiaohongshu",
+      "tool": "check_platform_rules",
+      "parameters": {},
+      "decision_basis": "已读取 M01 素材基础信息，按小红书平台规则审核完整性",
+      "response_id": "cdd663cd-bbf2-4633-a21b-62df5c2a23df",
+      "decision_source": "live",
+      "model_ms": 1170.77,
+      "tool_ms": 0.68,
+      "observation": {
+        "ok": true,
+        "platform": "xiaohongshu",
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=passed",
+      "elapsed_ms": 1171.5,
+      "next_action": "return_to_planner"
+    },
+    {
+      "step": 12,
+      "agent_id": "reviewer",
+      "task_id": "M01@xiaohongshu",
+      "tool": "return_to_planner",
+      "parameters": {},
+      "decision_basis": "M01@xiaohongshu 审核通过（无缺失字段与风险），可交 scheduler 排期",
+      "response_id": "a460411b-2a89-48c2-876a-0eb9c91707cb",
+      "decision_source": "live",
+      "model_ms": 1026.43,
+      "tool_ms": 2.01,
+      "observation": {
+        "ok": true,
+        "from_agent": "reviewer",
+        "to_agent": "planner",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": null,
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 4,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1028.97,
+      "next_action": "inspect_campaign"
+    },
+    {
+      "step": 13,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "inspect_campaign",
+      "parameters": {},
+      "decision_basis": "接手时已有 task_order，需先读取当前活动状态与恢复信息",
+      "response_id": "58722fa2-00d5-40f2-ba4f-32385ba17906",
+      "decision_source": "live",
+      "model_ms": 728.35,
+      "tool_ms": 0.7,
+      "observation": {
+        "ok": true,
+        "schema_version": "campaign-handoff-v1",
+        "request": {
+          "request_id": "cross-day-001",
+          "material_ids": [
+            "M01"
+          ],
+          "platforms": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "window_start": "2026-11-03T18:00:00+08:00",
+          "window_end": "2026-11-05T20:00:00+08:00",
+          "preferred_slot": "2026-11-03T18:00:00+08:00",
+          "timezone": "Asia/Shanghai",
+          "platform_order": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "min_gap_hours": 2
+        },
+        "active_task": null,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "plan_version": 4,
+        "status": "planning",
+        "tasks": [
+          {
+            "task_id": "M01@douyin",
+            "material_id": "M01",
+            "platform": "douyin",
+            "status": "reviewed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "douyin",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          },
+          {
+            "task_id": "M01@xiaohongshu",
+            "material_id": "M01",
+            "platform": "xiaohongshu",
+            "status": "reviewed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "xiaohongshu",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          }
+        ],
+        "errors": [],
+        "resume_info": {
+          "loaded_revision": 80,
+          "invalidated": [
+            "source_version_changed"
+          ],
+          "reused_reviews": []
+        }
+      },
+      "return_summary": "状态=planning",
+      "elapsed_ms": 729.1,
+      "next_action": "delegate_schedule"
+    },
+    {
+      "step": 14,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "delegate_schedule",
+      "parameters": {
+        "task_id": "M01@douyin"
+      },
+      "decision_basis": "两个任务审核均已通过且属于同一素材版本，active_task 为空，先为依赖链首个任务 M01@douyin 排期",
+      "response_id": "a69cb31c-4083-48df-87c0-efa567a1e717",
+      "decision_source": "live",
+      "model_ms": 1119.93,
+      "tool_ms": 3.56,
+      "observation": {
+        "ok": true,
+        "to_agent": "scheduler",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": "M01@douyin",
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 4,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1123.59,
+      "next_action": "query_candidates"
+    },
+    {
+      "step": 15,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "query_candidates",
+      "parameters": {
+        "search": "preferred"
+      },
+      "decision_basis": "请求有 preferred_slot 2026-11-03T18:00，按规则优先查询偏好时段候选。",
+      "response_id": "95bb40d0-637c-4766-a6d1-aa2be48be52c",
+      "decision_source": "live",
+      "model_ms": 3291.39,
+      "tool_ms": 4.19,
+      "observation": {
+        "ok": true,
+        "platform": "douyin",
+        "search": "preferred",
+        "available_slots": [],
+        "rejected": [
+          {
+            "slot": "2026-11-03T18:00:00+08:00",
+            "reason": "SLOT_CONFLICT"
+          }
+        ],
+        "window_start": "2026-11-03T18:00:00+08:00",
+        "window_end": "2026-11-05T20:00:00+08:00"
+      },
+      "return_summary": "可用时段=",
+      "elapsed_ms": 3295.65,
+      "next_action": "query_candidates"
+    },
+    {
+      "step": 16,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "query_candidates",
+      "parameters": {
+        "search": "window"
+      },
+      "decision_basis": "偏好时段 18:00 冲突不可用，改查硬窗口内全部跨天候选。",
+      "response_id": "8aa9600a-2c37-4c14-b124-bbf4310d09d5",
+      "decision_source": "live",
+      "model_ms": 973.01,
+      "tool_ms": 1.27,
+      "observation": {
+        "ok": true,
+        "platform": "douyin",
+        "search": "window",
+        "available_slots": [
+          "2026-11-05T18:00:00+08:00"
+        ],
+        "rejected": [
+          {
+            "slot": "2026-11-03T18:00:00+08:00",
+            "reason": "SLOT_CONFLICT"
+          },
+          {
+            "slot": "2026-11-03T19:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-03T20:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-04T18:00:00+08:00",
+            "reason": "SLOT_CONFLICT"
+          },
+          {
+            "slot": "2026-11-04T19:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-04T20:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-05T19:00:00+08:00",
+            "reason": "DOWNSTREAM_WINDOW_INFEASIBLE"
+          },
+          {
+            "slot": "2026-11-05T20:00:00+08:00",
+            "reason": "DOWNSTREAM_WINDOW_INFEASIBLE"
+          }
+        ],
+        "window_start": "2026-11-03T18:00:00+08:00",
+        "window_end": "2026-11-05T20:00:00+08:00"
+      },
+      "return_summary": "可用时段=2026-11-05T18:00:00+08:00",
+      "elapsed_ms": 974.31,
+      "next_action": "propose_slot"
+    },
+    {
+      "step": 17,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "propose_slot",
+      "parameters": {
+        "slot": "2026-11-05T18:00:00+08:00"
+      },
+      "decision_basis": "douyin 唯一可行候选为 2026-11-05T18:00，符合硬窗口且下游可行。",
+      "response_id": "e61699b9-8cfe-4a11-88ec-17fa0bac20e0",
+      "decision_source": "live",
+      "model_ms": 990.12,
+      "tool_ms": 1.05,
+      "observation": {
+        "ok": true,
+        "task_id": "M01@douyin",
+        "suggested_slot": "2026-11-05T18:00:00+08:00",
+        "all_tasks_proposed": false,
+        "draft_saved": false,
+        "remaining_task_ids": [
+          "M01@xiaohongshu"
+        ]
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 991.23,
+      "next_action": "return_to_planner"
+    },
+    {
+      "step": 18,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "return_to_planner",
+      "parameters": {},
+      "decision_basis": "douyin 检查点已保存但 all_tasks_proposed=false，剩余 M01@xiaohongshu 未安排，按规则立即交回规划。",
+      "response_id": "ec2aec19-bb95-47fb-b854-d0a5e0dc8f68",
+      "decision_source": "live",
+      "model_ms": 684.97,
+      "tool_ms": 0.66,
+      "observation": {
+        "ok": true,
+        "from_agent": "scheduler",
+        "to_agent": "planner",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": null,
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 5,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "proposed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": "2026-11-05T18:00:00+08:00"
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 685.68,
+      "next_action": "inspect_campaign"
+    },
+    {
+      "step": 19,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "inspect_campaign",
+      "parameters": {},
+      "decision_basis": "交接包含 sources 变更与 plan_version 5，需先读取真实活动状态",
+      "response_id": "6fc93978-5364-4954-a82b-796d7ef87e81",
+      "decision_source": "live",
+      "model_ms": 1387.48,
+      "tool_ms": 1.4,
+      "observation": {
+        "ok": true,
+        "schema_version": "campaign-handoff-v1",
+        "request": {
+          "request_id": "cross-day-001",
+          "material_ids": [
+            "M01"
+          ],
+          "platforms": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "window_start": "2026-11-03T18:00:00+08:00",
+          "window_end": "2026-11-05T20:00:00+08:00",
+          "preferred_slot": "2026-11-03T18:00:00+08:00",
+          "timezone": "Asia/Shanghai",
+          "platform_order": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "min_gap_hours": 2
+        },
+        "active_task": null,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "plan_version": 5,
+        "status": "planning",
+        "tasks": [
+          {
+            "task_id": "M01@douyin",
+            "material_id": "M01",
+            "platform": "douyin",
+            "status": "proposed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "douyin",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": "2026-11-05T18:00:00+08:00"
+          },
+          {
+            "task_id": "M01@xiaohongshu",
+            "material_id": "M01",
+            "platform": "xiaohongshu",
+            "status": "reviewed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "xiaohongshu",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          }
+        ],
+        "errors": [],
+        "resume_info": {
+          "loaded_revision": 80,
+          "invalidated": [
+            "source_version_changed"
+          ],
+          "reused_reviews": []
+        }
+      },
+      "return_summary": "状态=planning",
+      "elapsed_ms": 1388.97,
+      "next_action": "plan_tasks"
+    },
+    {
+      "step": 20,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "plan_tasks",
+      "parameters": {
+        "task_ids": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ]
+      },
+      "decision_basis": "素材来源版本变更使既有审核失效，需重新规划并按平台依赖顺序（抖音先于小红书）处理两个任务",
+      "response_id": "6d20be52-cd1f-41ae-b27e-344afafa5a2a",
+      "decision_source": "live",
+      "model_ms": 1351.1,
+      "tool_ms": 2.2,
+      "observation": {
+        "ok": true,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "task_count": 2
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1353.41,
+      "next_action": "delegate_review"
+    },
+    {
+      "step": 21,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "delegate_review",
+      "parameters": {
+        "task_id": "M01@douyin"
+      },
+      "decision_basis": "来源版本变更后审核失效，抖音为平台顺序首个任务，需重新审核",
+      "response_id": "9e47ae07-989c-4406-bf21-cbcf4db0cb58",
+      "decision_source": "live",
+      "model_ms": 925.42,
+      "tool_ms": 1.68,
+      "observation": {
+        "ok": true,
+        "to_agent": "reviewer",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": "M01@douyin",
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 5,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "proposed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": "2026-11-05T18:00:00+08:00"
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 927.27,
+      "next_action": "read_campaign_material"
+    },
+    {
+      "step": 22,
+      "agent_id": "reviewer",
+      "task_id": "M01@douyin",
+      "tool": "read_campaign_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "恢复后发现 source_version_changed 导致审核作废，需先读取素材再审核。",
+      "response_id": "52cd5ec8-ad57-49b8-b015-a0197a15c735",
+      "decision_source": "live",
+      "model_ms": 988.68,
+      "tool_ms": 0.98,
+      "observation": {
+        "ok": true,
+        "material": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "source": "base",
+        "platform": "douyin"
+      },
+      "return_summary": "已读取素材=M01; 来源=base",
+      "elapsed_ms": 989.71,
+      "next_action": "check_platform_rules"
+    },
+    {
+      "step": 23,
+      "agent_id": "reviewer",
+      "task_id": "M01@douyin",
+      "tool": "check_platform_rules",
+      "parameters": {},
+      "decision_basis": "已读取 M01 基础素材，按目标平台 douyin 实际规则审核。",
+      "response_id": "1153996a-73bf-4436-a3df-011c7bd3e32c",
+      "decision_source": "live",
+      "model_ms": 752.26,
+      "tool_ms": 1.81,
+      "observation": {
+        "ok": true,
+        "platform": "douyin",
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=passed",
+      "elapsed_ms": 754.15,
+      "next_action": "return_to_planner"
+    },
+    {
+      "step": 24,
+      "agent_id": "reviewer",
+      "task_id": "M01@douyin",
+      "tool": "return_to_planner",
+      "parameters": {},
+      "decision_basis": "M01@douyin 审核通过（douyin 规则，2026-11-01.v1 无缺失/风险），审核结果已更新可交 scheduler。",
+      "response_id": "d2ab1764-fc8d-470f-bff2-9bcd01ed5064",
+      "decision_source": "live",
+      "model_ms": 1064.05,
+      "tool_ms": 2.05,
+      "observation": {
+        "ok": true,
+        "from_agent": "reviewer",
+        "to_agent": "planner",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": null,
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 6,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1066.21,
+      "next_action": "inspect_campaign"
+    },
+    {
+      "step": 25,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "inspect_campaign",
+      "parameters": {},
+      "decision_basis": "接手的活动已有任务顺序且两任务已审核通过，需确认持久版本与恢复信息",
+      "response_id": "f8d3c979-4fbc-4fc1-a3e3-4532e71e1e3c",
+      "decision_source": "live",
+      "model_ms": 1094.47,
+      "tool_ms": 1.74,
+      "observation": {
+        "ok": true,
+        "schema_version": "campaign-handoff-v1",
+        "request": {
+          "request_id": "cross-day-001",
+          "material_ids": [
+            "M01"
+          ],
+          "platforms": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "window_start": "2026-11-03T18:00:00+08:00",
+          "window_end": "2026-11-05T20:00:00+08:00",
+          "preferred_slot": "2026-11-03T18:00:00+08:00",
+          "timezone": "Asia/Shanghai",
+          "platform_order": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "min_gap_hours": 2
+        },
+        "active_task": null,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "plan_version": 6,
+        "status": "planning",
+        "tasks": [
+          {
+            "task_id": "M01@douyin",
+            "material_id": "M01",
+            "platform": "douyin",
+            "status": "reviewed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "douyin",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          },
+          {
+            "task_id": "M01@xiaohongshu",
+            "material_id": "M01",
+            "platform": "xiaohongshu",
+            "status": "reviewed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "xiaohongshu",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          }
+        ],
+        "errors": [],
+        "resume_info": {
+          "loaded_revision": 80,
+          "invalidated": [
+            "source_version_changed"
+          ],
+          "reused_reviews": []
+        }
+      },
+      "return_summary": "状态=planning",
+      "elapsed_ms": 1096.31,
+      "next_action": "delegate_schedule"
+    },
+    {
+      "step": 26,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "delegate_schedule",
+      "parameters": {
+        "task_id": "M01@douyin"
+      },
+      "decision_basis": "两任务审核均 passed 且任务顺序已定，先排依赖任务 M01@douyin，优先查询偏好时段",
+      "response_id": "24be4013-f4b8-4c71-9b7a-73ed002bfc08",
+      "decision_source": "live",
+      "model_ms": 1019.63,
+      "tool_ms": 1.58,
+      "observation": {
+        "ok": true,
+        "to_agent": "scheduler",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": "M01@douyin",
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 6,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1021.32,
+      "next_action": "query_candidates"
+    },
+    {
+      "step": 27,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "query_candidates",
+      "parameters": {
+        "search": "preferred"
+      },
+      "decision_basis": "两个任务均已审核通过，先查偏好时段 2026-11-03T18:00 是否有可用候选",
+      "response_id": "087b6159-1355-4934-9081-7bfdc1826c14",
+      "decision_source": "live",
+      "model_ms": 1187.96,
+      "tool_ms": 1.91,
+      "observation": {
+        "ok": true,
+        "platform": "douyin",
+        "search": "preferred",
+        "available_slots": [],
+        "rejected": [
+          {
+            "slot": "2026-11-03T18:00:00+08:00",
+            "reason": "SLOT_CONFLICT"
+          }
+        ],
+        "window_start": "2026-11-03T18:00:00+08:00",
+        "window_end": "2026-11-05T20:00:00+08:00"
+      },
+      "return_summary": "可用时段=",
+      "elapsed_ms": 1189.93,
+      "next_action": "query_candidates"
+    },
+    {
+      "step": 28,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "query_candidates",
+      "parameters": {
+        "search": "window"
+      },
+      "decision_basis": "偏好时段冲突不可用，改查硬窗口内 douyin 的候选时段",
+      "response_id": "f4fa2325-2418-4e27-891c-93d465f3cf6d",
+      "decision_source": "live",
+      "model_ms": 763.45,
+      "tool_ms": 1.98,
+      "observation": {
+        "ok": true,
+        "platform": "douyin",
+        "search": "window",
+        "available_slots": [
+          "2026-11-05T18:00:00+08:00"
+        ],
+        "rejected": [
+          {
+            "slot": "2026-11-03T18:00:00+08:00",
+            "reason": "SLOT_CONFLICT"
+          },
+          {
+            "slot": "2026-11-03T19:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-03T20:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-04T18:00:00+08:00",
+            "reason": "SLOT_CONFLICT"
+          },
+          {
+            "slot": "2026-11-04T19:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-04T20:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-05T19:00:00+08:00",
+            "reason": "DOWNSTREAM_WINDOW_INFEASIBLE"
+          },
+          {
+            "slot": "2026-11-05T20:00:00+08:00",
+            "reason": "DOWNSTREAM_WINDOW_INFEASIBLE"
+          }
+        ],
+        "window_start": "2026-11-03T18:00:00+08:00",
+        "window_end": "2026-11-05T20:00:00+08:00"
+      },
+      "return_summary": "可用时段=2026-11-05T18:00:00+08:00",
+      "elapsed_ms": 765.51,
+      "next_action": "propose_slot"
+    },
+    {
+      "step": 29,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "propose_slot",
+      "parameters": {
+        "slot": "2026-11-05T18:00:00+08:00"
+      },
+      "decision_basis": "douyin 在硬窗口内仅 2026-11-05T18:00 可用，且该时段下游窗口可行",
+      "response_id": "ecdf3301-7c54-41e9-9393-b70da9c979ef",
+      "decision_source": "live",
+      "model_ms": 833.95,
+      "tool_ms": 0.87,
+      "observation": {
+        "ok": true,
+        "task_id": "M01@douyin",
+        "suggested_slot": "2026-11-05T18:00:00+08:00",
+        "all_tasks_proposed": false,
+        "draft_saved": false,
+        "remaining_task_ids": [
+          "M01@xiaohongshu"
+        ]
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 834.87,
+      "next_action": "return_to_planner"
+    },
+    {
+      "step": 30,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "return_to_planner",
+      "parameters": {},
+      "decision_basis": "douyin 已选定 2026-11-05T18:00，all_tasks_proposed=false，剩余 M01@xiaohongshu 待排",
+      "response_id": "ddbc447a-4587-4663-8095-c23798c130b0",
+      "decision_source": "live",
+      "model_ms": 1047.79,
+      "tool_ms": 4.28,
+      "observation": {
+        "ok": true,
+        "from_agent": "scheduler",
+        "to_agent": "planner",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": null,
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 7,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "proposed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": "2026-11-05T18:00:00+08:00"
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1052.16,
+      "next_action": "inspect_campaign"
+    },
+    {
+      "step": 31,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "inspect_campaign",
+      "parameters": {},
+      "decision_basis": "交接包恢复信息含 invalidated source_version_changed，需先读取真实活动状态",
+      "response_id": "29f6ed66-79ea-4494-a5cf-6b5c769eb278",
+      "decision_source": "live",
+      "model_ms": 529.37,
+      "tool_ms": 0.76,
+      "observation": {
+        "ok": true,
+        "schema_version": "campaign-handoff-v1",
+        "request": {
+          "request_id": "cross-day-001",
+          "material_ids": [
+            "M01"
+          ],
+          "platforms": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "window_start": "2026-11-03T18:00:00+08:00",
+          "window_end": "2026-11-05T20:00:00+08:00",
+          "preferred_slot": "2026-11-03T18:00:00+08:00",
+          "timezone": "Asia/Shanghai",
+          "platform_order": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "min_gap_hours": 2
+        },
+        "active_task": null,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "plan_version": 7,
+        "status": "planning",
+        "tasks": [
+          {
+            "task_id": "M01@douyin",
+            "material_id": "M01",
+            "platform": "douyin",
+            "status": "proposed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "douyin",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": "2026-11-05T18:00:00+08:00"
+          },
+          {
+            "task_id": "M01@xiaohongshu",
+            "material_id": "M01",
+            "platform": "xiaohongshu",
+            "status": "reviewed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "xiaohongshu",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          }
+        ],
+        "errors": [],
+        "resume_info": {
+          "loaded_revision": 80,
+          "invalidated": [
+            "source_version_changed"
+          ],
+          "reused_reviews": []
+        }
+      },
+      "return_summary": "状态=planning",
+      "elapsed_ms": 530.18,
+      "next_action": "delegate_review"
+    },
+    {
+      "step": 32,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "delegate_review",
+      "parameters": {
+        "task_id": "M01@xiaohongshu"
+      },
+      "decision_basis": "M01@xiaohongshu 已选择待审核且无 slot，需审核通过后才能交给 scheduler",
+      "response_id": "9f5dd861-d648-4f38-a927-abe5092c3649",
+      "decision_source": "live",
+      "model_ms": 959.32,
+      "tool_ms": 2.95,
+      "observation": {
+        "ok": true,
+        "to_agent": "reviewer",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": "M01@xiaohongshu",
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 7,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "proposed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": "2026-11-05T18:00:00+08:00"
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 962.46,
+      "next_action": "read_campaign_material"
+    },
+    {
+      "step": 33,
+      "agent_id": "reviewer",
+      "task_id": "M01@xiaohongshu",
+      "tool": "read_campaign_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "审核 M01@xiaohongshu 任务，需先读取当前素材内容",
+      "response_id": "c4b656b7-b9da-4dd8-a2da-b6ec31b3ab5f",
+      "decision_source": "live",
+      "model_ms": 989.41,
+      "tool_ms": 0.8,
+      "observation": {
+        "ok": true,
+        "material": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "xiaohongshu",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "source": "base",
+        "platform": "xiaohongshu"
+      },
+      "return_summary": "已读取素材=M01; 来源=base",
+      "elapsed_ms": 990.26,
+      "next_action": "check_platform_rules"
+    },
+    {
+      "step": 34,
+      "agent_id": "reviewer",
+      "task_id": "M01@xiaohongshu",
+      "tool": "check_platform_rules",
+      "parameters": {},
+      "decision_basis": "已读取 M01 素材（版本 2026-11-01.v1），按小红书规则核对是否满足审核要求",
+      "response_id": "1c41eb7f-bda2-408a-8e81-7b7123fe83a5",
+      "decision_source": "live",
+      "model_ms": 975.89,
+      "tool_ms": 0.63,
+      "observation": {
+        "ok": true,
+        "platform": "xiaohongshu",
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=passed",
+      "elapsed_ms": 976.55,
+      "next_action": "return_to_planner"
+    },
+    {
+      "step": 35,
+      "agent_id": "reviewer",
+      "task_id": "M01@xiaohongshu",
+      "tool": "return_to_planner",
+      "parameters": {},
+      "decision_basis": "M01@xiaohongshu 素材版本已确认、小红书规则校验通过（passed，无缺失字段与风险），可交回规划安排排期",
+      "response_id": "49043e1e-ffb9-4379-87bd-b2d7f1782ce1",
+      "decision_source": "live",
+      "model_ms": 1092.69,
+      "tool_ms": 0.8,
+      "observation": {
+        "ok": true,
+        "from_agent": "reviewer",
+        "to_agent": "planner",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": null,
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 7,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "proposed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": "2026-11-05T18:00:00+08:00"
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1093.53,
+      "next_action": "inspect_campaign"
+    },
+    {
+      "step": 36,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "inspect_campaign",
+      "parameters": {},
+      "decision_basis": "交接包显示计划版本 7 且有失效审核信息，需读取真实活动状态",
+      "response_id": "54cb130f-05e9-4c51-8af2-5805f82c8d76",
+      "decision_source": "live",
+      "model_ms": 1044.83,
+      "tool_ms": 0.9,
+      "observation": {
+        "ok": true,
+        "schema_version": "campaign-handoff-v1",
+        "request": {
+          "request_id": "cross-day-001",
+          "material_ids": [
+            "M01"
+          ],
+          "platforms": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "window_start": "2026-11-03T18:00:00+08:00",
+          "window_end": "2026-11-05T20:00:00+08:00",
+          "preferred_slot": "2026-11-03T18:00:00+08:00",
+          "timezone": "Asia/Shanghai",
+          "platform_order": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "min_gap_hours": 2
+        },
+        "active_task": null,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "plan_version": 7,
+        "status": "planning",
+        "tasks": [
+          {
+            "task_id": "M01@douyin",
+            "material_id": "M01",
+            "platform": "douyin",
+            "status": "proposed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "douyin",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": "2026-11-05T18:00:00+08:00"
+          },
+          {
+            "task_id": "M01@xiaohongshu",
+            "material_id": "M01",
+            "platform": "xiaohongshu",
+            "status": "reviewed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "xiaohongshu",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          }
+        ],
+        "errors": [],
+        "resume_info": {
+          "loaded_revision": 80,
+          "invalidated": [
+            "source_version_changed"
+          ],
+          "reused_reviews": []
+        }
+      },
+      "return_summary": "状态=planning",
+      "elapsed_ms": 1045.79,
+      "next_action": "plan_tasks"
+    },
+    {
+      "step": 37,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "plan_tasks",
+      "parameters": {
+        "task_ids": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ]
+      },
+      "decision_basis": "当前无 active_task，需按平台顺序 douyin→xiaohongshu 重新规划两个任务",
+      "response_id": "13bccf7a-7942-432d-b315-18b3ea6394d2",
+      "decision_source": "live",
+      "model_ms": 876.66,
+      "tool_ms": 1.52,
+      "observation": {
+        "ok": true,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "task_count": 2
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 878.26,
+      "next_action": "delegate_review"
+    },
+    {
+      "step": 38,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "delegate_review",
+      "parameters": {
+        "task_id": "M01@douyin"
+      },
+      "decision_basis": "审核因源版本变更被失效，需重新审核首个任务 M01@douyin",
+      "response_id": "0ab9158c-7fc5-4fcb-a7ba-45c6e9acd134",
+      "decision_source": "live",
+      "model_ms": 994.15,
+      "tool_ms": 0.72,
+      "observation": {
+        "ok": true,
+        "to_agent": "reviewer",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": "M01@douyin",
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 7,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "proposed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": "2026-11-05T18:00:00+08:00"
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 994.91,
+      "next_action": "read_campaign_material"
+    },
+    {
+      "step": 39,
+      "agent_id": "reviewer",
+      "task_id": "M01@douyin",
+      "tool": "read_campaign_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "审核 M01@xiaohongshu 需先读取当前任务对应素材",
+      "response_id": "e655d48d-c9a8-4bec-9bd8-69d38ca64a48",
+      "decision_source": "live",
+      "model_ms": 985.38,
+      "tool_ms": 2.1,
+      "observation": {
+        "ok": true,
+        "material": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "source": "base",
+        "platform": "douyin"
+      },
+      "return_summary": "已读取素材=M01; 来源=base",
+      "elapsed_ms": 987.59,
+      "next_action": "check_platform_rules"
+    },
+    {
+      "step": 40,
+      "agent_id": "reviewer",
+      "task_id": "M01@douyin",
+      "tool": "check_platform_rules",
+      "parameters": {},
+      "decision_basis": "已读取 M01 素材，接下来按小红书平台规则审核",
+      "response_id": "2389661b-a99b-46e5-801e-25b4b3180ef2",
+      "decision_source": "live",
+      "model_ms": 977.19,
+      "tool_ms": 1.03,
+      "observation": {
+        "ok": true,
+        "platform": "douyin",
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=passed",
+      "elapsed_ms": 978.27,
+      "next_action": "return_to_planner"
+    },
+    {
+      "step": 41,
+      "agent_id": "reviewer",
+      "task_id": "M01@douyin",
+      "tool": "return_to_planner",
+      "parameters": {},
+      "decision_basis": "工具返回的素材与规则平台均为 douyin，与分配的 M01@xiaohongshu 不一致，无法确认小红书平台审核完成。",
+      "response_id": "d179ff53-e4b8-4c41-85fc-11038b546d36",
+      "decision_source": "live",
+      "model_ms": 954.13,
+      "tool_ms": 1.22,
+      "observation": {
+        "ok": true,
+        "from_agent": "reviewer",
+        "to_agent": "planner",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": null,
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 8,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 955.45,
+      "next_action": "inspect_campaign"
+    },
+    {
+      "step": 42,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "inspect_campaign",
+      "parameters": {},
+      "decision_basis": "交接包显示两任务已审核通过但无 slot，需读取活动硬要求与最新状态确认。",
+      "response_id": "3bfad21a-cad6-428e-a483-d9dc14fa8647",
+      "decision_source": "live",
+      "model_ms": 1067.31,
+      "tool_ms": 5.98,
+      "observation": {
+        "ok": true,
+        "schema_version": "campaign-handoff-v1",
+        "request": {
+          "request_id": "cross-day-001",
+          "material_ids": [
+            "M01"
+          ],
+          "platforms": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "window_start": "2026-11-03T18:00:00+08:00",
+          "window_end": "2026-11-05T20:00:00+08:00",
+          "preferred_slot": "2026-11-03T18:00:00+08:00",
+          "timezone": "Asia/Shanghai",
+          "platform_order": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "min_gap_hours": 2
+        },
+        "active_task": null,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "plan_version": 8,
+        "status": "planning",
+        "tasks": [
+          {
+            "task_id": "M01@douyin",
+            "material_id": "M01",
+            "platform": "douyin",
+            "status": "reviewed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "douyin",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          },
+          {
+            "task_id": "M01@xiaohongshu",
+            "material_id": "M01",
+            "platform": "xiaohongshu",
+            "status": "reviewed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "xiaohongshu",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          }
+        ],
+        "errors": [],
+        "resume_info": {
+          "loaded_revision": 80,
+          "invalidated": [
+            "source_version_changed"
+          ],
+          "reused_reviews": []
+        }
+      },
+      "return_summary": "状态=planning",
+      "elapsed_ms": 1073.47,
+      "next_action": "delegate_schedule"
+    },
+    {
+      "step": 43,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "delegate_schedule",
+      "parameters": {
+        "task_id": "M01@douyin"
+      },
+      "decision_basis": "两任务审核均通过且任务顺序已定，先安排依赖首位的 M01@douyin 排期。",
+      "response_id": "d14d7785-a961-40e3-bc53-88387df872ab",
+      "decision_source": "live",
+      "model_ms": 1234.73,
+      "tool_ms": 1.05,
+      "observation": {
+        "ok": true,
+        "to_agent": "scheduler",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": "M01@douyin",
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 8,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1235.85,
+      "next_action": "query_candidates"
+    },
+    {
+      "step": 44,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "query_candidates",
+      "parameters": {
+        "search": "preferred"
+      },
+      "decision_basis": "两个任务均已审核通过，先查询偏好时段 2026-11-03T18:00 的候选以安排首个依赖任务 M01@douyin。",
+      "response_id": "fb287f40-a956-4b20-961c-635f0bb4edd0",
+      "decision_source": "live",
+      "model_ms": 1406.31,
+      "tool_ms": 1.23,
+      "observation": {
+        "ok": true,
+        "platform": "douyin",
+        "search": "preferred",
+        "available_slots": [],
+        "rejected": [
+          {
+            "slot": "2026-11-03T18:00:00+08:00",
+            "reason": "SLOT_CONFLICT"
+          }
+        ],
+        "window_start": "2026-11-03T18:00:00+08:00",
+        "window_end": "2026-11-05T20:00:00+08:00"
+      },
+      "return_summary": "可用时段=",
+      "elapsed_ms": 1407.6,
+      "next_action": "query_candidates"
+    },
+    {
+      "step": 45,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "query_candidates",
+      "parameters": {
+        "search": "window"
+      },
+      "decision_basis": "偏好时段 2026-11-03T18:00 冲突不可用，改查整个硬性窗口内的候选。",
+      "response_id": "7009a3d1-0157-4534-8055-19b49d23c8ff",
+      "decision_source": "live",
+      "model_ms": 1043.45,
+      "tool_ms": 2.67,
+      "observation": {
+        "ok": true,
+        "platform": "douyin",
+        "search": "window",
+        "available_slots": [
+          "2026-11-05T18:00:00+08:00"
+        ],
+        "rejected": [
+          {
+            "slot": "2026-11-03T18:00:00+08:00",
+            "reason": "SLOT_CONFLICT"
+          },
+          {
+            "slot": "2026-11-03T19:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-03T20:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-04T18:00:00+08:00",
+            "reason": "SLOT_CONFLICT"
+          },
+          {
+            "slot": "2026-11-04T19:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-04T20:00:00+08:00",
+            "reason": "DAILY_LIMIT"
+          },
+          {
+            "slot": "2026-11-05T19:00:00+08:00",
+            "reason": "DOWNSTREAM_WINDOW_INFEASIBLE"
+          },
+          {
+            "slot": "2026-11-05T20:00:00+08:00",
+            "reason": "DOWNSTREAM_WINDOW_INFEASIBLE"
+          }
+        ],
+        "window_start": "2026-11-03T18:00:00+08:00",
+        "window_end": "2026-11-05T20:00:00+08:00"
+      },
+      "return_summary": "可用时段=2026-11-05T18:00:00+08:00",
+      "elapsed_ms": 1046.26,
+      "next_action": "propose_slot"
+    },
+    {
+      "step": 46,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "propose_slot",
+      "parameters": {
+        "slot": "2026-11-05T18:00:00+08:00"
+      },
+      "decision_basis": "窗口内 douyin 仅 2026-11-05T18:00 可用，且需为下游 xiaohongshu 留出间隔，先为依赖任务 M01@douyin 选定该时段。",
+      "response_id": "d0eb1c3b-e224-4879-8e9a-029906717c66",
+      "decision_source": "live",
+      "model_ms": 1321.18,
+      "tool_ms": 0.63,
+      "observation": {
+        "ok": true,
+        "task_id": "M01@douyin",
+        "suggested_slot": "2026-11-05T18:00:00+08:00",
+        "all_tasks_proposed": false,
+        "draft_saved": false,
+        "remaining_task_ids": [
+          "M01@xiaohongshu"
+        ]
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1321.84,
+      "next_action": "return_to_planner"
+    },
+    {
+      "step": 47,
+      "agent_id": "scheduler",
+      "task_id": "M01@douyin",
+      "tool": "return_to_planner",
+      "parameters": {},
+      "decision_basis": "M01@douyin 检查点已保存，all_tasks_proposed=false 且剩余 M01@xiaohongshu，按规则交回规划 Agent 决定下一任务。",
+      "response_id": "4d9a56aa-2a80-469a-8b0a-16391849b700",
+      "decision_source": "live",
+      "model_ms": 861.05,
+      "tool_ms": 1.71,
+      "observation": {
+        "ok": true,
+        "from_agent": "scheduler",
+        "to_agent": "planner",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": null,
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 9,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "proposed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": "2026-11-05T18:00:00+08:00"
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 862.86,
+      "next_action": "inspect_campaign"
+    },
+    {
+      "step": 48,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "inspect_campaign",
+      "parameters": {},
+      "decision_basis": "交接包显示计划版本 9 且存在失效信息，需读取真实活动状态以决定后续步骤",
+      "response_id": "4425cef1-a547-4699-833d-451c13d29cb8",
+      "decision_source": "live",
+      "model_ms": 1176.78,
+      "tool_ms": 5.99,
+      "observation": {
+        "ok": true,
+        "schema_version": "campaign-handoff-v1",
+        "request": {
+          "request_id": "cross-day-001",
+          "material_ids": [
+            "M01"
+          ],
+          "platforms": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "window_start": "2026-11-03T18:00:00+08:00",
+          "window_end": "2026-11-05T20:00:00+08:00",
+          "preferred_slot": "2026-11-03T18:00:00+08:00",
+          "timezone": "Asia/Shanghai",
+          "platform_order": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "min_gap_hours": 2
+        },
+        "active_task": null,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "plan_version": 9,
+        "status": "planning",
+        "tasks": [
+          {
+            "task_id": "M01@douyin",
+            "material_id": "M01",
+            "platform": "douyin",
+            "status": "proposed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "douyin",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": "2026-11-05T18:00:00+08:00"
+          },
+          {
+            "task_id": "M01@xiaohongshu",
+            "material_id": "M01",
+            "platform": "xiaohongshu",
+            "status": "reviewed",
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "xiaohongshu",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": false,
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          }
+        ],
+        "errors": [],
+        "resume_info": {
+          "loaded_revision": 80,
+          "invalidated": [
+            "source_version_changed"
+          ],
+          "reused_reviews": []
+        }
+      },
+      "return_summary": "状态=planning",
+      "elapsed_ms": 1182.85,
+      "next_action": "plan_tasks"
+    },
+    {
+      "step": 49,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "plan_tasks",
+      "parameters": {
+        "task_ids": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ]
+      },
+      "decision_basis": "因 source_version_changed 导致此前审核失效，需按平台顺序重新规划两个任务",
+      "response_id": "c6c054d0-c3d1-49d5-99f0-3074a8c0d4ba",
+      "decision_source": "live",
+      "model_ms": 2002.64,
+      "tool_ms": 1.7,
+      "observation": {
+        "ok": true,
+        "task_order": [
+          "M01@douyin",
+          "M01@xiaohongshu"
+        ],
+        "task_count": 2
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 2004.42,
+      "next_action": "delegate_review"
+    },
+    {
+      "step": 50,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "delegate_review",
+      "parameters": {
+        "task_id": "M01@douyin"
+      },
+      "decision_basis": "任务顺序已确定，首个任务 M01@douyin 需按最新素材版本重新审核",
+      "response_id": "e5e78f8c-e15b-4a48-b4ea-2d3fafbfffa1",
+      "decision_source": "live",
+      "model_ms": 8251.04,
+      "tool_ms": 0.96,
+      "observation": {
+        "ok": true,
+        "to_agent": "reviewer",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M01"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-05T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": "M01@douyin",
+          "task_order": [
+            "M01@douyin",
+            "M01@xiaohongshu"
+          ],
+          "plan_version": 9,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "status": "proposed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "douyin",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": "2026-11-05T18:00:00+08:00"
+            },
+            {
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "status": "reviewed",
+              "material": {
+                "id": "M01",
+                "title": "字幕编辑功能介绍",
+                "description": "演示如何添加和编辑字幕。",
+                "platform": "xiaohongshu",
+                "rights": "owned",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": false,
+              "review": {
+                "status": "passed",
+                "missing_fields": [],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "resume_info": {
+            "loaded_revision": 80,
+            "invalidated": [
+              "source_version_changed"
+            ],
+            "reused_reviews": []
+          }
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 8252.06,
+      "next_action": "stop:incomplete"
+    }
+  ],
+  "usage": [
+    {
+      "input_tokens": 1537,
+      "input_tokens_details": {
+        "cached_tokens": 1152
+      },
+      "output_tokens": 57,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1594
+    },
+    {
+      "input_tokens": 1948,
+      "input_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "output_tokens": 89,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2037
+    },
+    {
+      "input_tokens": 2086,
+      "input_tokens_details": {
+        "cached_tokens": 1920
+      },
+      "output_tokens": 72,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2158
+    },
+    {
+      "input_tokens": 1301,
+      "input_tokens_details": {
+        "cached_tokens": 896
+      },
+      "output_tokens": 69,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1370
+    },
+    {
+      "input_tokens": 1462,
+      "input_tokens_details": {
+        "cached_tokens": 1280
+      },
+      "output_tokens": 48,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1510
+    },
+    {
+      "input_tokens": 1598,
+      "input_tokens_details": {
+        "cached_tokens": 1408
+      },
+      "output_tokens": 70,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1668
+    },
+    {
+      "input_tokens": 1657,
+      "input_tokens_details": {
+        "cached_tokens": 1152
+      },
+      "output_tokens": 57,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1714
+    },
+    {
+      "input_tokens": 2188,
+      "input_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "output_tokens": 83,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2271
+    },
+    {
+      "input_tokens": 2320,
+      "input_tokens_details": {
+        "cached_tokens": 2176
+      },
+      "output_tokens": 78,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2398
+    },
+    {
+      "input_tokens": 1409,
+      "input_tokens_details": {
+        "cached_tokens": 768
+      },
+      "output_tokens": 75,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1484
+    },
+    {
+      "input_tokens": 1582,
+      "input_tokens_details": {
+        "cached_tokens": 1408
+      },
+      "output_tokens": 49,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1631
+    },
+    {
+      "input_tokens": 1725,
+      "input_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "output_tokens": 58,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1783
+    },
+    {
+      "input_tokens": 1768,
+      "input_tokens_details": {
+        "cached_tokens": 1152
+      },
+      "output_tokens": 48,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1816
+    },
+    {
+      "input_tokens": 2401,
+      "input_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "output_tokens": 84,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2485
+    },
+    {
+      "input_tokens": 1640,
+      "input_tokens_details": {
+        "cached_tokens": 896
+      },
+      "output_tokens": 73,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1713
+    },
+    {
+      "input_tokens": 1836,
+      "input_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "output_tokens": 68,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1904
+    },
+    {
+      "input_tokens": 2270,
+      "input_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "output_tokens": 89,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2359
+    },
+    {
+      "input_tokens": 2449,
+      "input_tokens_details": {
+        "cached_tokens": 2304
+      },
+      "output_tokens": 68,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2517
+    },
+    {
+      "input_tokens": 1784,
+      "input_tokens_details": {
+        "cached_tokens": 1024
+      },
+      "output_tokens": 50,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1834
+    },
+    {
+      "input_tokens": 2435,
+      "input_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "output_tokens": 90,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2525
+    },
+    {
+      "input_tokens": 2574,
+      "input_tokens_details": {
+        "cached_tokens": 2432
+      },
+      "output_tokens": 71,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2645
+    },
+    {
+      "input_tokens": 1533,
+      "input_tokens_details": {
+        "cached_tokens": 768
+      },
+      "output_tokens": 68,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1601
+    },
+    {
+      "input_tokens": 1693,
+      "input_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "output_tokens": 51,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1744
+    },
+    {
+      "input_tokens": 1832,
+      "input_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "output_tokens": 69,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1901
+    },
+    {
+      "input_tokens": 1768,
+      "input_tokens_details": {
+        "cached_tokens": 1152
+      },
+      "output_tokens": 53,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1821
+    },
+    {
+      "input_tokens": 2406,
+      "input_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "output_tokens": 80,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2486
+    },
+    {
+      "input_tokens": 1640,
+      "input_tokens_details": {
+        "cached_tokens": 896
+      },
+      "output_tokens": 74,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1714
+    },
+    {
+      "input_tokens": 1837,
+      "input_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "output_tokens": 65,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1902
+    },
+    {
+      "input_tokens": 2268,
+      "input_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "output_tokens": 92,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2360
+    },
+    {
+      "input_tokens": 2450,
+      "input_tokens_details": {
+        "cached_tokens": 2304
+      },
+      "output_tokens": 70,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2520
+    },
+    {
+      "input_tokens": 1784,
+      "input_tokens_details": {
+        "cached_tokens": 1024
+      },
+      "output_tokens": 51,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1835
+    },
+    {
+      "input_tokens": 2436,
+      "input_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "output_tokens": 80,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2516
+    },
+    {
+      "input_tokens": 1536,
+      "input_tokens_details": {
+        "cached_tokens": 768
+      },
+      "output_tokens": 68,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1604
+    },
+    {
+      "input_tokens": 1702,
+      "input_tokens_details": {
+        "cached_tokens": 1408
+      },
+      "output_tokens": 60,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1762
+    },
+    {
+      "input_tokens": 1856,
+      "input_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "output_tokens": 68,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1924
+    },
+    {
+      "input_tokens": 1784,
+      "input_tokens_details": {
+        "cached_tokens": 1024
+      },
+      "output_tokens": 51,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1835
+    },
+    {
+      "input_tokens": 2436,
+      "input_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "output_tokens": 87,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2523
+    },
+    {
+      "input_tokens": 2572,
+      "input_tokens_details": {
+        "cached_tokens": 2432
+      },
+      "output_tokens": 72,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2644
+    },
+    {
+      "input_tokens": 1533,
+      "input_tokens_details": {
+        "cached_tokens": 768
+      },
+      "output_tokens": 67,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1600
+    },
+    {
+      "input_tokens": 1692,
+      "input_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "output_tokens": 47,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1739
+    },
+    {
+      "input_tokens": 1827,
+      "input_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "output_tokens": 64,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1891
+    },
+    {
+      "input_tokens": 1768,
+      "input_tokens_details": {
+        "cached_tokens": 1024
+      },
+      "output_tokens": 54,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1822
+    },
+    {
+      "input_tokens": 2407,
+      "input_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "output_tokens": 78,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2485
+    },
+    {
+      "input_tokens": 1640,
+      "input_tokens_details": {
+        "cached_tokens": 896
+      },
+      "output_tokens": 83,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1723
+    },
+    {
+      "input_tokens": 1846,
+      "input_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "output_tokens": 74,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1920
+    },
+    {
+      "input_tokens": 2286,
+      "input_tokens_details": {
+        "cached_tokens": 1920
+      },
+      "output_tokens": 112,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2398
+    },
+    {
+      "input_tokens": 2488,
+      "input_tokens_details": {
+        "cached_tokens": 2304
+      },
+      "output_tokens": 73,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2561
+    },
+    {
+      "input_tokens": 1784,
+      "input_tokens_details": {
+        "cached_tokens": 1024
+      },
+      "output_tokens": 55,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1839
+    },
+    {
+      "input_tokens": 2440,
+      "input_tokens_details": {
+        "cached_tokens": 1792
+      },
+      "output_tokens": 84,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2524
+    },
+    {
+      "input_tokens": 2573,
+      "input_tokens_details": {
+        "cached_tokens": 2432
+      },
+      "output_tokens": 74,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2647
+    }
+  ],
+  "limits": {
+    "max_steps": 64,
+    "steps_used": 50,
+    "max_total_tokens": 100000,
+    "tokens_used": 101257,
+    "max_seconds": 240,
+    "elapsed_seconds": 64.491
+  },
+  "validation_boundary": "真实模型工具决策记录",
+  "evaluation_fixture": {
+    "case": "replan_changed_occupancy",
+    "expected": "pending_confirmation",
+    "assertions": {
+      "expected_status": false,
+      "never_published": true,
+      "no_duplicate_platform_draft": true,
+      "within_budget": true,
+      "actual_trace": true,
+      "real_response_ids": true,
+      "hard_window_preserved": true,
+      "all_pending_not_reserved": false,
+      "new_day_same_rows": true,
+      "new_plan_identity": true
+    },
+    "database_group": "changed",
+    "database_rows_after": [
+      {
+        "draft_id": 1,
+        "request_id": "cross-day-001",
+        "task_id": "M01@douyin",
+        "material_id": "M01",
+        "platform": "douyin",
+        "suggested_slot": "2026-11-04T18:00:00+08:00",
+        "reserved_slot": null,
+        "confirmation_status": "stale",
+        "plan_version": 3,
+        "plan_hash": "048e5a66218285126307134b627a52cfc2091087988bc37b3d39d5facc36107e",
+        "workflow": "campaign",
+        "published": false
+      },
+      {
+        "draft_id": 2,
+        "request_id": "cross-day-001",
+        "task_id": "M01@xiaohongshu",
+        "material_id": "M01",
+        "platform": "xiaohongshu",
+        "suggested_slot": "2026-11-04T20:00:00+08:00",
+        "reserved_slot": null,
+        "confirmation_status": "stale",
+        "plan_version": 3,
+        "plan_hash": "048e5a66218285126307134b627a52cfc2091087988bc37b3d39d5facc36107e",
+        "workflow": "campaign",
+        "published": false
+      }
+    ],
+    "faults": {},
+    "source_snapshot": {
+      "campaign-policy.json": {
+        "version": "synthetic-campaign-v1",
+        "timezone": "Asia/Shanghai",
+        "max_window_days": 7,
+        "platforms": {
+          "douyin": {
+            "label": "抖音",
+            "hours": [
+              18,
+              19,
+              20
+            ],
+            "daily_limit": 1,
+            "min_gap_hours": 2,
+            "blocked_terms": [],
+            "manual_review_terms": []
+          },
+          "xiaohongshu": {
+            "label": "小红书",
+            "hours": [
+              18,
+              20
+            ],
+            "daily_limit": 2,
+            "min_gap_hours": 2,
+            "blocked_terms": [
+              "抽奖"
+            ],
+            "manual_review_terms": []
+          }
+        }
+      },
+      "supplements.json": {
+        "M02": {
+          "rights": "owned",
+          "version": "2026-11-01.v2"
+        }
+      },
+      "materials.json": {
+        "M01": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "M02": {
+          "id": "M02",
+          "title": "旅行剪辑演示",
+          "description": "使用自制旅行素材演示剪辑。",
+          "platform": "douyin",
+          "version": "2026-11-01.v1"
+        },
+        "M03": {
+          "id": "M03",
+          "title": "待核实的音乐素材",
+          "description": "尚未提供配乐授权凭证。",
+          "platform": "douyin",
+          "version": "2026-11-01.v1"
+        },
+        "M04": {
+          "id": "M04",
+          "title": "100%保证涨粉",
+          "description": "无数据支持的效果保证。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "M05": {
+          "id": "M05",
+          "title": "活动抽奖预告",
+          "description": "奖品规则需要人工复核。",
+          "platform": "douyin",
+          "rights": "licensed",
+          "version": "2026-11-01.v1"
+        },
+        "M06": {
+          "id": "M06",
+          "title": "镜头转场教程",
+          "description": "演示基础转场。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        }
+      },
+      "rules.json": {
+        "version": "synthetic-2026-11-01.v1",
+        "required_fields": [
+          "title",
+          "platform",
+          "rights"
+        ],
+        "allowed_rights": [
+          "owned",
+          "licensed"
+        ],
+        "blocked_terms": [
+          "100%保证",
+          "永久免费",
+          "官方唯一"
+        ],
+        "manual_review_terms": [
+          "抽奖",
+          "医疗"
+        ]
+      },
+      "schedule.json": {
+        "timezone": "Asia/Shanghai",
+        "slots": [
+          "2026-11-03T18:00:00+08:00",
+          "2026-11-03T19:00:00+08:00",
+          "2026-11-03T20:00:00+08:00"
+        ],
+        "occupied": [
+          {
+            "platform": "douyin",
+            "slot": "2026-11-03T18:00:00+08:00"
+          },
+          {
+            "platform": "douyin",
+            "slot": "2026-11-04T18:00:00+08:00"
+          }
+        ]
+      }
+    }
+  }
+}

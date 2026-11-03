@@ -2,7 +2,7 @@
 
 ## 当前结论
 
-**当前版本：真实 DeepSeek 双 Agent 最终验收 21/21，通过 67 个自动化测试；单 Agent 与双 Agent 的离线验收各 21/21。** 早期单 Agent 的真实 18/18 原始记录继续保留。 这证明本次合成用例中的工程行为与模型决策符合断言，不代表任意输入下的成功率。
+**当前版本通过 92 个自动化测试；单 Agent 与双 Agent 离线各 21/21；跨天活动离线及真实 DeepSeek 各 14/14。既有真实双 Agent 21/21 记录保留。** 早期单 Agent 的真实 18/18 原始记录继续保留。 这证明本次合成用例中的工程行为与模型决策符合断言，不代表任意输入下的成功率。
 
 真实调用使用 `https://api.deepseek.com/responses`，显式非思考模式。业务工具、素材和故障均为本地合成环境；模型选择工具并接收实际工具结果。密钥不包含在仓库或 Trace 中。
 
@@ -69,13 +69,13 @@ DeepSeek 可能返回一批工具提议。运行器拒绝整批执行，逐个 c
 - [test_runtime.py](../tests/test_runtime.py)：工具结果回传、非法 JSON、重复 call_id、纯文本虚报、HTTP 错误、密钥及内部推理不写入 Trace、CLI 退出码。
 - [test_deepseek.py](../tests/test_deepseek.py)：DeepSeek 请求配置、多工具拒绝后的模型重新选择、独立凭据、配置文件不执行 shell、不泄露配置错误内容，以及评估假阳性和用例依赖。
 
-当前 67 个测试全部通过。新增 test_team.py 与 test_server.py 验证角色权限、可信交接、共享预算、HTTP 鉴权/跨源/请求体边界、占用变更后重复提交、明确确认及中断状态。CI 运行离线测试，Python 3.9、3.11、3.13 的结果以对应提交的 [GitHub Actions](https://github.com/1070297054/material-schedule-agent/actions) 为准；CI 不包含真实模型费用与凭据。
+当前 92 个测试全部通过。新增 test_team.py 与 test_server.py 验证角色权限、可信交接、共享预算、HTTP 鉴权/跨源/请求体边界、占用变更后重复提交、明确确认及中断状态。CI 运行离线测试，Python 3.9、3.11、3.13 的结果以对应提交的 [GitHub Actions](https://github.com/1070297054/material-schedule-agent/actions) 为准；CI 不包含真实模型费用与凭据。
 
 ## 限制与未完成项
 
 1. 真实验收使用有限合成用例，最终一次全量通过不能代表统计稳定性或任意输入的泛化效果；未测试全部模型和服务商。
 2. 未评估真实审核准确率、语义绕过、多语言风险和大规模吞吐。合成规则不等于生产内容审核能力。
-3. 已有本机 UI/HTTP 和访问口令，但未做多用户身份鉴权、真实平台同步、外部排期事务、草稿撤销或从失败步骤 checkpoint 续跑。重复执行重新读取、审核、查询，通过幂等复用保存结果。
+3. 已有本机 UI/HTTP 和访问口令，但未做多用户身份鉴权、真实平台同步、外部排期事务、草稿撤销。旧单项模式重复执行重新读取、审核、查询；新增活动模式已支持任务检查点续跑，见下文。
 4. 批量顺序执行不保证全局最优；共享预算耗尽时后续素材明确未完成。
 5. 候选人个人投入时间、独立验证和个人学习收获仍需本人如实补充，不能把 AI 的执行记录当作个人贡献。
 
@@ -105,3 +105,37 @@ python3 scripts/evaluate.py --provider deepseek --env-file .env --orchestration 
 [双 Agent 离线汇总](../examples/team-mock/summary.json)与单 Agent 离线案例使用同一验收目标，均 21/21。当前数据集由项目开发过程手工构造，属于开发/回归集，不是独立隐藏测试集，不以 21/21 推断生产成功率。尚未做随机化多轮稳定性或单/双 Agent 的统计效果对比。
 
 网页实际交互验证见 [UI 验证记录](../examples/ui/verification.json)：Mock 场景先冲突、修改占用、重复、明确确认，再从网页运行真实 DeepSeek 正常场景。五次原始 HTTP 结果与 [真实结果截图](../examples/ui/workbench-live.png)保存在 examples/ui；截图仅辅助核验，不替代代码和 Trace。真实网页运行 6 次模型调用、8910 Token，实际保存成功。
+
+## 跨天活动三角色验收（2026-11-03）
+
+[最终真实汇总](../examples/live/campaign-release/summary.json) **14/14**，模型为 deepseek-flash；[离线对照](../examples/campaign-mock/summary.json) **14/14**。14 个场景中 `confirm_exact`、`stale_approval` 是评估脚本显式模拟操作者的确认请求，不发模型请求；其余场景使用真实服务，Trace 有真实 response_id。不能将操作者确认说成模型自行批准。
+
+| 业务与状态 | 实际证据 |
+| --- | --- |
+| 跨天、两平台、三角色、额度与顺序 | [cross_day](../examples/live/campaign-release/cross_day.json)：当日不可用，次日 18:00/20:00 待确认、无占位 |
+| 重复建议、明确确认、确认后重放 | [repeat_pending](../examples/live/campaign-release/repeat_pending.json)、[confirm_exact](../examples/live/campaign-release/confirm_exact.json)、[replay_confirmed](../examples/live/campaign-release/replay_confirmed.json)：同两行草稿，无重复 |
+| 信息不足、平台规则风险 | [missing_info](../examples/live/campaign-release/missing_info.json)、[platform_risk](../examples/live/campaign-release/platform_risk.json)：needs_input / blocked，无整组草稿 |
+| 硬截止导致不可行 | [hard_deadline](../examples/live/campaign-release/hard_deadline.json)：观察无候选后主动 incomplete，不延长窗口 |
+| 保存失败及恢复 | [save_failure](../examples/live/campaign-release/save_failure.json)、[resume_after_failure](../examples/live/campaign-release/resume_after_failure.json)：failed 后复用成功审核，重新保存待确认稿 |
+| 调用上限及新连接恢复 | [checkpoint_limit](../examples/live/campaign-release/checkpoint_limit.json)、[resume_checkpoint](../examples/live/campaign-release/resume_checkpoint.json)：明确 step_limit，恢复保留有效步骤 |
+| 占用变化、旧批准拒绝与重规划 | [before_occupancy_change](../examples/live/campaign-release/before_occupancy_change.json)、[stale_approval](../examples/live/campaign-release/stale_approval.json)、[replan_changed_occupancy](../examples/live/campaign-release/replan_changed_occupancy.json)：同草稿 ID、新日期/版本/哈希，再次待确认 |
+
+每个案例含请求、来源快照、实际结果、模型动作、参数、工具观察、下一动作、简要理由、用量、业务断言及数据库草稿。评估检查业务不变量，不强制唯一模型工具顺序；恢复以实际持久成功任务为基准，不假定模型固定先审核多少项。资料版本、权限、真实保存和主动不可行结束仍是硬断言。
+
+开发期间的失败全部保留：
+
+- [第一轮 12/14](../examples/live/campaign-first/summary.json)：恢复/占用变更后重复调整候选，耗尽预算。增加待确认冻结、单次排期交接只选择一个时段和后继平台窗口检查。
+- [第二轮 9/14](../examples/live/campaign-final/summary.json)：目录名称是历史运行标签，并非最终成功声明。模型曾在任务未完成时提前 finish incomplete，导致后续依赖用例失败；占用变更后又因重复传入历史失效告警而反复审核。增加真实不可行证据校验，交接仅携带重验后的当前状态，并拒绝无理由重复有效步骤。
+- [第三轮主动中断](../examples/live/campaign-v3/interruption.json)：停止旧代码评估以免继续消耗额度，五个已落盘案例原样保留，无全量通过声明。
+- 最后在修复后完整运行 release，14/14。没有修改历史 Trace 或把预算耗尽改判成正常不可行。
+
+新增 [23 个活动测试](../tests/test_campaign.py) 与 [HTTP 活动集成测试](../tests/test_server.py)覆盖租约/旧写入者、连接重启、实际 SQL 故障原子回滚、过期/改版批准、伪造角色参数、提示注入、硬窗口/平台依赖、旧单项共享占位/额度、合法完成步骤复用、提前结束拒绝及 CLI 完整链路。总计 92 个测试的日志在 [test-results.txt](../examples/test-results.txt)。
+
+网页浏览器验收使用 Mock，验证暂停、恢复复用两项审核、核对具体方案、明确确认，见 [记录](../examples/campaign-ui/verification.json)及[截图](../examples/campaign-ui/workbench.png)。这些合成确认由 AI 在本机测试中操作，并非真实业务批准。CLI 的真实模型评估单独报告。
+
+这些仍是参与开发调试的回归集，尚无独立隐藏集、盲测准确率、多轮统计稳定性或单/双/三角色成本收益对照。跨天基于固定合成时间和本地规则，不证明真实平台内容审核质量。
+
+```bash
+python3 scripts/evaluate_campaign.py --provider deepseek --env-file .env \
+  --output .runtime/campaign-live-recheck
+```

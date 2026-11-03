@@ -9,8 +9,8 @@
     "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-03T02:58:06+00:00",
-  "finished_at": "2026-11-03T02:58:06+00:00",
+  "started_at": "2026-11-03T03:45:17+00:00",
+  "finished_at": "2026-11-03T03:45:17+00:00",
   "input": {
     "request_id": "batch-001",
     "items": [
@@ -38,7 +38,7 @@
     "max_total_tokens": null,
     "tokens_used": 0,
     "max_seconds": null,
-    "elapsed_seconds": 0.002
+    "elapsed_seconds": 0.003
   },
   "fault_injection": {},
   "items": [
@@ -181,10 +181,10 @@
       },
       "return_summary": "已读取素材=M01; 来源=base",
       "next_action": "check_rules",
-      "model_ms": 0.01,
+      "model_ms": 0.02,
       "response_id": null,
-      "tool_ms": 0.04,
-      "elapsed_ms": 0.07
+      "tool_ms": 0.06,
+      "elapsed_ms": 0.1
     },
     {
       "agent_id": "generalist",
@@ -209,7 +209,7 @@
       "model_ms": 0.01,
       "response_id": null,
       "tool_ms": 0.01,
-      "elapsed_ms": 0.03
+      "elapsed_ms": 0.04
     },
     {
       "agent_id": "generalist",
@@ -236,8 +236,8 @@
       "next_action": "save_draft",
       "model_ms": 0.02,
       "response_id": null,
-      "tool_ms": 0.04,
-      "elapsed_ms": 0.07
+      "tool_ms": 0.07,
+      "elapsed_ms": 0.1
     },
     {
       "agent_id": "generalist",
@@ -275,8 +275,8 @@
       "next_action": "finish",
       "model_ms": 0.02,
       "response_id": null,
-      "tool_ms": 0.68,
-      "elapsed_ms": 0.71
+      "tool_ms": 0.76,
+      "elapsed_ms": 0.8
     },
     {
       "agent_id": "generalist",
@@ -296,10 +296,10 @@
       },
       "return_summary": "状态=completed",
       "next_action": "stop:completed",
-      "model_ms": 0.02,
+      "model_ms": 0.03,
       "response_id": null,
-      "tool_ms": 0.03,
-      "elapsed_ms": 0.07
+      "tool_ms": 0.05,
+      "elapsed_ms": 0.11
     },
     {
       "agent_id": "generalist",
@@ -355,7 +355,7 @@
       "model_ms": 0.01,
       "response_id": null,
       "tool_ms": 0.01,
-      "elapsed_ms": 0.03
+      "elapsed_ms": 0.04
     },
     {
       "agent_id": "generalist",
@@ -378,10 +378,10 @@
       },
       "return_summary": "可用时段=",
       "next_action": "query_slots",
-      "model_ms": 0.01,
+      "model_ms": 0.02,
       "response_id": null,
-      "tool_ms": 0.02,
-      "elapsed_ms": 0.05
+      "tool_ms": 0.05,
+      "elapsed_ms": 0.08
     },
     {
       "agent_id": "generalist",
@@ -408,8 +408,8 @@
       "next_action": "save_draft",
       "model_ms": 0.02,
       "response_id": null,
-      "tool_ms": 0.03,
-      "elapsed_ms": 0.06
+      "tool_ms": 0.04,
+      "elapsed_ms": 0.08
     },
     {
       "agent_id": "generalist",
@@ -447,8 +447,8 @@
       "next_action": "finish",
       "model_ms": 0.02,
       "response_id": null,
-      "tool_ms": 0.59,
-      "elapsed_ms": 0.62
+      "tool_ms": 0.76,
+      "elapsed_ms": 0.81
     },
     {
       "agent_id": "generalist",
@@ -468,10 +468,10 @@
       },
       "return_summary": "状态=pending_confirmation",
       "next_action": "stop:pending_confirmation",
-      "model_ms": 0.02,
+      "model_ms": 0.03,
       "response_id": null,
-      "tool_ms": 0.02,
-      "elapsed_ms": 0.06
+      "tool_ms": 0.04,
+      "elapsed_ms": 0.09
     },
     {
       "agent_id": "generalist",
@@ -532,8 +532,8 @@
       "next_action": "finish",
       "model_ms": 0.01,
       "response_id": null,
-      "tool_ms": 0.02,
-      "elapsed_ms": 0.04
+      "tool_ms": 0.03,
+      "elapsed_ms": 0.05
     },
     {
       "agent_id": "generalist",
@@ -553,7 +553,7 @@
       },
       "return_summary": "状态=blocked",
       "next_action": "stop:blocked",
-      "model_ms": 0.01,
+      "model_ms": 0.02,
       "response_id": null,
       "tool_ms": 0.0,
       "elapsed_ms": 0.03

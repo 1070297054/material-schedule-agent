@@ -9,8 +9,8 @@
     "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-03T02:58:06+00:00",
-  "finished_at": "2026-11-03T02:58:06+00:00",
+  "started_at": "2026-11-03T03:45:17+00:00",
+  "finished_at": "2026-11-03T03:45:17+00:00",
   "input": {
     "request_id": "conflict-001",
     "items": [
@@ -102,7 +102,7 @@
       },
       "return_summary": "已读取素材=M01; 来源=base",
       "next_action": "check_rules",
-      "model_ms": 0.01,
+      "model_ms": 0.02,
       "response_id": null,
       "tool_ms": 0.05,
       "elapsed_ms": 0.09
@@ -184,8 +184,8 @@
       "next_action": "save_draft",
       "model_ms": 0.02,
       "response_id": null,
-      "tool_ms": 0.06,
-      "elapsed_ms": 0.09
+      "tool_ms": 0.1,
+      "elapsed_ms": 0.12
     },
     {
       "agent_id": "generalist",
@@ -223,8 +223,8 @@
       "next_action": "finish",
       "model_ms": 0.02,
       "response_id": null,
-      "tool_ms": 0.7,
-      "elapsed_ms": 0.74
+      "tool_ms": 0.67,
+      "elapsed_ms": 0.71
     },
     {
       "agent_id": "generalist",
@@ -244,9 +244,9 @@
       },
       "return_summary": "状态=pending_confirmation",
       "next_action": "stop:pending_confirmation",
-      "model_ms": 0.03,
+      "model_ms": 0.02,
       "response_id": null,
-      "tool_ms": 0.03,
+      "tool_ms": 0.04,
       "elapsed_ms": 0.08
     }
   ],

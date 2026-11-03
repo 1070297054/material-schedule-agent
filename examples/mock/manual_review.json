@@ -9,8 +9,8 @@
     "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-03T02:58:06+00:00",
-  "finished_at": "2026-11-03T02:58:06+00:00",
+  "started_at": "2026-11-03T03:45:17+00:00",
+  "finished_at": "2026-11-03T03:45:17+00:00",
   "input": {
     "request_id": "review-001",
     "items": [
@@ -91,7 +91,7 @@
       },
       "return_summary": "已读取素材=M05; 来源=base",
       "next_action": "check_rules",
-      "model_ms": 0.02,
+      "model_ms": 0.01,
       "response_id": null,
       "tool_ms": 0.05,
       "elapsed_ms": 0.09
@@ -125,7 +125,7 @@
       "model_ms": 0.01,
       "response_id": null,
       "tool_ms": 0.02,
-      "elapsed_ms": 0.05
+      "elapsed_ms": 0.04
     },
     {
       "agent_id": "generalist",

@@ -1,0 +1,9 @@
+{
+  "version": "synthetic-campaign-v1",
+  "timezone": "Asia/Shanghai",
+  "max_window_days": 7,
+  "platforms": {
+    "douyin": {"label": "抖音", "hours": [18, 19, 20], "daily_limit": 1, "min_gap_hours": 2, "blocked_terms": [], "manual_review_terms": []},
+    "xiaohongshu": {"label": "小红书", "hours": [18, 20], "daily_limit": 2, "min_gap_hours": 2, "blocked_terms": ["抽奖"], "manual_review_terms": []}
+  }
+}

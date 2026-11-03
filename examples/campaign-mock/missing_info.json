@@ -1,0 +1,772 @@
+{
+  "request_id": "cross-day-001",
+  "task_status": "needs_input",
+  "stop_reason": "model_finish",
+  "campaign_state": {
+    "tasks": {
+      "M03@douyin": {
+        "task_id": "M03@douyin",
+        "material_id": "M03",
+        "platform": "douyin",
+        "status": "missing_info",
+        "material": {
+          "id": "M03",
+          "title": "待核实的音乐素材",
+          "description": "尚未提供配乐授权凭证。",
+          "platform": "douyin",
+          "version": "2026-11-01.v1"
+        },
+        "supplement": true,
+        "review": {
+          "status": "missing_info",
+          "missing_fields": [
+            "rights"
+          ],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+          "material_version": "2026-11-01.v1"
+        },
+        "slot": null
+      },
+      "M03@xiaohongshu": {
+        "task_id": "M03@xiaohongshu",
+        "material_id": "M03",
+        "platform": "xiaohongshu",
+        "status": "unreviewed",
+        "material": null,
+        "supplement": false,
+        "review": null,
+        "slot": null
+      }
+    },
+    "source_version": "78475b8d319e16c1089f012ba24da3b358eeebee82d46d4363eff26c201ee7b1",
+    "plan_version": 1,
+    "plan_hash": null,
+    "plan_created_at": null,
+    "status": "planning",
+    "confirmed_hash": null,
+    "task_order": [
+      "M03@douyin",
+      "M03@xiaohongshu"
+    ]
+  },
+  "resume_info": {
+    "loaded_revision": 0,
+    "invalidated": [],
+    "reused_reviews": []
+  },
+  "errors": [],
+  "items": [
+    {
+      "task_id": "M03@douyin",
+      "material_id": "M03",
+      "platform": "douyin",
+      "status": "missing_info",
+      "material": {
+        "id": "M03",
+        "title": "待核实的音乐素材",
+        "description": "尚未提供配乐授权凭证。",
+        "platform": "douyin",
+        "version": "2026-11-01.v1"
+      },
+      "supplement": true,
+      "review": {
+        "status": "missing_info",
+        "missing_fields": [
+          "rights"
+        ],
+        "risks": [],
+        "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+        "material_version": "2026-11-01.v1"
+      },
+      "slot": null,
+      "draft": null,
+      "published": false
+    },
+    {
+      "task_id": "M03@xiaohongshu",
+      "material_id": "M03",
+      "platform": "xiaohongshu",
+      "status": "unreviewed",
+      "material": null,
+      "supplement": false,
+      "review": null,
+      "slot": null,
+      "draft": null,
+      "published": false
+    }
+  ],
+  "drafts": [],
+  "published": false,
+  "workflow": "campaign",
+  "schema_version": "2.0",
+  "orchestration": "campaign",
+  "execution_id": "d8fd324b5f2c4f47b318fc363362c551",
+  "input": {
+    "request_id": "cross-day-001",
+    "material_ids": [
+      "M03"
+    ],
+    "platforms": [
+      "douyin",
+      "xiaohongshu"
+    ],
+    "window_start": "2026-11-03T18:00:00+08:00",
+    "window_end": "2026-11-04T20:00:00+08:00",
+    "preferred_slot": "2026-11-03T18:00:00+08:00",
+    "timezone": "Asia/Shanghai",
+    "platform_order": [
+      "douyin",
+      "xiaohongshu"
+    ],
+    "min_gap_hours": 2
+  },
+  "provider": {
+    "mode": "mock",
+    "model": "deterministic-campaign-simulator",
+    "service": "mock",
+    "is_real_model": false
+  },
+  "started_at": "2026-11-03T03:45:17+00:00",
+  "finished_at": "2026-11-03T03:45:17+00:00",
+  "trace": [
+    {
+      "step": 1,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "inspect_campaign",
+      "parameters": {},
+      "decision_basis": "根据已观察工具状态选择下一步（离线模拟）",
+      "response_id": null,
+      "decision_source": "mock",
+      "model_ms": 0.5,
+      "tool_ms": 0.4,
+      "observation": {
+        "ok": true,
+        "schema_version": "campaign-handoff-v1",
+        "request": {
+          "request_id": "cross-day-001",
+          "material_ids": [
+            "M03"
+          ],
+          "platforms": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "window_start": "2026-11-03T18:00:00+08:00",
+          "window_end": "2026-11-04T20:00:00+08:00",
+          "preferred_slot": "2026-11-03T18:00:00+08:00",
+          "timezone": "Asia/Shanghai",
+          "platform_order": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "min_gap_hours": 2
+        },
+        "active_task": null,
+        "task_order": null,
+        "plan_version": 1,
+        "status": "planning",
+        "tasks": [
+          {
+            "task_id": "M03@douyin",
+            "material_id": "M03",
+            "platform": "douyin",
+            "status": "unreviewed",
+            "material": null,
+            "supplement": false,
+            "review": null,
+            "slot": null
+          },
+          {
+            "task_id": "M03@xiaohongshu",
+            "material_id": "M03",
+            "platform": "xiaohongshu",
+            "status": "unreviewed",
+            "material": null,
+            "supplement": false,
+            "review": null,
+            "slot": null
+          }
+        ],
+        "errors": [],
+        "source_version": "78475b8d319e16c1089f012ba24da3b358eeebee82d46d4363eff26c201ee7b1",
+        "state_is_current": true
+      },
+      "return_summary": "状态=planning",
+      "elapsed_ms": 0.93,
+      "next_action": "plan_tasks"
+    },
+    {
+      "step": 2,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "plan_tasks",
+      "parameters": {
+        "task_ids": [
+          "M03@douyin",
+          "M03@xiaohongshu"
+        ]
+      },
+      "decision_basis": "根据已观察工具状态选择下一步（离线模拟）",
+      "response_id": null,
+      "decision_source": "mock",
+      "model_ms": 0.48,
+      "tool_ms": 0.33,
+      "observation": {
+        "ok": true,
+        "task_order": [
+          "M03@douyin",
+          "M03@xiaohongshu"
+        ],
+        "task_count": 2
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 0.82,
+      "next_action": "delegate_review"
+    },
+    {
+      "step": 3,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "delegate_review",
+      "parameters": {
+        "task_id": "M03@douyin"
+      },
+      "decision_basis": "根据已观察工具状态选择下一步（离线模拟）",
+      "response_id": null,
+      "decision_source": "mock",
+      "model_ms": 0.52,
+      "tool_ms": 0.39,
+      "observation": {
+        "ok": true,
+        "to_agent": "reviewer",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M03"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-04T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": "M03@douyin",
+          "task_order": [
+            "M03@douyin",
+            "M03@xiaohongshu"
+          ],
+          "plan_version": 1,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M03@douyin",
+              "material_id": "M03",
+              "platform": "douyin",
+              "status": "unreviewed",
+              "material": null,
+              "supplement": false,
+              "review": null,
+              "slot": null
+            },
+            {
+              "task_id": "M03@xiaohongshu",
+              "material_id": "M03",
+              "platform": "xiaohongshu",
+              "status": "unreviewed",
+              "material": null,
+              "supplement": false,
+              "review": null,
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "source_version": "78475b8d319e16c1089f012ba24da3b358eeebee82d46d4363eff26c201ee7b1",
+          "state_is_current": true
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 0.94,
+      "next_action": "read_campaign_material"
+    },
+    {
+      "step": 4,
+      "agent_id": "reviewer",
+      "task_id": "M03@douyin",
+      "tool": "read_campaign_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "根据已观察工具状态选择下一步（离线模拟）",
+      "response_id": null,
+      "decision_source": "mock",
+      "model_ms": 0.51,
+      "tool_ms": 0.42,
+      "observation": {
+        "ok": true,
+        "material": {
+          "id": "M03",
+          "title": "待核实的音乐素材",
+          "description": "尚未提供配乐授权凭证。",
+          "platform": "douyin",
+          "version": "2026-11-01.v1"
+        },
+        "source": "base",
+        "platform": "douyin"
+      },
+      "return_summary": "已读取素材=M03; 来源=base",
+      "elapsed_ms": 0.95,
+      "next_action": "check_platform_rules"
+    },
+    {
+      "step": 5,
+      "agent_id": "reviewer",
+      "task_id": "M03@douyin",
+      "tool": "check_platform_rules",
+      "parameters": {},
+      "decision_basis": "根据已观察工具状态选择下一步（离线模拟）",
+      "response_id": null,
+      "decision_source": "mock",
+      "model_ms": 0.46,
+      "tool_ms": 0.35,
+      "observation": {
+        "ok": true,
+        "platform": "douyin",
+        "review": {
+          "status": "missing_info",
+          "missing_fields": [
+            "rights"
+          ],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=missing_info",
+      "elapsed_ms": 0.82,
+      "next_action": "read_campaign_material"
+    },
+    {
+      "step": 6,
+      "agent_id": "reviewer",
+      "task_id": "M03@douyin",
+      "tool": "read_campaign_material",
+      "parameters": {
+        "source": "supplement"
+      },
+      "decision_basis": "根据已观察工具状态选择下一步（离线模拟）",
+      "response_id": null,
+      "decision_source": "mock",
+      "model_ms": 0.49,
+      "tool_ms": 0.33,
+      "observation": {
+        "ok": true,
+        "material": {
+          "id": "M03",
+          "title": "待核实的音乐素材",
+          "description": "尚未提供配乐授权凭证。",
+          "platform": "douyin",
+          "version": "2026-11-01.v1"
+        },
+        "source": "supplement",
+        "platform": "douyin"
+      },
+      "return_summary": "已读取素材=M03; 来源=supplement",
+      "elapsed_ms": 0.84,
+      "next_action": "check_platform_rules"
+    },
+    {
+      "step": 7,
+      "agent_id": "reviewer",
+      "task_id": "M03@douyin",
+      "tool": "check_platform_rules",
+      "parameters": {},
+      "decision_basis": "根据已观察工具状态选择下一步（离线模拟）",
+      "response_id": null,
+      "decision_source": "mock",
+      "model_ms": 0.5,
+      "tool_ms": 0.35,
+      "observation": {
+        "ok": true,
+        "platform": "douyin",
+        "review": {
+          "status": "missing_info",
+          "missing_fields": [
+            "rights"
+          ],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=missing_info",
+      "elapsed_ms": 0.87,
+      "next_action": "return_to_planner"
+    },
+    {
+      "step": 8,
+      "agent_id": "reviewer",
+      "task_id": "M03@douyin",
+      "tool": "return_to_planner",
+      "parameters": {},
+      "decision_basis": "根据已观察工具状态选择下一步（离线模拟）",
+      "response_id": null,
+      "decision_source": "mock",
+      "model_ms": 0.6,
+      "tool_ms": 0.39,
+      "observation": {
+        "ok": true,
+        "from_agent": "reviewer",
+        "to_agent": "planner",
+        "handoff": {
+          "schema_version": "campaign-handoff-v1",
+          "request": {
+            "request_id": "cross-day-001",
+            "material_ids": [
+              "M03"
+            ],
+            "platforms": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "window_start": "2026-11-03T18:00:00+08:00",
+            "window_end": "2026-11-04T20:00:00+08:00",
+            "preferred_slot": "2026-11-03T18:00:00+08:00",
+            "timezone": "Asia/Shanghai",
+            "platform_order": [
+              "douyin",
+              "xiaohongshu"
+            ],
+            "min_gap_hours": 2
+          },
+          "active_task": null,
+          "task_order": [
+            "M03@douyin",
+            "M03@xiaohongshu"
+          ],
+          "plan_version": 1,
+          "status": "planning",
+          "tasks": [
+            {
+              "task_id": "M03@douyin",
+              "material_id": "M03",
+              "platform": "douyin",
+              "status": "missing_info",
+              "material": {
+                "id": "M03",
+                "title": "待核实的音乐素材",
+                "description": "尚未提供配乐授权凭证。",
+                "platform": "douyin",
+                "version": "2026-11-01.v1"
+              },
+              "supplement": true,
+              "review": {
+                "status": "missing_info",
+                "missing_fields": [
+                  "rights"
+                ],
+                "risks": [],
+                "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+                "material_version": "2026-11-01.v1"
+              },
+              "slot": null
+            },
+            {
+              "task_id": "M03@xiaohongshu",
+              "material_id": "M03",
+              "platform": "xiaohongshu",
+              "status": "unreviewed",
+              "material": null,
+              "supplement": false,
+              "review": null,
+              "slot": null
+            }
+          ],
+          "errors": [],
+          "source_version": "78475b8d319e16c1089f012ba24da3b358eeebee82d46d4363eff26c201ee7b1",
+          "state_is_current": true
+        }
+      },
+      "return_summary": "状态=ok",
+      "elapsed_ms": 1.01,
+      "next_action": "inspect_campaign"
+    },
+    {
+      "step": 9,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "inspect_campaign",
+      "parameters": {},
+      "decision_basis": "根据已观察工具状态选择下一步（离线模拟）",
+      "response_id": null,
+      "decision_source": "mock",
+      "model_ms": 0.48,
+      "tool_ms": 0.35,
+      "observation": {
+        "ok": true,
+        "schema_version": "campaign-handoff-v1",
+        "request": {
+          "request_id": "cross-day-001",
+          "material_ids": [
+            "M03"
+          ],
+          "platforms": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "window_start": "2026-11-03T18:00:00+08:00",
+          "window_end": "2026-11-04T20:00:00+08:00",
+          "preferred_slot": "2026-11-03T18:00:00+08:00",
+          "timezone": "Asia/Shanghai",
+          "platform_order": [
+            "douyin",
+            "xiaohongshu"
+          ],
+          "min_gap_hours": 2
+        },
+        "active_task": null,
+        "task_order": [
+          "M03@douyin",
+          "M03@xiaohongshu"
+        ],
+        "plan_version": 1,
+        "status": "planning",
+        "tasks": [
+          {
+            "task_id": "M03@douyin",
+            "material_id": "M03",
+            "platform": "douyin",
+            "status": "missing_info",
+            "material": {
+              "id": "M03",
+              "title": "待核实的音乐素材",
+              "description": "尚未提供配乐授权凭证。",
+              "platform": "douyin",
+              "version": "2026-11-01.v1"
+            },
+            "supplement": true,
+            "review": {
+              "status": "missing_info",
+              "missing_fields": [
+                "rights"
+              ],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+              "material_version": "2026-11-01.v1"
+            },
+            "slot": null
+          },
+          {
+            "task_id": "M03@xiaohongshu",
+            "material_id": "M03",
+            "platform": "xiaohongshu",
+            "status": "unreviewed",
+            "material": null,
+            "supplement": false,
+            "review": null,
+            "slot": null
+          }
+        ],
+        "errors": [],
+        "source_version": "78475b8d319e16c1089f012ba24da3b358eeebee82d46d4363eff26c201ee7b1",
+        "state_is_current": true
+      },
+      "return_summary": "状态=planning",
+      "elapsed_ms": 0.96,
+      "next_action": "finish_campaign"
+    },
+    {
+      "step": 10,
+      "agent_id": "planner",
+      "task_id": null,
+      "tool": "finish_campaign",
+      "parameters": {
+        "status": "needs_input"
+      },
+      "decision_basis": "根据已观察工具状态选择下一步（离线模拟）",
+      "response_id": null,
+      "decision_source": "mock",
+      "model_ms": 0.55,
+      "tool_ms": 0.38,
+      "observation": {
+        "ok": true,
+        "status": "needs_input",
+        "published": false
+      },
+      "return_summary": "状态=needs_input",
+      "elapsed_ms": 0.94,
+      "next_action": "stop:needs_input"
+    }
+  ],
+  "usage": [
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {},
+    {}
+  ],
+  "limits": {
+    "max_steps": 64,
+    "steps_used": 10,
+    "max_total_tokens": 100000,
+    "tokens_used": 0,
+    "max_seconds": 240,
+    "elapsed_seconds": 0.023
+  },
+  "validation_boundary": "Mock 仅证明流程与约束，不证明模型效果",
+  "evaluation_fixture": {
+    "case": "missing_info",
+    "expected": "needs_input",
+    "assertions": {
+      "expected_status": true,
+      "never_published": true,
+      "no_duplicate_platform_draft": true,
+      "within_budget": true,
+      "actual_trace": true,
+      "hard_window_preserved": true,
+      "no_saved_drafts": true
+    },
+    "database_group": "missing_info",
+    "database_rows_after": [],
+    "faults": {},
+    "source_snapshot": {
+      "campaign-policy.json": {
+        "version": "synthetic-campaign-v1",
+        "timezone": "Asia/Shanghai",
+        "max_window_days": 7,
+        "platforms": {
+          "douyin": {
+            "label": "抖音",
+            "hours": [
+              18,
+              19,
+              20
+            ],
+            "daily_limit": 1,
+            "min_gap_hours": 2,
+            "blocked_terms": [],
+            "manual_review_terms": []
+          },
+          "xiaohongshu": {
+            "label": "小红书",
+            "hours": [
+              18,
+              20
+            ],
+            "daily_limit": 2,
+            "min_gap_hours": 2,
+            "blocked_terms": [
+              "抽奖"
+            ],
+            "manual_review_terms": []
+          }
+        }
+      },
+      "supplements.json": {
+        "M02": {
+          "rights": "owned",
+          "version": "2026-11-01.v2"
+        }
+      },
+      "materials.json": {
+        "M01": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "M02": {
+          "id": "M02",
+          "title": "旅行剪辑演示",
+          "description": "使用自制旅行素材演示剪辑。",
+          "platform": "douyin",
+          "version": "2026-11-01.v1"
+        },
+        "M03": {
+          "id": "M03",
+          "title": "待核实的音乐素材",
+          "description": "尚未提供配乐授权凭证。",
+          "platform": "douyin",
+          "version": "2026-11-01.v1"
+        },
+        "M04": {
+          "id": "M04",
+          "title": "100%保证涨粉",
+          "description": "无数据支持的效果保证。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "M05": {
+          "id": "M05",
+          "title": "活动抽奖预告",
+          "description": "奖品规则需要人工复核。",
+          "platform": "douyin",
+          "rights": "licensed",
+          "version": "2026-11-01.v1"
+        },
+        "M06": {
+          "id": "M06",
+          "title": "镜头转场教程",
+          "description": "演示基础转场。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        }
+      },
+      "rules.json": {
+        "version": "synthetic-2026-11-01.v1",
+        "required_fields": [
+          "title",
+          "platform",
+          "rights"
+        ],
+        "allowed_rights": [
+          "owned",
+          "licensed"
+        ],
+        "blocked_terms": [
+          "100%保证",
+          "永久免费",
+          "官方唯一"
+        ],
+        "manual_review_terms": [
+          "抽奖",
+          "医疗"
+        ]
+      },
+      "schedule.json": {
+        "timezone": "Asia/Shanghai",
+        "slots": [
+          "2026-11-03T18:00:00+08:00",
+          "2026-11-03T19:00:00+08:00",
+          "2026-11-03T20:00:00+08:00"
+        ],
+        "occupied": [
+          {
+            "platform": "douyin",
+            "slot": "2026-11-03T18:00:00+08:00"
+          }
+        ]
+      }
+    }
+  }
+}

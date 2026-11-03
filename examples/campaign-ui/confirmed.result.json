@@ -1,0 +1,236 @@
+{
+  "id": "8b6aad3e0e994c5184b1b889e3e3c71d",
+  "status": "finished",
+  "result": {
+    "workflow": "campaign",
+    "request_id": "activity-1793677792054",
+    "task_status": "completed",
+    "confirmation": {
+      "ok": true,
+      "status": "completed",
+      "duplicate": false,
+      "drafts": [
+        {
+          "draft_id": 1,
+          "request_id": "activity-1793677792054",
+          "task_id": "M01@douyin",
+          "material_id": "M01",
+          "platform": "douyin",
+          "suggested_slot": "2026-11-04T18:00:00+08:00",
+          "reserved_slot": "2026-11-04T18:00:00+08:00",
+          "confirmation_status": "confirmed",
+          "plan_version": 3,
+          "plan_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65",
+          "workflow": "campaign",
+          "published": false
+        },
+        {
+          "draft_id": 2,
+          "request_id": "activity-1793677792054",
+          "task_id": "M01@xiaohongshu",
+          "material_id": "M01",
+          "platform": "xiaohongshu",
+          "suggested_slot": "2026-11-04T20:00:00+08:00",
+          "reserved_slot": "2026-11-04T20:00:00+08:00",
+          "confirmation_status": "confirmed",
+          "plan_version": 3,
+          "plan_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65",
+          "workflow": "campaign",
+          "published": false
+        }
+      ],
+      "published": false
+    },
+    "campaign_state": {
+      "confirmed_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65",
+      "plan_created_at": 1793677820.378345,
+      "plan_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65",
+      "plan_version": 3,
+      "source_version": "78475b8d319e16c1089f012ba24da3b358eeebee82d46d4363eff26c201ee7b1",
+      "status": "completed",
+      "task_order": [
+        "M01@douyin",
+        "M01@xiaohongshu"
+      ],
+      "tasks": {
+        "M01@douyin": {
+          "material": {
+            "description": "演示如何添加和编辑字幕。",
+            "id": "M01",
+            "platform": "douyin",
+            "rights": "owned",
+            "title": "字幕编辑功能介绍",
+            "version": "2026-11-01.v1"
+          },
+          "material_id": "M01",
+          "platform": "douyin",
+          "review": {
+            "material_version": "2026-11-01.v1",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/douyin",
+            "status": "passed"
+          },
+          "slot": "2026-11-04T18:00:00+08:00",
+          "status": "proposed",
+          "supplement": false,
+          "task_id": "M01@douyin"
+        },
+        "M01@xiaohongshu": {
+          "material": {
+            "description": "演示如何添加和编辑字幕。",
+            "id": "M01",
+            "platform": "xiaohongshu",
+            "rights": "owned",
+            "title": "字幕编辑功能介绍",
+            "version": "2026-11-01.v1"
+          },
+          "material_id": "M01",
+          "platform": "xiaohongshu",
+          "review": {
+            "material_version": "2026-11-01.v1",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1/synthetic-campaign-v1/xiaohongshu",
+            "status": "passed"
+          },
+          "slot": "2026-11-04T20:00:00+08:00",
+          "status": "proposed",
+          "supplement": false,
+          "task_id": "M01@xiaohongshu"
+        }
+      }
+    },
+    "drafts": [
+      {
+        "draft_id": 1,
+        "request_id": "activity-1793677792054",
+        "task_id": "M01@douyin",
+        "material_id": "M01",
+        "platform": "douyin",
+        "suggested_slot": "2026-11-04T18:00:00+08:00",
+        "reserved_slot": "2026-11-04T18:00:00+08:00",
+        "confirmation_status": "confirmed",
+        "plan_version": 3,
+        "plan_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65",
+        "workflow": "campaign",
+        "published": false
+      },
+      {
+        "draft_id": 2,
+        "request_id": "activity-1793677792054",
+        "task_id": "M01@xiaohongshu",
+        "material_id": "M01",
+        "platform": "xiaohongshu",
+        "suggested_slot": "2026-11-04T20:00:00+08:00",
+        "reserved_slot": "2026-11-04T20:00:00+08:00",
+        "confirmation_status": "confirmed",
+        "plan_version": 3,
+        "plan_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65",
+        "workflow": "campaign",
+        "published": false
+      }
+    ],
+    "published": false,
+    "trace": [
+      {
+        "step": 1,
+        "agent_id": "operator",
+        "tool": "confirm_campaign",
+        "parameters": {
+          "plan_version": 3,
+          "plan_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65"
+        },
+        "observation": {
+          "ok": true,
+          "status": "completed",
+          "duplicate": false,
+          "drafts": [
+            {
+              "draft_id": 1,
+              "request_id": "activity-1793677792054",
+              "task_id": "M01@douyin",
+              "material_id": "M01",
+              "platform": "douyin",
+              "suggested_slot": "2026-11-04T18:00:00+08:00",
+              "reserved_slot": "2026-11-04T18:00:00+08:00",
+              "confirmation_status": "confirmed",
+              "plan_version": 3,
+              "plan_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65",
+              "workflow": "campaign",
+              "published": false
+            },
+            {
+              "draft_id": 2,
+              "request_id": "activity-1793677792054",
+              "task_id": "M01@xiaohongshu",
+              "material_id": "M01",
+              "platform": "xiaohongshu",
+              "suggested_slot": "2026-11-04T20:00:00+08:00",
+              "reserved_slot": "2026-11-04T20:00:00+08:00",
+              "confirmation_status": "confirmed",
+              "plan_version": 3,
+              "plan_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65",
+              "workflow": "campaign",
+              "published": false
+            }
+          ],
+          "published": false
+        },
+        "return_summary": "completed",
+        "next_action": "stop:completed",
+        "decision_basis": "本机操作者明确确认具体方案；不是模型批准"
+      }
+    ]
+  },
+  "events": [
+    {
+      "step": 1,
+      "agent_id": "operator",
+      "tool": "confirm_campaign",
+      "parameters": {
+        "plan_version": 3,
+        "plan_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65"
+      },
+      "observation": {
+        "ok": true,
+        "status": "completed",
+        "duplicate": false,
+        "drafts": [
+          {
+            "draft_id": 1,
+            "request_id": "activity-1793677792054",
+            "task_id": "M01@douyin",
+            "material_id": "M01",
+            "platform": "douyin",
+            "suggested_slot": "2026-11-04T18:00:00+08:00",
+            "reserved_slot": "2026-11-04T18:00:00+08:00",
+            "confirmation_status": "confirmed",
+            "plan_version": 3,
+            "plan_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65",
+            "workflow": "campaign",
+            "published": false
+          },
+          {
+            "draft_id": 2,
+            "request_id": "activity-1793677792054",
+            "task_id": "M01@xiaohongshu",
+            "material_id": "M01",
+            "platform": "xiaohongshu",
+            "suggested_slot": "2026-11-04T20:00:00+08:00",
+            "reserved_slot": "2026-11-04T20:00:00+08:00",
+            "confirmation_status": "confirmed",
+            "plan_version": 3,
+            "plan_hash": "8c6c26daed4880638458a9529b594000ee7959e89075f9eaab9d3dbe4cde9a65",
+            "workflow": "campaign",
+            "published": false
+          }
+        ],
+        "published": false
+      },
+      "return_summary": "completed",
+      "next_action": "stop:completed",
+      "decision_basis": "本机操作者明确确认具体方案；不是模型批准"
+    }
+  ]
+}

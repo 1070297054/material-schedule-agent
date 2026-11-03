@@ -31,6 +31,29 @@ test_unknown_tool_and_unqueried_slot_rejected (test_business.BusinessTests) ... 
 test_equivalent_iso_inputs_are_normalized (test_business.InputTests) ... ok
 test_invalid_inputs_fail_early (test_business.InputTests) ... ok
 test_model_or_user_cannot_add_undeclared_fields (test_business.InputTests) ... ok
+test_active_lease_prevents_two_workers_and_stale_owner_cannot_write (test_campaign.CampaignTests) ... ok
+test_actor_cannot_forge_approval_or_cross_task_scope (test_campaign.CampaignTests) ... ok
+test_atomic_confirmation_rolls_back_all_platforms_on_sql_failure (test_campaign.CampaignTests) ... ok
+test_campaign_model_plain_text_cannot_claim_success (test_campaign.CampaignTests) ... ok
+test_candidates_exclude_locally_free_slot_that_breaks_successor_deadline (test_campaign.CampaignTests) ... ok
+test_changed_source_invalidates_old_confirmation_and_requires_re_review (test_campaign.CampaignTests) ... ok
+test_cli_checkpoint_and_confirmation_require_explicit_version (test_campaign.CampaignTests) ... ok
+test_cross_day_platform_dependency_and_exact_confirmation (test_campaign.CampaignTests) ... ok
+test_expired_approval_needs_new_plan_version (test_campaign.CampaignTests) ... ok
+test_hard_same_day_window_is_never_extended (test_campaign.CampaignTests) ... ok
+test_input_scope_limits (test_campaign.CampaignTests) ... ok
+test_legacy_and_campaign_share_reservations_and_confirmed_quotas (test_campaign.CampaignTests) ... ok
+test_missing_information_requests_input_and_preserves_no_drafts (test_campaign.CampaignTests) ... ok
+test_occupancy_change_replans_without_duplicate_drafts (test_campaign.CampaignTests) ... ok
+test_plan_hash_survives_restart_with_reversed_platform_order (test_campaign.CampaignTests) ... ok
+test_planner_cannot_treat_unattempted_work_as_infeasible (test_campaign.CampaignTests) ... ok
+test_platform_rule_differences_are_not_shared (test_campaign.CampaignTests) ... ok
+test_resolved_source_invalidation_is_not_reintroduced_in_handoff (test_campaign.CampaignTests) ... ok
+test_resume_reuses_successful_review_after_real_connection_restart (test_campaign.CampaignTests) ... ok
+test_same_id_cannot_change_hard_window_or_platforms (test_campaign.CampaignTests) ... ok
+test_save_failure_keeps_checkpoint_and_resume_does_not_reaudit (test_campaign.CampaignTests) ... ok
+test_saved_pending_plan_cannot_be_rewritten_by_model (test_campaign.CampaignTests) ... ok
+test_untrusted_material_does_not_change_hard_window (test_campaign.CampaignTests) ... ok
 test_batch_is_returned_to_model_and_model_can_reselect (test_deepseek.DeepSeekTests) ... ok
 test_env_file_is_explicit_nonexecuting_and_environment_wins (test_deepseek.DeepSeekTests) ... ok
 test_invalid_config_is_redacted_and_not_partially_loaded (test_deepseek.DeepSeekTests) ... ok
@@ -49,6 +72,8 @@ test_native_responses_roundtrip_returns_tool_observations_to_provider (test_runt
 test_parallel_tool_calls_are_not_executed (test_runtime.RuntimeTests) ... ok
 test_plain_text_claim_does_not_become_success (test_runtime.RuntimeTests) ... ok
 test_repeated_call_id_stops_before_second_execution (test_runtime.RuntimeTests) ... ok
+test_campaign_api_rejects_forged_consent_and_resume_requirement_changes (test_server.CampaignHttpTests) ... ok
+test_campaign_pause_resume_version_confirm_and_stale_approval (test_server.CampaignHttpTests) ... ok
 test_auth_origin_body_and_path_boundaries (test_server.ServerTests) ... ok
 test_bounded_queue_rejects_ninth_pending_task (test_server.ServerTests) ... ok
 test_demo_overrides_not_available_without_explicit_switch (test_server.ServerTests) ... ok
@@ -67,6 +92,6 @@ test_time_budget_and_zero_calls_do_not_claim_success (test_team.TeamTests) ... o
 test_token_budget_stops_before_next_call_and_keeps_evidence (test_team.TeamTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 67 tests in 3.665s
+Ran 92 tests in 6.629s
 
 OK

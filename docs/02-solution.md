@@ -76,10 +76,14 @@ DeepSeek 适配器使用同一个 Responses 工具循环，模型为 `deepseek-f
 
 `--orchestration team` 启用两个具有独立角色指令、工具集合和短期对话上下文的模型 Agent，使用同一模型服务，串行协作。审核 Agent 可用 read_material、check_rules、handoff_schedule、finish；排期 Agent 可用 query_slots、save_draft、request_review、finish。模型即使输出角色外的工具，运行器也返回 ROLE_FORBIDDEN，不执行。单 Agent 的工具数量仍为 5，双 Agent 合计 7 个不同动作。
 
-交接由模型选择 handoff_schedule 发起；运行器确认实际审核通过后，从 ToolContext 构造包含原始输入、素材、审核结果、已有草稿和错误的交接包。模型只能提供一句 reason，不能自行传入批准或审核事实。接收方从这个结构化包建立新 history，继续独立模型调用；不会复制上一角色全部对话。排期 Agent 可用 request_review 返回审核 Agent，循环仍受全请求共享预算约束。当前没有任务规划 Agent 或独立模型终审；结束状态由确定性工具证据校验，用户批准来自明确输入。
+交接由模型选择 handoff_schedule 发起；运行器确认实际审核通过后，从 ToolContext 构造包含原始输入、素材、审核结果、已有草稿和错误的交接包。模型只能提供一句 reason，不能自行传入批准或审核事实。接收方从这个结构化包建立新 history，继续独立模型调用；不会复制上一角色全部对话。排期 Agent 可用 request_review 返回审核 Agent，循环仍受全请求共享预算约束。此双角色模式没有任务规划 Agent 或独立模型终审；结束状态由确定性工具证据校验，用户批准来自明确输入。
 
 CLI 增加可选 max-total-tokens / max-seconds；网页固定为 60000 Token、180 秒，最多 48 次调用（默认 24）。Token 与时间预算在发起下一次调用前检查，是软预算，最后一个请求可能越过阈值；模型接口仍有 45 秒超时。没有中断在途模型请求、上下文摘要压缩或硬费用封顶。角色交接只携带结构化必要状态属于上下文隔离，不应描述成完整会话压缩。
 
 HTTP 采用本机回环地址、Bearer 访问口令、Host/Origin 校验、固定静态资源白名单、32 KiB 请求体上限、单工作线程和最多 8 个排队/运行任务。最多缓存 100 个任务状态；已完成结果和 finalized Trace 事件保存在 .runtime/web。事件的 next_action 在下一步已知后落盘，因此强制退出可能缺少最后一个在途步骤；SQLite 草稿仍需以持久状态为准。重启后可读取已保存结果，只有请求而无最终结果的任务标记 interrupted，不会伪装成功或自动续跑。
 
 没有持久任务队列、分布式锁、多租户鉴权或生产监控；这是增强后的本地运行器，不宣称生产级。网页所有模型文本使用 textContent 渲染，禁止注入 HTML。仅已登录本机口令的操作者可提交和确认；本机口令不是多用户身份系统。
+
+## 跨天活动模式
+
+新增独立 `campaign.py` 三角色运行器：规划、审核、排期，共 11 个动作。新增 `campaign_store.py` 提供 SQLite 检查点、120 秒租约与 revision 校验，`campaign_domain.py` 提供跨日候选和硬约束计算。新模式每轮重读资料，恢复复用有效步骤；旧模式仍按上述方式工作。完整交接契约、记忆/预算边界、确认与幂等见 [08-campaign-runtime.md](08-campaign-runtime.md)。没有 Skills 或 LangGraph；结构化交接也不是通用 Token 会话压缩。

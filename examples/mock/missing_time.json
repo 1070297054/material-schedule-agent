@@ -9,8 +9,8 @@
     "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-03T02:58:06+00:00",
-  "finished_at": "2026-11-03T02:58:06+00:00",
+  "started_at": "2026-11-03T03:45:17+00:00",
+  "finished_at": "2026-11-03T03:45:17+00:00",
   "input": {
     "request_id": "time-001",
     "items": [
@@ -85,10 +85,10 @@
       },
       "return_summary": "已读取素材=M01; 来源=base",
       "next_action": "check_rules",
-      "model_ms": 0.01,
+      "model_ms": 0.02,
       "response_id": null,
-      "tool_ms": 0.04,
-      "elapsed_ms": 0.08
+      "tool_ms": 0.06,
+      "elapsed_ms": 0.1
     },
     {
       "agent_id": "generalist",
@@ -113,7 +113,7 @@
       "model_ms": 0.01,
       "response_id": null,
       "tool_ms": 0.01,
-      "elapsed_ms": 0.03
+      "elapsed_ms": 0.04
     },
     {
       "agent_id": "generalist",
@@ -136,7 +136,7 @@
       "model_ms": 0.01,
       "response_id": null,
       "tool_ms": 0.01,
-      "elapsed_ms": 0.03
+      "elapsed_ms": 0.04
     }
   ],
   "usage": [

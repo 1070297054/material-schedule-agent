@@ -35,5 +35,21 @@
     "real_team_cases_passed": 21,
     "candidate_time": null,
     "note": "用户提出扩展；AI 编码和执行，个人用时未记录。跨天多平台仅设计。"
+  },
+  "campaign_extension": {
+    "date": "2026-11-03",
+    "scope": "本机跨天多平台三角色、检查点恢复、版本确认、评估与网页",
+    "auto_tests": 92,
+    "offline_campaign": "14/14",
+    "real_campaign": "14/14",
+    "real_attempts": [
+      "campaign-first 12/14",
+      "campaign-final 9/14",
+      "campaign-v3 主动中断，无完整汇总",
+      "campaign-release 14/14"
+    ],
+    "evidence": "../examples/live/campaign-release/summary.json",
+    "candidate_personal_time": null,
+    "note": "AI 实现与验证；本阶段未连续计时，不推算个人投入；未部署服务器。"
   }
 }

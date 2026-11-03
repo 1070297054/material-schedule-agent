@@ -1,6 +1,7 @@
 """SQLite transaction is the authority for idempotency and slot reservations."""
 import json
 import sqlite3
+from datetime import datetime
 from pathlib import Path
 from .domain import fingerprint
 
@@ -29,6 +30,18 @@ class DraftStore:
                 audit_json TEXT NOT NULL,
                 UNIQUE(request_id, material_id)
             );
+            CREATE TABLE IF NOT EXISTS platform_limits (
+                platform TEXT PRIMARY KEY, daily_limit INTEGER NOT NULL, min_gap_hours INTEGER NOT NULL
+            );
+            CREATE TABLE IF NOT EXISTS campaign_drafts (
+                draft_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                request_id TEXT NOT NULL, task_id TEXT NOT NULL, material_id TEXT NOT NULL,
+                platform TEXT NOT NULL, suggested_slot TEXT NOT NULL, reserved_slot TEXT,
+                confirmation_status TEXT NOT NULL, plan_version INTEGER NOT NULL, plan_hash TEXT NOT NULL,
+                UNIQUE(request_id, task_id)
+            );
+            CREATE UNIQUE INDEX IF NOT EXISTS campaign_reserved_slot
+                ON campaign_drafts(platform, reserved_slot) WHERE reserved_slot IS NOT NULL;
             CREATE UNIQUE INDEX IF NOT EXISTS unique_reserved_slot
                 ON drafts(platform, reserved_slot) WHERE reserved_slot IS NOT NULL;
         """)
@@ -53,8 +66,17 @@ class DraftStore:
                               (request_id, material_id)).fetchone()
         return self._public(row)
 
+    def capacity_conflict(self, platform, slot, request_id, material_id):
+        policy = self.db.execute("SELECT * FROM platform_limits WHERE platform=?", (platform,)).fetchone()
+        if not policy:
+            return False
+        slots = {r[0] for r in self.db.execute("SELECT reserved_slot FROM drafts WHERE platform=? AND reserved_slot IS NOT NULL AND NOT(request_id=? AND material_id=?)", (platform,request_id,material_id))}
+        slots.update(r[0] for r in self.db.execute("SELECT reserved_slot FROM campaign_drafts WHERE platform=? AND reserved_slot IS NOT NULL", (platform,)))
+        return (sum(s[:10]==slot[:10] for s in slots)>=policy["daily_limit"] or
+                any(abs((datetime.fromisoformat(s)-datetime.fromisoformat(slot)).total_seconds())<policy["min_gap_hours"]*3600 for s in slots))
+
     def occupied(self, platform, slot, request_id, material_id):
-        return self.db.execute(
+        return self.capacity_conflict(platform,slot,request_id,material_id) or bool(self.db.execute("SELECT 1 FROM campaign_drafts WHERE platform=? AND reserved_slot=?", (platform, slot)).fetchone()) or self.db.execute(
             "SELECT 1 FROM drafts WHERE platform=? AND reserved_slot=? "
             "AND NOT (request_id=? AND material_id=?)",
             (platform, slot, request_id, material_id)).fetchone() is not None

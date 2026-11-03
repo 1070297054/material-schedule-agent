@@ -1,0 +1,251 @@
+{
+  "generated_at": "2026-11-03T03:42:14+00:00",
+  "service": "deepseek",
+  "model": "deepseek-flash",
+  "is_real_model": true,
+  "cases_total": 14,
+  "cases_passed": 9,
+  "cases": [
+    {
+      "case": "cross_day",
+      "file": "cross_day.json",
+      "expected": "pending_confirmation",
+      "actual": "incomplete",
+      "passed": false,
+      "assertions": {
+        "expected_status": false,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "three_roles": false,
+        "cross_day_slots": false,
+        "all_pending_not_reserved": false
+      }
+    },
+    {
+      "case": "repeat_pending",
+      "file": "repeat_pending.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": false,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "all_pending_not_reserved": true,
+        "same_draft_ids": false
+      }
+    },
+    {
+      "case": "confirm_exact",
+      "file": "confirm_exact.json",
+      "expected": "completed",
+      "actual": "failed",
+      "passed": false,
+      "assertions": {
+        "expected_status": false,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "confirmed_exact_plan": false
+      }
+    },
+    {
+      "case": "replay_confirmed",
+      "file": "replay_confirmed.json",
+      "expected": "completed",
+      "actual": "pending_confirmation",
+      "passed": false,
+      "assertions": {
+        "expected_status": false,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "confirmed_exact_plan": false
+      }
+    },
+    {
+      "case": "missing_info",
+      "file": "missing_info.json",
+      "expected": "needs_input",
+      "actual": "needs_input",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "no_saved_drafts": true
+      }
+    },
+    {
+      "case": "platform_risk",
+      "file": "platform_risk.json",
+      "expected": "blocked",
+      "actual": "blocked",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "no_saved_drafts": true
+      }
+    },
+    {
+      "case": "hard_deadline",
+      "file": "hard_deadline.json",
+      "expected": "incomplete",
+      "actual": "incomplete",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "no_saved_drafts": true,
+        "observed_infeasible_then_stopped": true
+      }
+    },
+    {
+      "case": "save_failure",
+      "file": "save_failure.json",
+      "expected": "failed",
+      "actual": "failed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "no_saved_drafts": true,
+        "observed_write_failure": true
+      }
+    },
+    {
+      "case": "resume_after_failure",
+      "file": "resume_after_failure.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "all_pending_not_reserved": true,
+        "reuse_persisted_reviews": true
+      }
+    },
+    {
+      "case": "checkpoint_limit",
+      "file": "checkpoint_limit.json",
+      "expected": "incomplete",
+      "actual": "incomplete",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "no_saved_drafts": true,
+        "explicit_limit": true
+      }
+    },
+    {
+      "case": "resume_checkpoint",
+      "file": "resume_checkpoint.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "all_pending_not_reserved": true,
+        "reuse_persisted_reviews": true
+      }
+    },
+    {
+      "case": "before_occupancy_change",
+      "file": "before_occupancy_change.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "all_pending_not_reserved": true
+      }
+    },
+    {
+      "case": "stale_approval",
+      "file": "stale_approval.json",
+      "expected": "failed",
+      "actual": "failed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "old_approval_rejected": true
+      }
+    },
+    {
+      "case": "replan_changed_occupancy",
+      "file": "replan_changed_occupancy.json",
+      "expected": "pending_confirmation",
+      "actual": "incomplete",
+      "passed": false,
+      "assertions": {
+        "expected_status": false,
+        "never_published": true,
+        "no_duplicate_platform_draft": true,
+        "within_budget": true,
+        "actual_trace": true,
+        "real_response_ids": true,
+        "hard_window_preserved": true,
+        "all_pending_not_reserved": false,
+        "new_day_same_rows": true,
+        "new_plan_identity": true
+      }
+    }
+  ],
+  "boundary": "Operator confirmation cases explicitly simulate user action; model cases use the selected provider. Mock is not model evidence."
+}

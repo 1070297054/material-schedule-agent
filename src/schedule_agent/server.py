@@ -8,10 +8,13 @@ import os
 from pathlib import Path
 import secrets
 import threading
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, unquote
 import uuid
 
 from .agent import run, utc_now
+from .campaign import run_campaign, confirm_campaign
+from .campaign_domain import CampaignCatalog, validate_campaign
+from .campaign_store import CampaignStore
 from .catalog import Catalog
 from .cli import write_json
 from .config import load_env_file
@@ -42,7 +45,7 @@ class LocalApplication:
         catalog = Catalog(self.data_dir)
         return {"materials": list(catalog.materials.values()), "slots": catalog.slots,
                 "occupied": catalog.existing, "providers": self.providers, "demo": self.demo,
-                "orchestrations": ["team", "single"], "published": False}
+                "orchestrations": ["team", "single"], "campaign_policy": CampaignCatalog(self.data_dir).policy, "published": False}
 
     def validate(self, body):
         if not isinstance(body, dict) or set(body) - {"request", "provider", "orchestration", "max_steps", "occupied_slots", "failures"}:
@@ -71,7 +74,9 @@ class LocalApplication:
         return payload
 
     def submit(self, body):
-        payload = self.validate(body)
+        return self._enqueue(self.validate(body))
+
+    def _enqueue(self, payload):
         with self.lock:
             if sum(j["status"] in {"queued", "running"} for j in self.jobs.values()) >= 8:
                 raise OverflowError("本机任务队列已满，请等待当前任务完成")
@@ -93,7 +98,7 @@ class LocalApplication:
             catalog = Catalog(self.data_dir)
             if "occupied_slots" in payload:
                 catalog.existing = [{"platform": "douyin", "slot": s} for s in payload["occupied_slots"]]
-            provider = create_provider(payload["provider"])
+            provider = create_provider(payload.get("provider", "mock"))
             store = DraftStore(self.db_path)
             with (self.runtime / (job_id + ".trace.jsonl")).open("a", encoding="utf-8") as journal:
                 def event_sink(event):
@@ -101,8 +106,21 @@ class LocalApplication:
                     journal.flush()
                     with self.lock:
                         self.jobs[job_id]["events"].append(deepcopy(event))
-                result = run(payload["request"], catalog, store, provider, payload["max_steps"], payload.get("failures"),
-                             payload["orchestration"], max_total_tokens=60000, max_seconds=180, on_event=event_sink)
+                if payload.get("workflow") == "campaign":
+                    store.close()
+                    store = CampaignStore(self.db_path)
+                    result = run_campaign(payload["request"], CampaignCatalog(self.data_dir), store, provider,
+                                          payload["max_steps"], payload.get("failures"), on_event=event_sink)
+                elif payload.get("workflow") == "campaign_confirmation":
+                    store.close()
+                    store = CampaignStore(self.db_path)
+                    result = confirm_campaign(payload["request"]["request_id"], payload["plan_version"], payload["plan_hash"], CampaignCatalog(self.data_dir), store)
+                    result["trace"] = [{"step": 1, "agent_id": "operator", "tool": "confirm_campaign", "parameters": {"plan_version": payload["plan_version"], "plan_hash": payload["plan_hash"]},
+                                         "observation": result["confirmation"], "return_summary": result["task_status"], "next_action": "stop:" + result["task_status"], "decision_basis": "本机操作者明确确认具体方案；不是模型批准"}]
+                    event_sink(result["trace"][0])
+                else:
+                    result = run(payload["request"], catalog, store, provider, payload["max_steps"], payload.get("failures"),
+                                 payload["orchestration"], max_total_tokens=60000, max_seconds=180, on_event=event_sink)
             snapshot = {"id": job_id, "status": "finished", "result": result, "events": result["trace"]}
             write_json(self.runtime / (job_id + ".result.json"), snapshot)
             with self.lock:
@@ -152,10 +170,43 @@ class LocalApplication:
         payload["request"]["items"] = [item]
         return self.submit(payload)
 
-    def drafts(self):
-        store = DraftStore(self.db_path)
+    def campaign_snapshot(self, request_id=None):
+        store = CampaignStore(self.db_path)
         try:
-            return store.all()
+            if request_id is None:
+                return {"campaigns": store.list_campaigns()}
+            value = store.snapshot(request_id)
+            value.update(workflow="campaign", task_status=value["state"]["status"], campaign_state=value.pop("state"), drafts=store.drafts(request_id), published=False)
+            return value
+        finally:
+            store.close()
+
+    def submit_campaign(self, body, request_id=None):
+        if not isinstance(body, dict) or set(body) - {"request", "provider", "max_steps", "fail_save"}:
+            raise InputError("活动请求字段无效")
+        if request_id is not None and "request" in body:
+            raise InputError("恢复操作不能覆盖原始要求")
+        request = self.campaign_snapshot(request_id)["request"] if request_id is not None else body.get("request")
+        request = validate_campaign(request)
+        provider, steps = body.get("provider", "mock"), body.get("max_steps", 64)
+        if provider not in self.providers or type(steps) is not int or not 1 <= steps <= 128:
+            raise InputError("服务未配置或调用预算无效")
+        failure = body.get("fail_save", False)
+        if type(failure) is not bool or (failure and not self.demo):
+            raise InputError("故障注入需要演示模式")
+        return self._enqueue({"workflow": "campaign", "request": request, "provider": provider, "max_steps": steps,
+                              "failures": {"save_plan": 1} if failure else {}})
+
+    def confirm_campaign(self, request_id, body):
+        if not isinstance(body, dict) or set(body) != {"plan_version", "plan_hash"} or type(body["plan_version"]) is not int or not isinstance(body["plan_hash"], str) or len(body["plan_hash"]) != 64:
+            raise InputError("确认必须绑定具体 plan_version 与 plan_hash")
+        self.campaign_snapshot(request_id)
+        return self._enqueue({"workflow": "campaign_confirmation", "request": {"request_id": request_id}, **body})
+
+    def drafts(self):
+        store = CampaignStore(self.db_path)
+        try:
+            return store.base.all() + store.drafts()
         finally:
             store.close()
 
@@ -200,7 +251,7 @@ def make_server(app, host="127.0.0.1", port=8765):
                 return self.send(403, {"error": "仅接受本机同源请求"})
             if path == "/healthz":
                 return self.send(200, {"status": "ok", "published": False})
-            assets = {"/": ("index.html", "text/html; charset=utf-8"), "/app.js": ("app.js", "application/javascript; charset=utf-8"), "/style.css": ("style.css", "text/css; charset=utf-8")}
+            assets = {"/campaign": ("campaign.html", "text/html; charset=utf-8"), "/campaign.js": ("campaign.js", "application/javascript; charset=utf-8"), "/": ("index.html", "text/html; charset=utf-8"), "/app.js": ("app.js", "application/javascript; charset=utf-8"), "/style.css": ("style.css", "text/css; charset=utf-8")}
             if path in assets:
                 name, mime = assets[path]
                 return self.send(200, (WEB / name).read_bytes(), mime)
@@ -209,6 +260,10 @@ def make_server(app, host="127.0.0.1", port=8765):
             try:
                 if path == "/api/config":
                     return self.send(200, app.config())
+                if path == "/api/campaigns":
+                    return self.send(200, app.campaign_snapshot())
+                if path.startswith("/api/campaigns/"):
+                    return self.send(200, app.campaign_snapshot(unquote(path[len("/api/campaigns/"):])) )
                 if path == "/api/drafts":
                     return self.send(200, {"drafts": app.drafts()})
                 if path.startswith("/api/runs/"):
@@ -232,6 +287,12 @@ def make_server(app, host="127.0.0.1", port=8765):
                 path = urlsplit(self.path).path
                 if path == "/api/runs":
                     return self.send(202, app.submit(body))
+                if path == "/api/campaigns":
+                    return self.send(202, app.submit_campaign(body))
+                if path.startswith("/api/campaigns/") and path.endswith(("/resume", "/confirm")):
+                    identifier, action = path[len("/api/campaigns/"):].rsplit("/", 1)
+                    identifier = unquote(identifier)
+                    return self.send(202, app.submit_campaign(body, identifier) if action == "resume" else app.confirm_campaign(identifier, body))
                 parts = path.strip("/").split("/")
                 if len(parts) == 4 and parts[:2] == ["api", "runs"] and parts[3] == "confirm":
                     return self.send(202, app.confirm(parts[2], body))

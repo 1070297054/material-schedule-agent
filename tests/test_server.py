@@ -122,3 +122,47 @@ class ServerTests(unittest.TestCase):
             for _ in range(8):
                 self.app.submit(self.payload)
             self.assertEqual(self.http("POST", "/api/runs", self.payload)[0], 429)
+
+
+class CampaignHttpTests(ServerTests):
+    # Reuse the real local server fixture, but only run dedicated campaign tests here.
+    test_http_conflict_changed_occupancy_repeat_and_explicit_confirmation = None
+    test_http_save_failure_and_durable_trace = None
+    test_interrupted_job_has_no_fabricated_completed_status = None
+    test_auth_origin_body_and_path_boundaries = None
+    test_demo_overrides_not_available_without_explicit_switch = None
+    test_bounded_queue_rejects_ninth_pending_task = None
+
+    def campaign_post(self,path,body):
+        status,raw=self.http('POST',path,body)
+        self.assertEqual(status,202,raw)
+        return self.wait(json.loads(raw)['id'])
+
+    def test_campaign_pause_resume_version_confirm_and_stale_approval(self):
+        request=json.loads((ROOT/'examples/inputs/campaign.json').read_text())
+        first=self.campaign_post('/api/campaigns',{'request':request,'max_steps':11})
+        self.assertEqual(first['result']['task_status'],'incomplete')
+        resumed=self.campaign_post('/api/campaigns/'+request['request_id']+'/resume',{'provider':'mock'})
+        self.assertEqual(resumed['result']['task_status'],'pending_confirmation')
+        self.assertEqual(len(resumed['result']['resume_info']['reused_reviews']),2)
+        state=resumed['result']['campaign_state']
+        bad=self.campaign_post('/api/campaigns/'+request['request_id']+'/confirm',{'plan_version':state['plan_version']-1,'plan_hash':state['plan_hash']})
+        self.assertEqual(bad['result']['confirmation']['error']['code'],'STALE_APPROVAL')
+        self.assertTrue(all(d['reserved_slot'] is None for d in bad['result']['drafts']))
+        good=self.campaign_post('/api/campaigns/'+request['request_id']+'/confirm',{'plan_version':state['plan_version'],'plan_hash':state['plan_hash']})
+        self.assertEqual(good['result']['task_status'],'completed')
+        status,raw=self.http('GET','/api/campaigns/'+request['request_id'])
+        self.assertEqual(status,200)
+        self.assertEqual(json.loads(raw)['campaign_state']['status'],'completed')
+        status,raw=self.http('GET','/api/campaigns')
+        self.assertEqual(len(json.loads(raw)['campaigns']),1)
+        self.assertEqual(self.http('GET','/campaign')[0],200)
+
+    def test_campaign_api_rejects_forged_consent_and_resume_requirement_changes(self):
+        request=json.loads((ROOT/'examples/inputs/campaign.json').read_text())
+        bad={**request,'approved':True}
+        self.assertEqual(self.http('POST','/api/campaigns',{'request':bad})[0],400)
+        self.campaign_post('/api/campaigns',{'request':request,'max_steps':1})
+        self.assertEqual(self.http('POST','/api/campaigns/'+request['request_id']+'/resume',{'request':request})[0],400)
+        self.assertEqual(self.http('POST','/api/campaigns/'+request['request_id']+'/confirm',{'approved':True})[0],400)
+        self.assertEqual(self.http('GET','/api/campaigns',auth=False)[0],401)

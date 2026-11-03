@@ -9,8 +9,8 @@
     "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-03T02:58:06+00:00",
-  "finished_at": "2026-11-03T02:58:06+00:00",
+  "started_at": "2026-11-03T03:45:18+00:00",
+  "finished_at": "2026-11-03T03:45:18+00:00",
   "input": {
     "request_id": "conflict-001",
     "items": [
@@ -122,7 +122,7 @@
       "model_ms": 0.01,
       "response_id": null,
       "tool_ms": 0.05,
-      "elapsed_ms": 0.07
+      "elapsed_ms": 0.09
     },
     {
       "agent_id": "reviewer",
@@ -144,7 +144,7 @@
       },
       "return_summary": "审核=passed",
       "next_action": "handoff_schedule",
-      "model_ms": 0.01,
+      "model_ms": 0.02,
       "response_id": null,
       "tool_ms": 0.01,
       "elapsed_ms": 0.04
@@ -260,10 +260,10 @@
       },
       "return_summary": "可用时段=2026-11-03T20:00:00+08:00",
       "next_action": "save_draft",
-      "model_ms": 0.01,
+      "model_ms": 0.05,
       "response_id": null,
-      "tool_ms": 0.05,
-      "elapsed_ms": 0.07
+      "tool_ms": 0.11,
+      "elapsed_ms": 0.18
     },
     {
       "agent_id": "scheduler",
@@ -301,8 +301,8 @@
       "next_action": "finish",
       "model_ms": 0.02,
       "response_id": null,
-      "tool_ms": 0.65,
-      "elapsed_ms": 0.69
+      "tool_ms": 0.7,
+      "elapsed_ms": 0.74
     },
     {
       "agent_id": "scheduler",
@@ -322,10 +322,10 @@
       },
       "return_summary": "状态=pending_confirmation",
       "next_action": "stop:pending_confirmation",
-      "model_ms": 0.02,
+      "model_ms": 0.03,
       "response_id": null,
-      "tool_ms": 0.03,
-      "elapsed_ms": 0.06
+      "tool_ms": 0.05,
+      "elapsed_ms": 0.09
     }
   ],
   "usage": [
