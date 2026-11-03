@@ -174,9 +174,9 @@ examples/test-results.txt 实际测试日志
 docs/01-requirements.md   需求与成功标准
 docs/02-solution.md       动态决策与技术取舍
 docs/03-evaluation.md     预期、实测、失败与限制
-docs/04-ai-usage.md       AI 使用披露与待补个人贡献
+docs/04-ai-usage.md       作者贡献与 AI 使用披露
 docs/05-retrospective.md  实现复盘与下一步
 scripts/                 一键验证、可切换真实模型的评估脚本
 ```
 
-GitHub 仓库：[1070297054/material-schedule-agent](https://github.com/1070297054/material-schedule-agent)。最终 commit SHA 可用 `git rev-parse HEAD` 获取，见 [提交清单](docs/submission.md)。不要将离线 Mock 证据描述为真实模型决策结果；候选人需要亲自运行、理解和修改，并如实补充个人贡献。
+GitHub 仓库：[1070297054/material-schedule-agent](https://github.com/1070297054/material-schedule-agent)。最终 commit SHA 可用 `git rev-parse HEAD` 获取，见 [提交清单](docs/submission.md)。不要将离线 Mock 证据描述为真实模型决策结果；作者贡献及 AI 使用范围见 docs/04-ai-usage.md；提交前补充实际个人投入时间，并复核自己能够解释方案与验收结果。

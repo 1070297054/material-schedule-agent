@@ -13,7 +13,7 @@
   ],
   "candidate_personal_time": null,
   "unfinished": [
-    "候选人个人贡献、独立验证和实际投入时间记录"
+    "实际个人投入时间待作者提供"
   ],
   "later_validation": {
     "note": "后续验证阶段以实际生成记录为准，未连续计时，不据此推算开发总用时。",
@@ -51,5 +51,14 @@
     "evidence": "../examples/live/campaign-release/summary.json",
     "candidate_personal_time": null,
     "note": "AI 实现与验证；本阶段未连续计时，不推算个人投入；未部署服务器。"
+  },
+  "author_contribution": {
+    "source": "作者本人提供",
+    "responsibilities": [
+      "制定项目架构方案",
+      "技术选型",
+      "代码 Review 与问题排查"
+    ],
+    "validation_execution": "AI 执行自动化测试、真实模型评估与浏览器验收，不记为作者独立执行"
   }
 }
