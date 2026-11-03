@@ -11,10 +11,19 @@
     "18 组离线验收",
     "文档与复核"
   ],
-  "candidate_personal_time": null,
-  "unfinished": [
-    "实际个人投入时间待作者提供"
-  ],
+  "candidate_personal_time": {
+    "hours": 1,
+    "is_estimate": true,
+    "source": "作者本人提供",
+    "scope": [
+      "架构方案",
+      "技术选型",
+      "代码 Review 与问题排查"
+    ],
+    "excludes": "AI 自动执行时间",
+    "phase_breakdown": "未提供各阶段拆分，阶段内的 null 不代表零投入"
+  },
+  "unfinished": [],
   "later_validation": {
     "note": "后续验证阶段以实际生成记录为准，未连续计时，不据此推算开发总用时。",
     "offline_tests": 51,

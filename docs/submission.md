@@ -7,7 +7,7 @@
 
 当前材料包括代码、可执行测试、合成资料、单/双 Agent 各 21 组实际离线案例、真实 DeepSeek 单/双 Agent 执行记录（含修复前失败记录）、Trace、测试日志、五份规定文档、依赖文件与 `.env.example`。新增三角色跨天活动的 14 组离线/真实回归记录、92 项测试和本机网页暂停/恢复/确认验收。
 
-真实模型的正常、冲突等动态路径已保存在 examples/live/，结果和失败分析见 03-evaluation.md。作者贡献已记录为制定项目架构方案、技术选型、代码 Review 与问题排查；AI 编码和测试执行范围保留披露。提交前仍需补充实际个人投入时间（估算须注明），不把 AI 执行的验证写成作者独立完成。
+真实模型的正常、冲突等动态路径已保存在 examples/live/，结果和失败分析见 03-evaluation.md。作者贡献已记录为制定项目架构方案、技术选型、代码 Review 与问题排查；AI 编码和测试执行范围保留披露。个人投入约 1 小时（作者估算），不包含 AI 自动执行时间；不把 AI 执行的验证写成作者独立完成。
 
 推送前先运行 `python3 scripts/verify.py`。配置真实模型后运行 `python3 scripts/evaluate.py --provider deepseek --env-file .env --orchestration team --output .runtime/live-recheck`，核对结果并更新评估文档。真实 Trace 目录默认被忽略，检查无敏感信息后可用 `git add -f examples/live` 加入提交。
 
