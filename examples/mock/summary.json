@@ -1,7 +1,8 @@
 {
-  "generated_at": "2026-11-02T09:14:44+00:00",
+  "generated_at": "2026-11-02T10:15:17+00:00",
   "provider": "mock",
   "model": "deterministic-offline-simulator",
+  "service": "mock",
   "is_real_model": false,
   "cases_total": 18,
   "cases_passed": 18,
@@ -17,6 +18,8 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "save_observed_before_finish": true,
         "one_reserved_draft": true
       }
     },
@@ -31,6 +34,8 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "supplement_observed_then_reviewed": true,
         "no_draft": true,
         "missing_rights": true
       }
@@ -45,7 +50,9 @@
         "expected_status": true,
         "never_published": true,
         "bounded": true,
-        "trace_records_actual_calls": true
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "supplement_observed_then_reviewed": true
       }
     },
     {
@@ -59,6 +66,8 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "risk_observed_then_blocked": true,
         "no_draft": true,
         "risk_reported": true
       }
@@ -73,7 +82,9 @@
         "expected_status": true,
         "never_published": true,
         "bounded": true,
-        "trace_records_actual_calls": true
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "risk_observed_then_blocked": true
       }
     },
     {
@@ -87,6 +98,9 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "conflict_observed_then_replanned": true,
+        "proposal_saved_not_reserved": true,
         "requirement_preserved": true,
         "proposal_not_reserved": true,
         "suggests_19": true
@@ -103,6 +117,9 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "conflict_observed_then_replanned": true,
+        "proposal_saved_not_reserved": true,
         "suggests_20": true
       }
     },
@@ -117,6 +134,9 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "no_slots_observed_then_stopped": true,
+        "not_budget_exhaustion": true,
         "no_draft": true
       }
     },
@@ -131,6 +151,8 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "injected_failure_observed_then_handled": true,
         "no_draft": true,
         "save_failed": true
       }
@@ -145,7 +167,9 @@
         "expected_status": true,
         "never_published": true,
         "bounded": true,
-        "trace_records_actual_calls": true
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "injected_failure_observed_then_handled": true
       }
     },
     {
@@ -158,7 +182,9 @@
         "expected_status": true,
         "never_published": true,
         "bounded": true,
-        "trace_records_actual_calls": true
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "save_observed_before_finish": true
       }
     },
     {
@@ -172,6 +198,8 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "save_observed_before_finish": true,
         "one_row": true,
         "duplicate_reported": true
       }
@@ -186,7 +214,10 @@
         "expected_status": true,
         "never_published": true,
         "bounded": true,
-        "trace_records_actual_calls": true
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "conflict_observed_then_replanned": true,
+        "proposal_saved_not_reserved": true
       }
     },
     {
@@ -200,6 +231,8 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "save_observed_before_finish": true,
         "same_row_updated": true
       }
     },
@@ -214,6 +247,8 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "save_observed_before_finish": true,
         "consent_not_revoked": true
       }
     },
@@ -227,7 +262,8 @@
         "expected_status": true,
         "never_published": true,
         "bounded": true,
-        "trace_records_actual_calls": true
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true
       }
     },
     {
@@ -241,6 +277,7 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
         "explicit_limit": true,
         "no_draft": true
       }
@@ -256,6 +293,7 @@
         "never_published": true,
         "bounded": true,
         "trace_records_actual_calls": true,
+        "nonempty_trace": true,
         "per_item_status": true
       }
     }

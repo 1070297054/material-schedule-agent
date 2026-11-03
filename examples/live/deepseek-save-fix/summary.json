@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-11-02T10:15:25+00:00",
+  "provider": "live",
+  "model": "deepseek-flash",
+  "service": "deepseek",
+  "is_real_model": true,
+  "cases_total": 1,
+  "cases_passed": 1,
+  "cases": [
+    {
+      "case": "save_failure",
+      "file": "save_failure.json",
+      "expected": "failed",
+      "actual": "failed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "injected_failure_observed_then_handled": true,
+        "no_draft": true,
+        "save_failed": true
+      }
+    }
+  ],
+  "boundary": "Live model evaluation; inspect every assertion and trace."
+}

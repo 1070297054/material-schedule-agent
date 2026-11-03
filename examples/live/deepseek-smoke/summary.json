@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-11-02T10:10:44+00:00",
+  "provider": "live",
+  "model": "deepseek-flash",
+  "service": "deepseek",
+  "is_real_model": true,
+  "cases_total": 2,
+  "cases_passed": 2,
+  "cases": [
+    {
+      "case": "normal",
+      "file": "normal.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "save_observed_before_finish": true,
+        "one_reserved_draft": true
+      }
+    },
+    {
+      "case": "conflict",
+      "file": "conflict.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "conflict_observed_then_replanned": true,
+        "proposal_saved_not_reserved": true,
+        "requirement_preserved": true,
+        "proposal_not_reserved": true,
+        "suggests_19": true
+      }
+    }
+  ],
+  "boundary": "Live model evaluation; inspect every assertion and trace."
+}

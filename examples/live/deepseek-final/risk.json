@@ -1,0 +1,201 @@
+{
+  "schema_version": "1.0",
+  "request_id": "risk-001",
+  "task_status": "blocked",
+  "provider": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "service": "deepseek",
+    "is_real_model": true
+  },
+  "started_at": "2026-11-02T10:17:19+00:00",
+  "finished_at": "2026-11-02T10:17:24+00:00",
+  "input": {
+    "request_id": "risk-001",
+    "items": [
+      {
+        "material_id": "M04",
+        "requested_slot": "2026-11-03T19:00:00+08:00",
+        "approved_slot": null
+      }
+    ]
+  },
+  "limits": {
+    "max_steps": 24,
+    "steps_used": 3,
+    "scope": "entire_request"
+  },
+  "fault_injection": {},
+  "items": [
+    {
+      "material_id": "M04",
+      "task_status": "blocked",
+      "review": {
+        "status": "blocked",
+        "missing_fields": [],
+        "risks": [
+          {
+            "code": "BLOCKED_CLAIM",
+            "detail": "命中禁止声明：100%保证",
+            "severity": "block"
+          }
+        ],
+        "rules_version": "synthetic-2026-11-01.v1",
+        "material_version": "2026-11-01.v1"
+      },
+      "requested_slot": "2026-11-03T19:00:00+08:00",
+      "approved_slot": null,
+      "suggested_slot": null,
+      "pending_items": [],
+      "save_status": "not_attempted",
+      "draft": null,
+      "duplicate": false,
+      "errors": [],
+      "stop_reason": "model_finish",
+      "outcome_reason": "审核存在阻断风险或人工复核项，未继续安排。",
+      "published": false,
+      "notice": "仅处理草稿，未发布任何内容。"
+    }
+  ],
+  "trace": [
+    {
+      "step": 1,
+      "material_id": "M04",
+      "decision_source": "live",
+      "tool": "read_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "需要先读取素材 M04 的内容与字段以便审核",
+      "observation": {
+        "ok": true,
+        "source": "base",
+        "material": {
+          "id": "M04",
+          "title": "100%保证涨粉",
+          "description": "无数据支持的效果保证。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "existing_draft": null,
+        "supplement_found": null
+      },
+      "return_summary": "已读取素材=M04; 来源=base",
+      "next_action": "check_rules",
+      "response_id": "98f3ba0f-6741-43d2-be3d-b8f96ad47a78"
+    },
+    {
+      "step": 2,
+      "material_id": "M04",
+      "decision_source": "live",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "素材标题为“100%保证涨粉”且无数据支持，需检查风险与缺失字段",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "blocked",
+          "missing_fields": [],
+          "risks": [
+            {
+              "code": "BLOCKED_CLAIM",
+              "detail": "命中禁止声明：100%保证",
+              "severity": "block"
+            }
+          ],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=blocked",
+      "next_action": "finish",
+      "response_id": "1984b6c8-6b24-4314-8c33-86a9b79c94bd"
+    },
+    {
+      "step": 3,
+      "material_id": "M04",
+      "decision_source": "live",
+      "tool": "finish",
+      "parameters": {
+        "status": "blocked",
+        "suggested_slot": null
+      },
+      "decision_basis": "审核命中禁止声明“100%保证涨粉”（BLOCKED_CLAIM，block 级），素材不可发布。",
+      "observation": {
+        "ok": true,
+        "status": "blocked",
+        "published": false
+      },
+      "return_summary": "状态=blocked",
+      "next_action": "stop:blocked",
+      "response_id": "11ebd9ac-41db-48fa-99bc-7237ae390f6e"
+    }
+  ],
+  "usage": [
+    {
+      "input_tokens": 1206,
+      "input_tokens_details": {
+        "cached_tokens": 1024
+      },
+      "output_tokens": 60,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1266
+    },
+    {
+      "input_tokens": 1366,
+      "input_tokens_details": {
+        "cached_tokens": 1152
+      },
+      "output_tokens": 53,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1419
+    },
+    {
+      "input_tokens": 1523,
+      "input_tokens_details": {
+        "cached_tokens": 1280
+      },
+      "output_tokens": 93,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1616
+    }
+  ],
+  "validation_boundary": "真实模型调用记录；需结合用例断言判断效果。",
+  "published": false,
+  "evaluation_fixture": {
+    "case": "risk",
+    "input_file": "examples/inputs/risk.json",
+    "occupied": [
+      {
+        "platform": "douyin",
+        "slot": "2026-11-03T18:00:00+08:00"
+      }
+    ],
+    "slots": [
+      "2026-11-03T18:00:00+08:00",
+      "2026-11-03T19:00:00+08:00",
+      "2026-11-03T20:00:00+08:00"
+    ],
+    "expected_task_status": "blocked",
+    "assertions": {
+      "expected_status": true,
+      "never_published": true,
+      "bounded": true,
+      "trace_records_actual_calls": true,
+      "nonempty_trace": true,
+      "real_responses_identified": true,
+      "risk_observed_then_blocked": true,
+      "no_draft": true,
+      "risk_reported": true
+    },
+    "database_group": "risk",
+    "database_rows_after": []
+  }
+}

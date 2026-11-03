@@ -12,17 +12,80 @@ sys.path.insert(0, str(ROOT / "src"))
 from schedule_agent.agent import run, utc_now
 from schedule_agent.catalog import Catalog
 from schedule_agent.cli import write_json
-from schedule_agent.providers import MockProvider, OpenAIProvider, ModelError
+from schedule_agent.config import load_env_file
+from schedule_agent.providers import create_provider, ModelError
 from schedule_agent.storage import DraftStore
 
+CASE_NAMES = {"normal", "missing_info", "supplement", "risk", "manual_review", "conflict",
+              "changed_occupancy", "no_slots", "save_failure", "read_recovery", "duplicate_first",
+              "duplicate_repeat", "confirmation_before", "confirmation_after", "confirmation_replay",
+              "missing_time", "step_limit", "batch"}
 
-def evaluate(output, provider_name="mock", model=None):
+
+def behavior_checks(name, result):
+    """Check observations followed by model decisions, not just final status labels."""
+    trace = result["trace"]
+
+    def steps(tool, predicate=lambda e: True):
+        return [e["step"] for e in trace if e["tool"] == tool and e["observation"]["ok"] and predicate(e)]
+
+    def query(mode, empty):
+        return steps("query_slots", lambda e: e["parameters"]["mode"] == mode and
+                     (not bool(e["observation"]["available_slots"])) == empty)
+
+    def ordered(*groups):
+        previous = -1
+        for group in groups:
+            later = [n for n in group if n > previous]
+            if not later:
+                return False
+            previous = min(later)
+        return True
+
+    finish = steps("finish")
+    checks = {"nonempty_trace": bool(trace)}
+    if result["provider"]["is_real_model"]:
+        checks["real_responses_identified"] = bool(trace) and all(e.get("response_id") for e in trace)
+    if name in {"normal", "duplicate_first", "duplicate_repeat", "confirmation_after", "confirmation_replay"}:
+        checks["save_observed_before_finish"] = ordered(steps("save_draft"), finish)
+    if name in {"conflict", "changed_occupancy", "confirmation_before"}:
+        checks["conflict_observed_then_replanned"] = ordered(query("requested", True), query("alternatives", False), steps("save_draft"), finish)
+        checks["proposal_saved_not_reserved"] = bool(result["items"][0]["draft"]) and result["items"][0]["draft"]["reserved_slot"] is None
+    if name == "no_slots":
+        checks["no_slots_observed_then_stopped"] = ordered(query("requested", True), query("alternatives", True), finish)
+        checks["not_budget_exhaustion"] = result["items"][0]["stop_reason"] == "model_finish"
+    if name in {"missing_info", "supplement"}:
+        checks["supplement_observed_then_reviewed"] = ordered(
+            steps("check_rules", lambda e: e["observation"]["review"]["status"] == "missing_info"),
+            steps("read_material", lambda e: e["parameters"]["source"] == "supplement"),
+            steps("check_rules"), finish)
+    if name in {"risk", "manual_review"}:
+        checks["risk_observed_then_blocked"] = ordered(
+            steps("check_rules", lambda e: e["observation"]["review"]["status"] in {"blocked", "manual_review"}), finish)
+    if name in {"save_failure", "read_recovery"}:
+        tool = "save_draft" if name == "save_failure" else "read_material"
+        failures = [e["step"] for e in trace if e["tool"] == tool and not e["observation"]["ok"] and
+                    e["observation"]["error"]["code"] == "INJECTED_FAILURE"]
+        checks["injected_failure_observed_then_handled"] = ordered(failures, finish) if name == "save_failure" else ordered(failures, steps(tool), finish)
+    return checks
+
+
+def evaluate(output, provider_name="mock", model=None, selected_cases=None, progress=False):
+    selected = set(selected_cases or CASE_NAMES)
+    if selected - CASE_NAMES:
+        raise ValueError("未知评估用例")
+    dependencies = {"duplicate_repeat": {"duplicate_first"}, "confirmation_after": {"confirmation_before"},
+                    "confirmation_replay": {"confirmation_before", "confirmation_after"}}
+    for name in list(selected):
+        selected.update(dependencies.get(name, set()))
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
-    provider = MockProvider() if provider_name == "mock" else OpenAIProvider(model=model)
+    provider = create_provider(provider_name, model)
     cases = []
     with tempfile.TemporaryDirectory(prefix="schedule-eval-") as temp:
         def case(name, input_name, expected, database=None, faults=None, max_steps=24, occupied=None, checks=None):
+            if name not in selected:
+                return
             request = json.loads((ROOT / "examples/inputs" / (input_name + ".json")).read_text(encoding="utf-8"))
             catalog = Catalog(ROOT / "data")
             if occupied is not None:
@@ -37,6 +100,7 @@ def evaluate(output, provider_name="mock", model=None):
                             "never_published": not result["published"] and all(not i["published"] for i in result["items"]),
                             "bounded": result["limits"]["steps_used"] <= max_steps,
                             "trace_records_actual_calls": all(e["observation"] is not None and e["next_action"] for e in result["trace"])}
+            observations.update(behavior_checks(name, result))
             if checks:
                 observations.update(checks(result, rows))
             # Store exact mutated fixture and durable rows, so reviewers can reproduce the case.
@@ -47,6 +111,8 @@ def evaluate(output, provider_name="mock", model=None):
             write_json(output / (name + ".json"), result)
             cases.append({"case": name, "file": name + ".json", "expected": expected, "actual": result["task_status"],
                           "passed": all(observations.values()), "assertions": observations})
+            if progress:
+                print(name + ": " + result["task_status"] + (" PASS" if cases[-1]["passed"] else " FAIL"), flush=True)
 
         s18, s19, s20 = Catalog(ROOT / "data").slots
         case("normal", "normal", "completed", checks=lambda r, rows: {"one_reserved_draft": len(rows) == 1 and rows[0]["reserved_slot"] == s19})
@@ -78,6 +144,7 @@ def evaluate(output, provider_name="mock", model=None):
         case("batch", "batch", "partial", checks=lambda r, rows: {
             "per_item_status": [i["task_status"] for i in r["items"]] == ["completed", "pending_confirmation", "blocked"]})
     summary = {"generated_at": utc_now(), "provider": provider.mode, "model": provider.model,
+               "service": provider.service,
                "is_real_model": provider.mode == "live", "cases_total": len(cases),
                "cases_passed": sum(c["passed"] for c in cases), "cases": cases,
                "boundary": "Mock only: validates engineering, not real model decisions." if provider.mode == "mock" else "Live model evaluation; inspect every assertion and trace."}
@@ -87,13 +154,16 @@ def evaluate(output, provider_name="mock", model=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--provider", choices=["mock", "openai"], default="mock")
+    parser.add_argument("--provider", choices=["mock", "openai", "deepseek"], default="mock")
     parser.add_argument("--model")
+    parser.add_argument("--env-file")
+    parser.add_argument("--cases", nargs="+", choices=sorted(CASE_NAMES), help="只运行指定用例；自动包含重复/确认用例的前置执行")
     parser.add_argument("--output", help="默认 examples/mock 或 examples/live，建议使用新目录保留历史")
     args = parser.parse_args()
     output = args.output or str(ROOT / "examples" / ("mock" if args.provider == "mock" else "live"))
     try:
-        summary = evaluate(output, args.provider, args.model)
+        load_env_file(args.env_file)
+        summary = evaluate(output, args.provider, args.model, args.cases, progress=True)
     except (ModelError, OSError, ValueError) as exc:
         print(str(exc), file=sys.stderr)
         return 1

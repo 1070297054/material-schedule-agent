@@ -16,7 +16,7 @@ flowchart TD
   I --> H
 ```
 
-`agent.run` 仅负责有界循环、协议检查、执行和记录；它不根据“18:00 被占用”等业务事实自行选择下一工具。真实模式每轮由 Responses API 返回工具名称和参数，工具输出进入下一轮 `input`。运行器禁止每轮多工具，避免未观察前一步结果就执行写入。
+`agent.run` 仅负责有界循环、协议检查、执行和记录；它不根据“18:00 被占用”等业务事实自行选择下一工具。真实模式每轮由 Responses API 返回工具名称和参数，工具输出进入下一轮 `input`。如果服务一次返回多个调用，运行器拒绝整批执行，针对每个 call_id 返回 BATCH_REJECTED，由下一轮模型重新选择单个工具；拒绝轮次也计入执行上限。
 
 工具 `finish` 也是模型主动选择的动作。其状态提议必须通过证据校验，例如没有保存成功记录就不能返回 completed。最终业务字段由工具状态生成，不直接采用模型自由文本，避免“已发布”“保存成功”等无依据陈述。
 
@@ -26,7 +26,7 @@ flowchart TD
 
 | 工具 | 关键输入 | 实际行为 |
 | --- | --- | --- |
-| read_material | source=base/supplement | 读取当前素材或补查；使旧审核失效 |
+| read_material | source=base/supplement | 读取当前素材或补查，同时返回同请求已有草稿；使旧审核失效 |
 | check_rules | 无业务参数 | 检查必要字段、授权状态、禁用词、人工复核项 |
 | query_slots | mode=requested/alternatives | 查询用户指定/批准时段或同日替代窗口 |
 | save_draft | slot | 重验审核与时段；自动判定确认状态；事务保存 |
@@ -53,11 +53,17 @@ flowchart TD
 
 每个请求共享模型调用上限，包含 finish、参数错误、失败调用；达到上限未完成的项显式报告，先前成功的结果保留。每个真实 API 请求超时 45 秒，无自动网络重试或 Mock 回退。
 
+保存故障（故障注入或数据库写入错误）会返回 `retryable=false` 并阻断本次执行后续写入，由模型选择报告失败；用户可用相同 request_id 开始新一轮执行。时段竞争 SLOT_CONFLICT 不属于这类保存故障，仍允许模型查询替代时段。读取工具的暂时错误可以由模型选择重试。这样工具标记、提示词和执行约束保持一致。
+
 ## 为什么不用框架
 
 这个原型只有五个本地工具和单个有界循环。直接实现能使评审快速定位模型选择、工具观察、权限校验和事务边界，且离线运行没有依赖安装成本。没有采用第三方 Agent 框架，因而无框架版本或功能声明。
 
 标准库 urllib 对接 Responses API；使用 strict 工具 schema、`parallel_tool_calls=false`、`tool_choice=required`，并把工具调用结果继续传回模型。实现参考 [OpenAI 官方 Function calling 文档](https://developers.openai.com/api/docs/guides/function-calling)（核对日期：2026-11-02）。`store=false`，连续上下文所需的模型响应项仅在内存保留；Trace 不持久化这些推理项。
+
+DeepSeek 适配器使用同一个 Responses 工具循环，模型为 `deepseek-flash`，显式 `reasoning.effort=none`，不发送服务不支持的 `include`、`store` 或禁止并行参数。本地工具参数校验仍完整执行。DeepSeek 可能返回多工具提议，运行器通过上述有界纠正流程处理，不自行选择或执行其中一个动作。依据 [DeepSeek 官方 Responses 兼容说明](https://api-docs.deepseek.com/guides/responses_api/)（核对日期：2026-11-02）。
+
+本机密钥由环境变量或 `--env-file .env` 读取；配置只允许服务声明的变量名，不执行 shell 表达式，错误消息不回显配置行。CI 仅运行离线测试，不加载密钥、不调用真实模型。
 
 ## 信任边界与局限
 

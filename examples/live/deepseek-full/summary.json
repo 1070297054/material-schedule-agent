@@ -1,0 +1,320 @@
+{
+  "generated_at": "2026-11-02T10:12:53+00:00",
+  "provider": "live",
+  "model": "deepseek-flash",
+  "service": "deepseek",
+  "is_real_model": true,
+  "cases_total": 18,
+  "cases_passed": 17,
+  "cases": [
+    {
+      "case": "normal",
+      "file": "normal.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "save_observed_before_finish": true,
+        "one_reserved_draft": true
+      }
+    },
+    {
+      "case": "missing_info",
+      "file": "missing_info.json",
+      "expected": "needs_input",
+      "actual": "needs_input",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "supplement_observed_then_reviewed": true,
+        "no_draft": true,
+        "missing_rights": true
+      }
+    },
+    {
+      "case": "supplement",
+      "file": "supplement.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "supplement_observed_then_reviewed": true
+      }
+    },
+    {
+      "case": "risk",
+      "file": "risk.json",
+      "expected": "blocked",
+      "actual": "blocked",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "risk_observed_then_blocked": true,
+        "no_draft": true,
+        "risk_reported": true
+      }
+    },
+    {
+      "case": "manual_review",
+      "file": "manual_review.json",
+      "expected": "blocked",
+      "actual": "blocked",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "risk_observed_then_blocked": true
+      }
+    },
+    {
+      "case": "conflict",
+      "file": "conflict.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "conflict_observed_then_replanned": true,
+        "proposal_saved_not_reserved": true,
+        "requirement_preserved": true,
+        "proposal_not_reserved": true,
+        "suggests_19": true
+      }
+    },
+    {
+      "case": "changed_occupancy",
+      "file": "changed_occupancy.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "conflict_observed_then_replanned": true,
+        "proposal_saved_not_reserved": true,
+        "suggests_20": true
+      }
+    },
+    {
+      "case": "no_slots",
+      "file": "no_slots.json",
+      "expected": "incomplete",
+      "actual": "incomplete",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "no_slots_observed_then_stopped": true,
+        "not_budget_exhaustion": true,
+        "no_draft": true
+      }
+    },
+    {
+      "case": "save_failure",
+      "file": "save_failure.json",
+      "expected": "failed",
+      "actual": "completed",
+      "passed": false,
+      "assertions": {
+        "expected_status": false,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "injected_failure_observed_then_handled": true,
+        "no_draft": false,
+        "save_failed": false
+      }
+    },
+    {
+      "case": "read_recovery",
+      "file": "read_recovery.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "injected_failure_observed_then_handled": true
+      }
+    },
+    {
+      "case": "duplicate_first",
+      "file": "duplicate_first.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "save_observed_before_finish": true
+      }
+    },
+    {
+      "case": "duplicate_repeat",
+      "file": "duplicate_repeat.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "save_observed_before_finish": true,
+        "one_row": true,
+        "duplicate_reported": true
+      }
+    },
+    {
+      "case": "confirmation_before",
+      "file": "confirmation_before.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "conflict_observed_then_replanned": true,
+        "proposal_saved_not_reserved": true
+      }
+    },
+    {
+      "case": "confirmation_after",
+      "file": "confirmation_after.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "save_observed_before_finish": true,
+        "same_row_updated": true
+      }
+    },
+    {
+      "case": "confirmation_replay",
+      "file": "confirmation_replay.json",
+      "expected": "completed",
+      "actual": "completed",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "save_observed_before_finish": true,
+        "consent_not_revoked": true
+      }
+    },
+    {
+      "case": "missing_time",
+      "file": "missing_time.json",
+      "expected": "needs_input",
+      "actual": "needs_input",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true
+      }
+    },
+    {
+      "case": "step_limit",
+      "file": "step_limit.json",
+      "expected": "incomplete",
+      "actual": "incomplete",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "explicit_limit": true,
+        "no_draft": true
+      }
+    },
+    {
+      "case": "batch",
+      "file": "batch.json",
+      "expected": "partial",
+      "actual": "partial",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "real_responses_identified": true,
+        "per_item_status": true
+      }
+    }
+  ],
+  "boundary": "Live model evaluation; inspect every assertion and trace."
+}

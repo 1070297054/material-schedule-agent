@@ -114,6 +114,23 @@ class BusinessTests(unittest.TestCase):
         self.assertEqual(result["trace"][0]["next_action"], "read_material")
         self.assertEqual(len(self.store.all()), 1)
 
+    def test_failed_save_cannot_be_retried_inside_same_run(self):
+        ctx = self.prepared()
+        ctx.faults = {"save_draft": 1}
+        failed = execute(ctx, "save_draft", slot=S19)
+        self.assertFalse(failed["error"]["retryable"])
+        retried = execute(ctx, "save_draft", slot=S19)
+        self.assertEqual(retried["error"]["code"], "SAVE_RETRY_BLOCKED")
+        self.assertFalse(self.store.all())
+        self.assertFalse(execute(ctx, "finish", status="completed", suggested_slot=S19)["ok"])
+
+    def test_new_run_can_recover_saved_failure_using_same_id(self):
+        first = self.run_agent(faults={"save_draft": 1})
+        second = self.run_agent()
+        self.assertEqual(first["task_status"], "failed")
+        self.assertEqual(second["task_status"], "completed")
+        self.assertEqual(len(self.store.all()), 1)
+
     def test_persistent_read_failure_stops(self):
         result = self.run_agent(faults={"read_material": 20})
         self.assertEqual(result["task_status"], "failed")

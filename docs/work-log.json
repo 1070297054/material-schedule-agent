@@ -3,7 +3,7 @@
   "observed_start": "2026-11-02T16:52:50+08:00",
   "implementation_verified_at": "2026-11-02T17:14:44+08:00",
   "observed_elapsed_seconds": 1314,
-  "measurement": "从首次记录的时钟读数到当前代码最终验证完成的可观测窗口，不含之后的提交包装；不是候选人人工用时。",
+  "measurement": "首阶段从首次记录时钟读数到离线实现验证完成的可观测窗口，不含之后模型接入、提交包装或跨日等待；不是候选人人工用时。",
   "ai_work": [
     "需求与方案",
     "代码与合成资料",
@@ -13,8 +13,17 @@
   ],
   "candidate_personal_time": null,
   "unfinished": [
-    "真实模型运行证据",
-    "候选人个人贡献记录",
-    "GitHub 远程发布与评审权限"
-  ]
+    "候选人个人贡献、独立验证和实际投入时间记录"
+  ],
+  "later_validation": {
+    "note": "后续验证阶段以实际生成记录为准，未连续计时，不据此推算开发总用时。",
+    "offline_tests": 51,
+    "mock_cases_passed": 18,
+    "real_model": "deepseek-flash",
+    "real_cases_passed": 18,
+    "evidence": "../examples/live/deepseek-final/summary.json",
+    "generated_at": "2026-11-02T10:18:44+00:00",
+    "first_full_run": "17/18；保留失败并修复保存重试契约",
+    "github_repository": "https://github.com/1070297054/material-schedule-agent"
+  }
 }

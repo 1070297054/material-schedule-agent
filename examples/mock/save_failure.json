@@ -5,10 +5,11 @@
   "provider": {
     "mode": "mock",
     "model": "deterministic-offline-simulator",
+    "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-02T09:14:44+00:00",
-  "finished_at": "2026-11-02T09:14:44+00:00",
+  "started_at": "2026-11-02T10:15:17+00:00",
+  "finished_at": "2026-11-02T10:15:17+00:00",
   "input": {
     "request_id": "normal-001",
     "items": [
@@ -50,7 +51,7 @@
           "tool": "save_draft",
           "code": "INJECTED_FAILURE",
           "message": "演示注入的工具失败：save_draft",
-          "retryable": true
+          "retryable": false
         }
       ],
       "stop_reason": "model_finish",
@@ -80,10 +81,12 @@
           "rights": "owned",
           "version": "2026-11-01.v1"
         },
+        "existing_draft": null,
         "supplement_found": null
       },
       "return_summary": "已读取素材=M01; 来源=base",
-      "next_action": "check_rules"
+      "next_action": "check_rules",
+      "response_id": null
     },
     {
       "step": 2,
@@ -103,7 +106,8 @@
         }
       },
       "return_summary": "审核=passed",
-      "next_action": "query_slots"
+      "next_action": "query_slots",
+      "response_id": null
     },
     {
       "step": 3,
@@ -126,7 +130,8 @@
         "timezone": "Asia/Shanghai"
       },
       "return_summary": "可用时段=2026-11-03T19:00:00+08:00",
-      "next_action": "save_draft"
+      "next_action": "save_draft",
+      "response_id": null
     },
     {
       "step": 4,
@@ -142,11 +147,12 @@
         "error": {
           "code": "INJECTED_FAILURE",
           "message": "演示注入的工具失败：save_draft",
-          "retryable": true
+          "retryable": false
         }
       },
       "return_summary": "INJECTED_FAILURE: 演示注入的工具失败：save_draft",
-      "next_action": "finish"
+      "next_action": "finish",
+      "response_id": null
     },
     {
       "step": 5,
@@ -164,7 +170,8 @@
         "published": false
       },
       "return_summary": "状态=failed",
-      "next_action": "stop:failed"
+      "next_action": "stop:failed",
+      "response_id": null
     }
   ],
   "usage": [
@@ -196,6 +203,8 @@
       "never_published": true,
       "bounded": true,
       "trace_records_actual_calls": true,
+      "nonempty_trace": true,
+      "injected_failure_observed_then_handled": true,
       "no_draft": true,
       "save_failed": true
     },

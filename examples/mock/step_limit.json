@@ -5,10 +5,11 @@
   "provider": {
     "mode": "mock",
     "model": "deterministic-offline-simulator",
+    "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-02T09:14:44+00:00",
-  "finished_at": "2026-11-02T09:14:44+00:00",
+  "started_at": "2026-11-02T10:15:17+00:00",
+  "finished_at": "2026-11-02T10:15:17+00:00",
   "input": {
     "request_id": "normal-001",
     "items": [
@@ -71,10 +72,12 @@
           "rights": "owned",
           "version": "2026-11-01.v1"
         },
+        "existing_draft": null,
         "supplement_found": null
       },
       "return_summary": "已读取素材=M01; 来源=base",
-      "next_action": "check_rules"
+      "next_action": "check_rules",
+      "response_id": null
     },
     {
       "step": 2,
@@ -94,7 +97,8 @@
         }
       },
       "return_summary": "审核=passed",
-      "next_action": "stop:incomplete"
+      "next_action": "stop:incomplete",
+      "response_id": null
     }
   ],
   "usage": [
@@ -123,6 +127,7 @@
       "never_published": true,
       "bounded": true,
       "trace_records_actual_calls": true,
+      "nonempty_trace": true,
       "explicit_limit": true,
       "no_draft": true
     },

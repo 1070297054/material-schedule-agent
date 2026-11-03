@@ -4,15 +4,15 @@
 
 Python 标准库 + SQLite + 原生 Responses API 工具调用，不依赖 Agent 框架。提供真实模型接入和可复现的离线模拟入口。
 
-> **验证状态：当前提交的执行样例全部来自 Mock。** 已实现真实模型选择工具 → 执行 → 观察 → 再决策的调用循环，但本开发环境没有模型 API 密钥，尚无真实模型运行证据。离线测试和接口替身测试不能证明真实模型的 ReAct 决策效果，不能据此声称已经完全满足考核的模型决策验收要求。
+> **验证状态：已接入真实 DeepSeek `deepseek-flash`。** [真实正常路径](examples/live/deepseek-smoke/normal.json)与[真实冲突路径](examples/live/deepseek-smoke/conflict.json)已通过：模型观察时段冲突后查询替代时间，保存待确认草稿，再观察保存结果结束。完整验收结果见[真实模型汇总](examples/live/deepseek-final/summary.json)。Mock 与真实模型记录分开保存；一次通过不代表所有模型和任意输入都能通过。
 
 ## 评审入口
 
 1. 运行 `python3 scripts/verify.py`，执行测试并重新生成离线验收记录。
 2. 查看 [测试结果](examples/test-results.txt)、[验证摘要](examples/verification.json) 和 [18 组案例汇总](examples/mock/summary.json)。
-3. 对比 [正常路径](examples/mock/normal.json)、[冲突路径](examples/mock/conflict.json)、[更换占用时段](examples/mock/changed_occupancy.json)。
+3. 对比真实模型的 [正常路径](examples/live/deepseek-final/normal.json)、[冲突路径](examples/live/deepseek-final/conflict.json)、[更换占用时段](examples/live/deepseek-final/changed_occupancy.json)。离线对照记录保留在 `examples/mock/`。
 4. 查看 [Agent 循环](src/schedule_agent/agent.py)、[真实模型接入](src/schedule_agent/providers.py)、[工具边界](src/schedule_agent/tools.py) 与 [数据库事务](src/schedule_agent/storage.py)。
-5. 配置真实模型后执行本文的真实评估命令，补齐至少两条模型动态决策路径。
+5. 配置自己的模型密钥后执行本文的真实评估命令，复核模型动态决策；密钥不在仓库中。
 
 ## 环境与运行
 
@@ -79,7 +79,27 @@ PYTHONPATH=src python3 -m schedule_agent \
 
 使用支持 **Responses API function calling** 的模型，将模型名称填为账户实际可访问的型号。程序不会读取 Codex 登录凭据，也不会在真实模型失败时悄悄切换 Mock。
 
-`.env.example` 列出了变量，但程序**不自动加载 `.env`**。在终端设置环境变量，密钥不要写进请求或提交到仓库：
+推荐复现本次使用的 DeepSeek 模型。复制 `.env.example` 为本机 `.env`，在编辑器中填入自己的 `DEEPSEEK_API_KEY`；保留 `DEEPSEEK_MODEL=deepseek-flash` 和 `DEEPSEEK_BASE_URL=https://api.deepseek.com`。`.env` 已被 Git 忽略，命令通过 `--env-file` 显式加载，既有环境变量优先，配置内容不会被当作 shell 执行。
+
+```bash
+PYTHONPATH=src python3 -m schedule_agent \
+  --provider deepseek --env-file .env \
+  --input examples/inputs/conflict.json \
+  --db .runtime/deepseek.sqlite3 \
+  --output .runtime/deepseek-conflict.json
+
+# 先只运行正常与冲突两条路径
+python3 scripts/evaluate.py --provider deepseek --env-file .env \
+  --cases normal conflict --output .runtime/live-smoke
+
+# 全部 18 组真实验收，会消耗 API 额度
+python3 scripts/evaluate.py --provider deepseek --env-file .env \
+  --output .runtime/live-full
+```
+
+DeepSeek 使用 Responses API 和非思考模式，保留公开的一句话行动依据，不收集内部思维过程。它不保证禁止并行工具调用，因此运行器会拒绝整批提议，将未执行结果逐一返回给模型，要求重新选择单个工具；次数计入共享执行上限。接口取舍见 [DeepSeek 官方兼容说明](https://api-docs.deepseek.com/guides/responses_api/)。
+
+也支持原有 OpenAI 服务，在终端设置以下环境变量，或在本机 `.env` 中填写后加 `--env-file .env`：
 
 ```bash
 export OPENAI_API_KEY='替换为你的真实密钥'
@@ -97,7 +117,7 @@ PYTHONPATH=src python3 -m schedule_agent \
 python3 scripts/evaluate.py --provider openai --output examples/live
 ```
 
-真实调用采用严格工具参数、每轮一个工具、45 秒请求超时和执行次数上限。调用方式依据 [OpenAI 官方 Function calling 文档](https://developers.openai.com/api/docs/guides/function-calling)：工具结果返回给模型后由模型选择后续动作。模型的连续上下文保存在内存，Trace 不保存内部推理内容，只记录简短行动依据。
+真实调用采用本地严格参数校验、每轮至多执行一个工具、45 秒请求超时和执行次数上限。OpenAI 还请求服务端严格 schema。调用方式依据 [OpenAI 官方 Function calling 文档](https://developers.openai.com/api/docs/guides/function-calling)：工具结果返回给模型后由模型选择后续动作。模型的连续上下文保存在内存，Trace 不保存内部推理内容，只记录简短行动依据与响应 ID。
 
 `examples/live/` 默认忽略。提交前人工检查实际 Trace，确认无敏感信息后执行 `git add -f examples/live`。至少应有正常和冲突两条真实路径；如果失败，也应如实保留结果并更新评估文档，不修改记录伪装成功。
 
@@ -127,6 +147,7 @@ tests/                   可执行业务、并发、模型协议和 CLI 测试
 data/                    合成素材、补充资料、规则、时段
 examples/inputs/          输入文件
 examples/mock/            实际离线输出、Trace、断言和数据库快照
+examples/live/            已审查的真实 DeepSeek 执行记录和验收断言
 examples/test-results.txt 实际测试日志
 docs/01-requirements.md   需求与成功标准
 docs/02-solution.md       动态决策与技术取舍

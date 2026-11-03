@@ -6,8 +6,9 @@ import sys
 from pathlib import Path
 from .agent import run
 from .catalog import Catalog
+from .config import load_env_file
 from .domain import InputError
-from .providers import ModelError, MockProvider, OpenAIProvider
+from .providers import ModelError, create_provider
 from .storage import DraftStore
 
 
@@ -37,8 +38,9 @@ def parse_faults(values):
 def main(argv=None):
     parser = argparse.ArgumentParser(description="素材审核与发布排期 Agent（仅草稿）")
     parser.add_argument("--input", required=True, help="请求 JSON 文件")
-    parser.add_argument("--provider", choices=["mock", "openai"], default="mock")
-    parser.add_argument("--model", help="真实模型名称，默认读取 OPENAI_MODEL")
+    parser.add_argument("--provider", choices=["mock", "openai", "deepseek"], default="mock")
+    parser.add_argument("--model", help="真实模型名称，默认读取相应服务的 MODEL 环境变量")
+    parser.add_argument("--env-file", help="显式读取本机配置文件，例如 .env；不会执行 shell 内容")
     parser.add_argument("--data-dir", default="data")
     parser.add_argument("--db", default=".runtime/drafts.sqlite3")
     parser.add_argument("--output", help="保存完整实际输出及 Trace")
@@ -47,9 +49,10 @@ def main(argv=None):
     args = parser.parse_args(argv)
     store = None
     try:
+        load_env_file(args.env_file)
         raw = json.loads(Path(args.input).read_text(encoding="utf-8"))
         catalog = Catalog(args.data_dir)
-        provider = MockProvider() if args.provider == "mock" else OpenAIProvider(model=args.model)
+        provider = create_provider(args.provider, args.model)
         faults = parse_faults(args.fail)
         store = DraftStore(args.db)
         result = run(raw, catalog, store, provider, args.max_steps, faults)

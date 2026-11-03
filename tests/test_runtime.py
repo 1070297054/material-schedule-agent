@@ -60,9 +60,11 @@ class RuntimeTests(unittest.TestCase):
         self.assertEqual(result["trace"][0]["next_action"], "finish")
 
     def test_parallel_tool_calls_are_not_executed(self):
-        result = self.run_with(ScriptedProvider([[call("read_material", 1, source="base"), call("save_draft", 2, slot=S19)]]))
+        result = self.run_with(ScriptedProvider([[call("read_material", 1, source="base"), call("save_draft", 2, slot=S19)],
+                                               [call("finish", 3, status="failed", suggested_slot=None)]]))
         self.assertEqual(result["task_status"], "failed")
-        self.assertEqual(result["items"][0]["stop_reason"], "model_error")
+        self.assertEqual(result["trace"][0]["observation"]["error"]["code"], "BATCH_REJECTED")
+        self.assertEqual(result["items"][0]["review"]["status"], "not_checked")
         self.assertFalse(self.store.all())
 
     def test_plain_text_claim_does_not_become_success(self):

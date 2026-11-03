@@ -1,0 +1,265 @@
+{
+  "schema_version": "1.0",
+  "request_id": "missing-001",
+  "task_status": "needs_input",
+  "provider": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "service": "deepseek",
+    "is_real_model": true
+  },
+  "started_at": "2026-11-02T10:17:07+00:00",
+  "finished_at": "2026-11-02T10:17:12+00:00",
+  "input": {
+    "request_id": "missing-001",
+    "items": [
+      {
+        "material_id": "M03",
+        "requested_slot": "2026-11-03T19:00:00+08:00",
+        "approved_slot": null
+      }
+    ]
+  },
+  "limits": {
+    "max_steps": 24,
+    "steps_used": 5,
+    "scope": "entire_request"
+  },
+  "fault_injection": {},
+  "items": [
+    {
+      "material_id": "M03",
+      "task_status": "needs_input",
+      "review": {
+        "status": "missing_info",
+        "missing_fields": [
+          "rights"
+        ],
+        "risks": [],
+        "rules_version": "synthetic-2026-11-01.v1",
+        "material_version": "2026-11-01.v1"
+      },
+      "requested_slot": "2026-11-03T19:00:00+08:00",
+      "approved_slot": null,
+      "suggested_slot": null,
+      "pending_items": [
+        "rights"
+      ],
+      "save_status": "not_attempted",
+      "draft": null,
+      "duplicate": false,
+      "errors": [],
+      "stop_reason": "model_finish",
+      "outcome_reason": "缺少完成任务所必需的信息，请补充 pending_items。",
+      "published": false,
+      "notice": "仅处理草稿，未发布任何内容。"
+    }
+  ],
+  "trace": [
+    {
+      "step": 1,
+      "material_id": "M03",
+      "decision_source": "live",
+      "tool": "read_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "需要读取素材 M03 以进行审核与排期",
+      "observation": {
+        "ok": true,
+        "source": "base",
+        "material": {
+          "id": "M03",
+          "title": "待核实的音乐素材",
+          "description": "尚未提供配乐授权凭证。",
+          "platform": "douyin",
+          "version": "2026-11-01.v1"
+        },
+        "existing_draft": null,
+        "supplement_found": null
+      },
+      "return_summary": "已读取素材=M03; 来源=base",
+      "next_action": "check_rules",
+      "response_id": "e3c07bc2-d90d-4f59-bf2c-f78c779a37d3"
+    },
+    {
+      "step": 2,
+      "material_id": "M03",
+      "decision_source": "live",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "素材描述显示缺少配乐授权凭证，需检查缺失字段与风险",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "missing_info",
+          "missing_fields": [
+            "rights"
+          ],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=missing_info",
+      "next_action": "read_material",
+      "response_id": "42b96033-e786-469d-88de-199bfd127f70"
+    },
+    {
+      "step": 3,
+      "material_id": "M03",
+      "decision_source": "live",
+      "tool": "read_material",
+      "parameters": {
+        "source": "supplement"
+      },
+      "decision_basis": "审核显示缺少 rights 字段，尝试补查授权凭证",
+      "observation": {
+        "ok": true,
+        "source": "supplement",
+        "material": {
+          "id": "M03",
+          "title": "待核实的音乐素材",
+          "description": "尚未提供配乐授权凭证。",
+          "platform": "douyin",
+          "version": "2026-11-01.v1"
+        },
+        "existing_draft": null,
+        "supplement_found": false
+      },
+      "return_summary": "已读取素材=M03; 来源=supplement",
+      "next_action": "check_rules",
+      "response_id": "39567f4a-1c26-4b3d-8e60-487a84344d45"
+    },
+    {
+      "step": 4,
+      "material_id": "M03",
+      "decision_source": "live",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "补查未取得授权凭证，需重新审核确认缺失字段仍未补齐",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "missing_info",
+          "missing_fields": [
+            "rights"
+          ],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=missing_info",
+      "next_action": "finish",
+      "response_id": "241a6c88-f1bb-4785-b961-d2dff276ac6a"
+    },
+    {
+      "step": 5,
+      "material_id": "M03",
+      "decision_source": "live",
+      "tool": "finish",
+      "parameters": {
+        "status": "needs_input",
+        "suggested_slot": null
+      },
+      "decision_basis": "素材 M03 补查后仍缺 rights（配乐授权凭证），审核状态为 missing_info，无法进入排期。",
+      "observation": {
+        "ok": true,
+        "status": "needs_input",
+        "published": false
+      },
+      "return_summary": "状态=needs_input",
+      "next_action": "stop:needs_input",
+      "response_id": "726f48ab-ee86-4ff4-805b-8d037080a7de"
+    }
+  ],
+  "usage": [
+    {
+      "input_tokens": 1206,
+      "input_tokens_details": {
+        "cached_tokens": 1024
+      },
+      "output_tokens": 60,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1266
+    },
+    {
+      "input_tokens": 1360,
+      "input_tokens_details": {
+        "cached_tokens": 1152
+      },
+      "output_tokens": 47,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1407
+    },
+    {
+      "input_tokens": 1483,
+      "input_tokens_details": {
+        "cached_tokens": 1280
+      },
+      "output_tokens": 61,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1544
+    },
+    {
+      "input_tokens": 1639,
+      "input_tokens_details": {
+        "cached_tokens": 1408
+      },
+      "output_tokens": 47,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1686
+    },
+    {
+      "input_tokens": 1762,
+      "input_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "output_tokens": 95,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1857
+    }
+  ],
+  "validation_boundary": "真实模型调用记录；需结合用例断言判断效果。",
+  "published": false,
+  "evaluation_fixture": {
+    "case": "missing_info",
+    "input_file": "examples/inputs/missing_info.json",
+    "occupied": [
+      {
+        "platform": "douyin",
+        "slot": "2026-11-03T18:00:00+08:00"
+      }
+    ],
+    "slots": [
+      "2026-11-03T18:00:00+08:00",
+      "2026-11-03T19:00:00+08:00",
+      "2026-11-03T20:00:00+08:00"
+    ],
+    "expected_task_status": "needs_input",
+    "assertions": {
+      "expected_status": true,
+      "never_published": true,
+      "bounded": true,
+      "trace_records_actual_calls": true,
+      "nonempty_trace": true,
+      "real_responses_identified": true,
+      "supplement_observed_then_reviewed": true,
+      "no_draft": true,
+      "missing_rights": true
+    },
+    "database_group": "missing_info",
+    "database_rows_after": []
+  }
+}

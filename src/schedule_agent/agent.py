@@ -46,31 +46,46 @@ def run(request, catalog, store, provider, max_steps=24, faults=None):
                      "return_summary": None, "next_action": None}
             try:
                 turn = provider.next(history)
+                event["response_id"] = turn.get("response_id")
+                usage.append(turn.get("usage", {}))
                 output = turn.get("output", [])
                 if not isinstance(output, list) or any(not isinstance(o, dict) for o in output):
                     raise ModelError("模型 output 格式无效")
                 function_calls = [o for o in output if o.get("type") == "function_call"]
-                if len(function_calls) != 1:
-                    raise ModelError("每轮必须恰好一个工具调用；纯文本或并行调用不执行")
-                call = function_calls[0]
-                if not isinstance(call.get("call_id"), str) or not call["call_id"] or not isinstance(call.get("name"), str):
-                    raise ModelError("模型工具调用缺少有效 name/call_id")
-                if any(h.get("call_id") == call["call_id"] for h in history):
-                    raise ModelError("模型重复使用 call_id")
-                try:
-                    args = json.loads(call.get("arguments", ""))
-                except (ValueError, TypeError):
-                    args = None
-                event["tool"] = call["name"]
-                event["parameters"] = {k: v for k, v in args.items() if k != "reason"} if isinstance(args, dict) else {}
-                event["decision_basis"] = args.get("reason") if isinstance(args, dict) else None
-                result = context.execute(call["name"], args)
+                if not function_calls:
+                    raise ModelError("每轮必须通过工具决策；无工具的纯文本不执行")
+                seen_ids = {h.get("call_id") for h in history if h.get("call_id")}
+                for call in function_calls:
+                    if not isinstance(call.get("call_id"), str) or not call["call_id"] or not isinstance(call.get("name"), str):
+                        raise ModelError("模型工具调用缺少有效 name/call_id")
+                    if call["call_id"] in seen_ids:
+                        raise ModelError("模型重复使用 call_id")
+                    seen_ids.add(call["call_id"])
+                if len(function_calls) > 1:
+                    # Do not execute even the first proposed write. Return a matched
+                    # error for every call ID, so the next decision is the model's.
+                    result = error("BATCH_REJECTED", "本轮所有工具均未执行。请只选一个工具，观察结果后再决定下一步。", True)
+                    context.errors.append({"tool": "model", **result["error"]})
+                    event["tool"] = "retry_tool_selection"
+                    event["parameters"] = {"proposed_tools": [c["name"] for c in function_calls]}
+                    event["decision_basis"] = "运行器拒绝并行提议，要求模型重新选择；不是替模型决定业务动作。"
+                    event["execution"] = "rejected_batch"
+                else:
+                    call = function_calls[0]
+                    try:
+                        args = json.loads(call.get("arguments", ""))
+                    except (ValueError, TypeError):
+                        args = None
+                    event["tool"] = call["name"]
+                    event["parameters"] = {k: v for k, v in args.items() if k != "reason"} if isinstance(args, dict) else {}
+                    event["decision_basis"] = args.get("reason") if isinstance(args, dict) else None
+                    result = context.execute(call["name"], args)
                 # Keep provider output (including encrypted reasoning continuity) in memory only.
                 # Trace contains only tool calls, public brief reasons and observations.
                 history.extend(output)
-                history.append({"type": "function_call_output", "call_id": call["call_id"],
-                                "output": json.dumps(result, ensure_ascii=False)})
-                usage.append(turn.get("usage", {}))
+                for call in function_calls:
+                    history.append({"type": "function_call_output", "call_id": call["call_id"],
+                                    "output": json.dumps(result, ensure_ascii=False)})
             except ModelError as exc:
                 result = error("MODEL_ERROR", str(exc))
                 context.errors.append({"tool": "model", **result["error"]})
@@ -90,6 +105,7 @@ def run(request, catalog, store, provider, max_steps=24, faults=None):
     overall = next(iter(statuses)) if len(statuses) == 1 else "partial"
     return {"schema_version": "1.0", "request_id": request["request_id"], "task_status": overall,
             "provider": {"mode": provider.mode, "model": provider.model,
+                         "service": getattr(provider, "service", "test_fixture"),
                          "is_real_model": provider.mode == "live"},
             "started_at": started, "finished_at": utc_now(), "input": request,
             "limits": {"max_steps": max_steps, "steps_used": calls, "scope": "entire_request"},

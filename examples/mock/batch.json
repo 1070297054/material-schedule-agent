@@ -5,10 +5,11 @@
   "provider": {
     "mode": "mock",
     "model": "deterministic-offline-simulator",
+    "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-02T09:14:44+00:00",
-  "finished_at": "2026-11-02T09:14:44+00:00",
+  "started_at": "2026-11-02T10:15:17+00:00",
+  "finished_at": "2026-11-02T10:15:17+00:00",
   "input": {
     "request_id": "batch-001",
     "items": [
@@ -169,10 +170,12 @@
           "rights": "owned",
           "version": "2026-11-01.v1"
         },
+        "existing_draft": null,
         "supplement_found": null
       },
       "return_summary": "已读取素材=M01; 来源=base",
-      "next_action": "check_rules"
+      "next_action": "check_rules",
+      "response_id": null
     },
     {
       "step": 2,
@@ -192,7 +195,8 @@
         }
       },
       "return_summary": "审核=passed",
-      "next_action": "query_slots"
+      "next_action": "query_slots",
+      "response_id": null
     },
     {
       "step": 3,
@@ -215,7 +219,8 @@
         "timezone": "Asia/Shanghai"
       },
       "return_summary": "可用时段=2026-11-03T19:00:00+08:00",
-      "next_action": "save_draft"
+      "next_action": "save_draft",
+      "response_id": null
     },
     {
       "step": 4,
@@ -249,7 +254,8 @@
         "duplicate": false
       },
       "return_summary": "草稿=1; confirmed",
-      "next_action": "finish"
+      "next_action": "finish",
+      "response_id": null
     },
     {
       "step": 5,
@@ -267,7 +273,8 @@
         "published": false
       },
       "return_summary": "状态=completed",
-      "next_action": "stop:completed"
+      "next_action": "stop:completed",
+      "response_id": null
     },
     {
       "step": 6,
@@ -289,10 +296,12 @@
           "rights": "owned",
           "version": "2026-11-01.v1"
         },
+        "existing_draft": null,
         "supplement_found": null
       },
       "return_summary": "已读取素材=M06; 来源=base",
-      "next_action": "check_rules"
+      "next_action": "check_rules",
+      "response_id": null
     },
     {
       "step": 7,
@@ -312,7 +321,8 @@
         }
       },
       "return_summary": "审核=passed",
-      "next_action": "query_slots"
+      "next_action": "query_slots",
+      "response_id": null
     },
     {
       "step": 8,
@@ -333,7 +343,8 @@
         "timezone": "Asia/Shanghai"
       },
       "return_summary": "可用时段=",
-      "next_action": "query_slots"
+      "next_action": "query_slots",
+      "response_id": null
     },
     {
       "step": 9,
@@ -356,7 +367,8 @@
         "timezone": "Asia/Shanghai"
       },
       "return_summary": "可用时段=2026-11-03T20:00:00+08:00",
-      "next_action": "save_draft"
+      "next_action": "save_draft",
+      "response_id": null
     },
     {
       "step": 10,
@@ -390,7 +402,8 @@
         "duplicate": false
       },
       "return_summary": "草稿=2; pending_confirmation",
-      "next_action": "finish"
+      "next_action": "finish",
+      "response_id": null
     },
     {
       "step": 11,
@@ -408,7 +421,8 @@
         "published": false
       },
       "return_summary": "状态=pending_confirmation",
-      "next_action": "stop:pending_confirmation"
+      "next_action": "stop:pending_confirmation",
+      "response_id": null
     },
     {
       "step": 12,
@@ -430,10 +444,12 @@
           "rights": "owned",
           "version": "2026-11-01.v1"
         },
+        "existing_draft": null,
         "supplement_found": null
       },
       "return_summary": "已读取素材=M04; 来源=base",
-      "next_action": "check_rules"
+      "next_action": "check_rules",
+      "response_id": null
     },
     {
       "step": 13,
@@ -459,7 +475,8 @@
         }
       },
       "return_summary": "审核=blocked",
-      "next_action": "finish"
+      "next_action": "finish",
+      "response_id": null
     },
     {
       "step": 14,
@@ -477,7 +494,8 @@
         "published": false
       },
       "return_summary": "状态=blocked",
-      "next_action": "stop:blocked"
+      "next_action": "stop:blocked",
+      "response_id": null
     }
   ],
   "usage": [
@@ -518,6 +536,7 @@
       "never_published": true,
       "bounded": true,
       "trace_records_actual_calls": true,
+      "nonempty_trace": true,
       "per_item_status": true
     },
     "database_group": "batch",

@@ -63,14 +63,17 @@ class ToolContext:
         self.done = None
         self.stop_reason = None
         self.last_query = None
+        self.write_failure = False
 
     def execute(self, name, args):
         invalid = validate_args(name, args)
         if invalid:
             result = invalid
+        elif name == "save_draft" and self.write_failure:
+            result = error("SAVE_RETRY_BLOCKED", "本次执行已发生保存故障，不能再次写入；请报告 failed。用户可用相同 request_id 重新执行。")
         elif self.faults.get(name, 0) > 0:
             self.faults[name] -= 1
-            result = error("INJECTED_FAILURE", "演示注入的工具失败：" + name, True)
+            result = error("INJECTED_FAILURE", "演示注入的工具失败：" + name, name != "save_draft")
         else:
             params = {k: v for k, v in args.items() if k != "reason"}
             try:
@@ -78,11 +81,13 @@ class ToolContext:
             except InputError as exc:
                 result = error("INVALID_ARGUMENTS", str(exc))
             except sqlite3.Error:
-                result = error("STORAGE_ERROR", "数据库操作失败", True)
+                result = error("STORAGE_ERROR", "数据库操作失败", name != "save_draft")
         if not result["ok"]:
             self.errors.append({"tool": name, **result["error"]})
             if name == "save_draft":
                 self.save_status = "failed"
+                if result["error"]["code"] in {"INJECTED_FAILURE", "STORAGE_ERROR"}:
+                    self.write_failure = True
         return result
 
     def read_material(self, source):
@@ -99,6 +104,7 @@ class ToolContext:
         self.audit = None  # Metadata changed: the previous review no longer authorizes a write.
         self.available.clear()
         return {"ok": True, "source": source, "material": deepcopy(self.material),
+                "existing_draft": self.store.lookup(self.request_id, key),
                 "supplement_found": bool(self.catalog.supplements.get(key)) if source == "supplement" else None}
 
     def check_rules(self):

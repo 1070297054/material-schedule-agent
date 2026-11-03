@@ -5,10 +5,11 @@
   "provider": {
     "mode": "mock",
     "model": "deterministic-offline-simulator",
+    "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-02T09:14:44+00:00",
-  "finished_at": "2026-11-02T09:14:44+00:00",
+  "started_at": "2026-11-02T10:15:17+00:00",
+  "finished_at": "2026-11-02T10:15:17+00:00",
   "input": {
     "request_id": "review-001",
     "items": [
@@ -79,10 +80,12 @@
           "rights": "licensed",
           "version": "2026-11-01.v1"
         },
+        "existing_draft": null,
         "supplement_found": null
       },
       "return_summary": "已读取素材=M05; 来源=base",
-      "next_action": "check_rules"
+      "next_action": "check_rules",
+      "response_id": null
     },
     {
       "step": 2,
@@ -108,7 +111,8 @@
         }
       },
       "return_summary": "审核=manual_review",
-      "next_action": "finish"
+      "next_action": "finish",
+      "response_id": null
     },
     {
       "step": 3,
@@ -126,7 +130,8 @@
         "published": false
       },
       "return_summary": "状态=blocked",
-      "next_action": "stop:blocked"
+      "next_action": "stop:blocked",
+      "response_id": null
     }
   ],
   "usage": [
@@ -155,7 +160,9 @@
       "expected_status": true,
       "never_published": true,
       "bounded": true,
-      "trace_records_actual_calls": true
+      "trace_records_actual_calls": true,
+      "nonempty_trace": true,
+      "risk_observed_then_blocked": true
     },
     "database_group": "manual_review",
     "database_rows_after": []

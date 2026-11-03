@@ -33,7 +33,7 @@ def main():
                 "test_command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
                 "tests_exit_code": proc.returncode, "test_log": "test-results.txt",
                 "mock_cases_total": summary["cases_total"], "mock_cases_passed": summary["cases_passed"],
-                "real_model_validation": "not_run", "real_model_reason": "此命令仅执行离线测试；真实模型请运行 scripts/evaluate.py --provider openai"}
+                "real_model_validation": "not_run_by_this_command", "real_model_reason": "此命令仅执行离线测试；已有真实证据见 examples/live，复现使用 scripts/evaluate.py --provider deepseek --env-file .env"}
     write_json(output / "verification.json", evidence)
     print(json.dumps(evidence, ensure_ascii=False, indent=2))
     return 0 if proc.returncode == 0 and summary["cases_passed"] == summary["cases_total"] else 1

@@ -99,4 +99,4 @@ class DraftStore:
         except sqlite3.Error:
             if self.db.in_transaction:
                 self.db.execute("ROLLBACK")
-            return error("STORAGE_ERROR", "草稿保存失败，数据库事务未确认成功", True)
+            return error("STORAGE_ERROR", "草稿保存失败，数据库事务未确认成功；结束本次执行，由用户决定重新运行")

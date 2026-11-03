@@ -15,6 +15,9 @@ SYSTEM_PROMPT = """你是素材审核与发布排期 Agent。每轮只调用一�
 审核通过后查 requested 时段；冲突或不在排期表内时查 alternatives。可用替代时段只能保存待确认建议稿。
 保存成功后观察 confirmation_status 决定 completed 或 pending_confirmation；保存失败必须如实报告，不能称成功。
 保存时冲突可重新查时段。可恢复的读取错误可重试一次，其他情况可以停止并说明未完成。
+非 SLOT_CONFLICT 的保存错误，本次以 failed 结束，由用户决定是否重新执行，不能将失败写入当成成功。
+替代时段优先选择同日原时间之后最近的可用时段；仍须用户确认。read_material 若返回 existing_draft，
+应优先复用已有草稿时段，并重新查询确认可用性；既有 confirmed 表示先前用户确认，重复输入不能撤销。
 没有合适替代时间时 finish incomplete。缺少 requested_slot 时请求补充，不自行安排。
 finish 的 suggested_slot 只能来自已查询可用时段，可为 null。不能跳过审核、时段查询或依据不足地宣布成功。
 调用预算有限，应留出一次 finish；达到上限会返回 incomplete。多次调用同一工具不是成功证据。
@@ -32,6 +35,7 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 class OpenAIProvider:
     mode = "live"
+    service = "openai"
 
     def __init__(self, model=None, api_key=None, base_url=None, timeout=45, opener=None):
         self.model = model or os.environ.get("OPENAI_MODEL")
@@ -47,10 +51,13 @@ class OpenAIProvider:
         self.url, self.timeout = base + "/responses", timeout
         self.opener = opener or urllib.request.build_opener(NoRedirect(), urllib.request.HTTPSHandler(context=ssl.create_default_context()))
 
-    def next(self, history):
-        payload = {"model": self.model, "instructions": SYSTEM_PROMPT, "input": history,
+    def payload(self, history):
+        return {"model": self.model, "instructions": SYSTEM_PROMPT, "input": history,
                    "tools": TOOL_SCHEMAS, "tool_choice": "required", "parallel_tool_calls": False,
                    "store": False, "include": ["reasoning.encrypted_content"], "max_output_tokens": 1800}
+
+    def next(self, history):
+        payload = self.payload(history)
         req = urllib.request.Request(self.url, data=json.dumps(payload, ensure_ascii=False).encode(),
                                      headers={"Authorization": "Bearer " + self.api_key, "Content-Type": "application/json"}, method="POST")
         try:
@@ -69,9 +76,41 @@ class OpenAIProvider:
         return {"output": body["output"], "usage": body.get("usage", {}), "response_id": body.get("id")}
 
 
+class DeepSeekProvider(OpenAIProvider):
+    """DeepSeek Responses adapter, with explicit non-thinking tool decisions."""
+    service = "deepseek"
+
+    def __init__(self, model=None, api_key=None, base_url=None, timeout=45, opener=None):
+        key = api_key or os.environ.get("DEEPSEEK_API_KEY")
+        if not key:
+            raise ModelError("真实 DeepSeek 模型需要设置 DEEPSEEK_API_KEY；不会自动降级成 Mock")
+        super().__init__(model=model or os.environ.get("DEEPSEEK_MODEL") or "deepseek-flash",
+                         api_key=key,
+                         base_url=base_url or os.environ.get("DEEPSEEK_BASE_URL") or "https://api.deepseek.com",
+                         timeout=timeout, opener=opener)
+
+    def payload(self, history):
+        # DeepSeek ignores parallel_tool_calls/include/store. Runtime rejects batches
+        # without side effects and returns an observation asking the model to reselect.
+        return {"model": self.model, "instructions": SYSTEM_PROMPT, "input": history,
+                "tools": [{k: v for k, v in tool.items() if k != "strict"} for tool in TOOL_SCHEMAS],
+                "tool_choice": "required", "reasoning": {"effort": "none"}, "max_output_tokens": 1800}
+
+
+def create_provider(name, model=None):
+    if name == "mock":
+        return MockProvider()
+    if name == "openai":
+        return OpenAIProvider(model=model)
+    if name == "deepseek":
+        return DeepSeekProvider(model=model)
+    raise ModelError("未知模型服务")
+
+
 class MockProvider:
     """Test fixture policy, NOT a model and NOT evidence of ReAct decision quality."""
     mode = "mock"
+    service = "mock"
     model = "deterministic-offline-simulator"
 
     def next(self, history):

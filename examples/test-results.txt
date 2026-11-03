@@ -6,9 +6,11 @@ test_changed_content_changes_rule_result (test_business.BusinessTests) ... ok
 test_conflict_keeps_hard_requirement_and_does_not_reserve_proposal (test_business.BusinessTests) ... ok
 test_data_text_cannot_change_tool_authorization (test_business.BusinessTests) ... ok
 test_database_survives_process_connection_restart (test_business.BusinessTests) ... ok
+test_failed_save_cannot_be_retried_inside_same_run (test_business.BusinessTests) ... ok
 test_global_step_limit_preserves_save_without_claiming_completion (test_business.BusinessTests) ... ok
 test_missing_material_information_stays_unsaved (test_business.BusinessTests) ... ok
 test_model_cannot_supply_fake_approval_or_fake_success (test_business.BusinessTests) ... ok
+test_new_run_can_recover_saved_failure_using_same_id (test_business.BusinessTests) ... ok
 test_no_available_slot_returns_incomplete (test_business.BusinessTests) ... ok
 test_normal_draft_is_saved_never_published (test_business.BusinessTests) ... ok
 test_pending_draft_confirmation_updates_same_row (test_business.BusinessTests) ... ok
@@ -29,6 +31,12 @@ test_unknown_tool_and_unqueried_slot_rejected (test_business.BusinessTests) ... 
 test_equivalent_iso_inputs_are_normalized (test_business.InputTests) ... ok
 test_invalid_inputs_fail_early (test_business.InputTests) ... ok
 test_model_or_user_cannot_add_undeclared_fields (test_business.InputTests) ... ok
+test_batch_is_returned_to_model_and_model_can_reselect (test_deepseek.DeepSeekTests) ... ok
+test_env_file_is_explicit_nonexecuting_and_environment_wins (test_deepseek.DeepSeekTests) ... ok
+test_invalid_config_is_redacted_and_not_partially_loaded (test_deepseek.DeepSeekTests) ... ok
+test_missing_deepseek_key_does_not_reuse_openai_key (test_deepseek.DeepSeekTests) ... ok
+test_no_slots_does_not_pass_when_model_only_exhausts_budget (test_deepseek.DeepSeekTests) ... ok
+test_selected_repeat_case_runs_its_prerequisite (test_deepseek.DeepSeekTests) ... ok
 test_cli_invalid_json_and_invalid_fault_are_explicit (test_runtime.CliTests) ... ok
 test_cli_normal_conflict_and_failure_exit_codes (test_runtime.CliTests) ... ok
 test_http_error_is_redacted_and_does_not_fallback_to_mock (test_runtime.RuntimeTests) ... ok
@@ -43,6 +51,6 @@ test_plain_text_claim_does_not_become_success (test_runtime.RuntimeTests) ... ok
 test_repeated_call_id_stops_before_second_execution (test_runtime.RuntimeTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 43 tests in 0.430s
+Ran 51 tests in 0.452s
 
 OK
