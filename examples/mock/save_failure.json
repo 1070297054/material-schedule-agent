@@ -1,5 +1,6 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
+  "orchestration": "single",
   "request_id": "normal-001",
   "task_status": "failed",
   "provider": {
@@ -8,8 +9,8 @@
     "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-02T10:15:17+00:00",
-  "finished_at": "2026-11-02T10:15:17+00:00",
+  "started_at": "2026-11-03T02:58:06+00:00",
+  "finished_at": "2026-11-03T02:58:06+00:00",
   "input": {
     "request_id": "normal-001",
     "items": [
@@ -23,7 +24,11 @@
   "limits": {
     "max_steps": 24,
     "steps_used": 5,
-    "scope": "entire_request"
+    "scope": "entire_request",
+    "max_total_tokens": null,
+    "tokens_used": 0,
+    "max_seconds": null,
+    "elapsed_seconds": 0.0
   },
   "fault_injection": {
     "save_draft": 1
@@ -62,6 +67,7 @@
   ],
   "trace": [
     {
+      "agent_id": "generalist",
       "step": 1,
       "material_id": "M01",
       "decision_source": "mock",
@@ -86,9 +92,13 @@
       },
       "return_summary": "已读取素材=M01; 来源=base",
       "next_action": "check_rules",
-      "response_id": null
+      "model_ms": 0.01,
+      "response_id": null,
+      "tool_ms": 0.12,
+      "elapsed_ms": 0.16
     },
     {
+      "agent_id": "generalist",
       "step": 2,
       "material_id": "M01",
       "decision_source": "mock",
@@ -107,9 +117,13 @@
       },
       "return_summary": "审核=passed",
       "next_action": "query_slots",
-      "response_id": null
+      "model_ms": 0.02,
+      "response_id": null,
+      "tool_ms": 0.01,
+      "elapsed_ms": 0.05
     },
     {
+      "agent_id": "generalist",
       "step": 3,
       "material_id": "M01",
       "decision_source": "mock",
@@ -131,9 +145,13 @@
       },
       "return_summary": "可用时段=2026-11-03T19:00:00+08:00",
       "next_action": "save_draft",
-      "response_id": null
+      "model_ms": 0.02,
+      "response_id": null,
+      "tool_ms": 0.04,
+      "elapsed_ms": 0.07
     },
     {
+      "agent_id": "generalist",
       "step": 4,
       "material_id": "M01",
       "decision_source": "mock",
@@ -152,9 +170,13 @@
       },
       "return_summary": "INJECTED_FAILURE: 演示注入的工具失败：save_draft",
       "next_action": "finish",
-      "response_id": null
+      "model_ms": 0.02,
+      "response_id": null,
+      "tool_ms": 0.0,
+      "elapsed_ms": 0.03
     },
     {
+      "agent_id": "generalist",
       "step": 5,
       "material_id": "M01",
       "decision_source": "mock",
@@ -171,7 +193,10 @@
       },
       "return_summary": "状态=failed",
       "next_action": "stop:failed",
-      "response_id": null
+      "model_ms": 0.02,
+      "response_id": null,
+      "tool_ms": 0.01,
+      "elapsed_ms": 0.03
     }
   ],
   "usage": [

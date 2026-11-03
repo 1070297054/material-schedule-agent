@@ -1,0 +1,533 @@
+{
+  "id": "7c4fd02881fb4641b69b62bb4b235ba4",
+  "status": "finished",
+  "result": {
+    "schema_version": "1.1",
+    "orchestration": "team",
+    "request_id": "web-1793674507782",
+    "task_status": "pending_confirmation",
+    "provider": {
+      "mode": "mock",
+      "model": "deterministic-offline-simulator",
+      "service": "mock",
+      "is_real_model": false
+    },
+    "started_at": "2026-11-03T02:55:07+00:00",
+    "finished_at": "2026-11-03T02:55:07+00:00",
+    "input": {
+      "request_id": "web-1793674507782",
+      "items": [
+        {
+          "material_id": "M01",
+          "requested_slot": "2026-11-03T18:00:00+08:00",
+          "approved_slot": null
+        }
+      ]
+    },
+    "limits": {
+      "max_steps": 24,
+      "steps_used": 7,
+      "scope": "entire_request",
+      "max_total_tokens": 60000,
+      "tokens_used": 0,
+      "max_seconds": 180,
+      "elapsed_seconds": 0.004
+    },
+    "fault_injection": {},
+    "items": [
+      {
+        "material_id": "M01",
+        "task_status": "pending_confirmation",
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        },
+        "requested_slot": "2026-11-03T18:00:00+08:00",
+        "approved_slot": null,
+        "suggested_slot": "2026-11-03T19:00:00+08:00",
+        "pending_items": [
+          "用户确认改为 2026-11-03T19:00:00+08:00；原始要求仍保留"
+        ],
+        "save_status": "saved",
+        "draft": {
+          "draft_id": 1,
+          "request_id": "web-1793674507782",
+          "material_id": "M01",
+          "platform": "douyin",
+          "requested_slot": "2026-11-03T18:00:00+08:00",
+          "suggested_slot": "2026-11-03T19:00:00+08:00",
+          "reserved_slot": null,
+          "confirmation_status": "pending_confirmation",
+          "audit": {
+            "status": "passed",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1",
+            "material_version": "2026-11-01.v1"
+          },
+          "published": false
+        },
+        "duplicate": false,
+        "errors": [],
+        "stop_reason": "model_finish",
+        "outcome_reason": "候选时间与已授权要求不同，等待用户明确确认。",
+        "published": false,
+        "notice": "仅处理草稿，未发布任何内容。"
+      }
+    ],
+    "trace": [
+      {
+        "agent_id": "reviewer",
+        "step": 1,
+        "material_id": "M01",
+        "decision_source": "mock",
+        "tool": "read_material",
+        "parameters": {
+          "source": "base"
+        },
+        "decision_basis": "先获取素材的真实元数据",
+        "observation": {
+          "ok": true,
+          "source": "base",
+          "material": {
+            "id": "M01",
+            "title": "字幕编辑功能介绍",
+            "description": "演示如何添加和编辑字幕。",
+            "platform": "douyin",
+            "rights": "owned",
+            "version": "2026-11-01.v1"
+          },
+          "existing_draft": null,
+          "supplement_found": null
+        },
+        "return_summary": "已读取素材=M01; 来源=base",
+        "next_action": "check_rules",
+        "model_ms": 0.06,
+        "response_id": null,
+        "tool_ms": 0.12,
+        "elapsed_ms": 0.2
+      },
+      {
+        "agent_id": "reviewer",
+        "step": 2,
+        "material_id": "M01",
+        "decision_source": "mock",
+        "tool": "check_rules",
+        "parameters": {},
+        "decision_basis": "已读到素材，核对规则与缺失字段",
+        "observation": {
+          "ok": true,
+          "review": {
+            "status": "passed",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1",
+            "material_version": "2026-11-01.v1"
+          }
+        },
+        "return_summary": "审核=passed",
+        "next_action": "handoff_schedule",
+        "model_ms": 0.02,
+        "response_id": null,
+        "tool_ms": 0.01,
+        "elapsed_ms": 0.05
+      },
+      {
+        "agent_id": "reviewer",
+        "step": 3,
+        "material_id": "M01",
+        "decision_source": "mock",
+        "tool": "handoff_schedule",
+        "parameters": {},
+        "decision_basis": "已通过实际审核，将排期交给专职 Agent",
+        "observation": {
+          "ok": true,
+          "from_agent": "reviewer",
+          "to_agent": "scheduler",
+          "handoff": {
+            "request_id": "web-1793674507782",
+            "item": {
+              "material_id": "M01",
+              "requested_slot": "2026-11-03T18:00:00+08:00",
+              "approved_slot": null
+            },
+            "material": {
+              "id": "M01",
+              "title": "字幕编辑功能介绍",
+              "description": "演示如何添加和编辑字幕。",
+              "platform": "douyin",
+              "rights": "owned",
+              "version": "2026-11-01.v1"
+            },
+            "review": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1",
+              "material_version": "2026-11-01.v1"
+            },
+            "existing_draft": null,
+            "errors": []
+          }
+        },
+        "return_summary": "状态=ok",
+        "next_action": "query_slots",
+        "model_ms": 0.02,
+        "response_id": null,
+        "tool_ms": 0.05,
+        "elapsed_ms": 0.08
+      },
+      {
+        "agent_id": "scheduler",
+        "step": 4,
+        "material_id": "M01",
+        "decision_source": "mock",
+        "tool": "query_slots",
+        "parameters": {
+          "mode": "requested"
+        },
+        "decision_basis": "接收已审核交接包，先核对要求时段",
+        "observation": {
+          "ok": true,
+          "mode": "requested",
+          "target_slot": "2026-11-03T18:00:00+08:00",
+          "available_slots": [],
+          "unavailable_reason": "occupied",
+          "requires_confirmation": false,
+          "timezone": "Asia/Shanghai"
+        },
+        "return_summary": "可用时段=",
+        "next_action": "query_slots",
+        "model_ms": 0.01,
+        "response_id": null,
+        "tool_ms": 0.02,
+        "elapsed_ms": 0.04
+      },
+      {
+        "agent_id": "scheduler",
+        "step": 5,
+        "material_id": "M01",
+        "decision_source": "mock",
+        "tool": "query_slots",
+        "parameters": {
+          "mode": "alternatives"
+        },
+        "decision_basis": "指定时段不可用，查询同一天替代时段",
+        "observation": {
+          "ok": true,
+          "mode": "alternatives",
+          "target_slot": "2026-11-03T18:00:00+08:00",
+          "available_slots": [
+            "2026-11-03T19:00:00+08:00",
+            "2026-11-03T20:00:00+08:00"
+          ],
+          "unavailable_reason": null,
+          "requires_confirmation": true,
+          "timezone": "Asia/Shanghai"
+        },
+        "return_summary": "可用时段=2026-11-03T19:00:00+08:00, 2026-11-03T20:00:00+08:00",
+        "next_action": "save_draft",
+        "model_ms": 0.02,
+        "response_id": null,
+        "tool_ms": 0.26,
+        "elapsed_ms": 0.31
+      },
+      {
+        "agent_id": "scheduler",
+        "step": 6,
+        "material_id": "M01",
+        "decision_source": "mock",
+        "tool": "save_draft",
+        "parameters": {
+          "slot": "2026-11-03T19:00:00+08:00"
+        },
+        "decision_basis": "查询得到可用时段，保存并由工具判断是否待确认",
+        "observation": {
+          "ok": true,
+          "draft": {
+            "draft_id": 1,
+            "request_id": "web-1793674507782",
+            "material_id": "M01",
+            "platform": "douyin",
+            "requested_slot": "2026-11-03T18:00:00+08:00",
+            "suggested_slot": "2026-11-03T19:00:00+08:00",
+            "reserved_slot": null,
+            "confirmation_status": "pending_confirmation",
+            "audit": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1",
+              "material_version": "2026-11-01.v1"
+            },
+            "published": false
+          },
+          "duplicate": false
+        },
+        "return_summary": "草稿=1; pending_confirmation",
+        "next_action": "finish",
+        "model_ms": 0.03,
+        "response_id": null,
+        "tool_ms": 1.91,
+        "elapsed_ms": 1.96
+      },
+      {
+        "agent_id": "scheduler",
+        "step": 7,
+        "material_id": "M01",
+        "decision_source": "mock",
+        "tool": "finish",
+        "parameters": {
+          "status": "pending_confirmation",
+          "suggested_slot": "2026-11-03T19:00:00+08:00"
+        },
+        "decision_basis": "保存工具已返回实际草稿与确认状态",
+        "observation": {
+          "ok": true,
+          "status": "pending_confirmation",
+          "published": false
+        },
+        "return_summary": "状态=pending_confirmation",
+        "next_action": "stop:pending_confirmation",
+        "model_ms": 0.04,
+        "response_id": null,
+        "tool_ms": 0.2,
+        "elapsed_ms": 0.25
+      }
+    ],
+    "usage": [
+      {},
+      {},
+      {},
+      {},
+      {},
+      {},
+      {}
+    ],
+    "validation_boundary": "离线模拟器只验证流程和工程约束，不证明真实模型决策效果。",
+    "published": false
+  },
+  "events": [
+    {
+      "agent_id": "reviewer",
+      "step": 1,
+      "material_id": "M01",
+      "decision_source": "mock",
+      "tool": "read_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "先获取素材的真实元数据",
+      "observation": {
+        "ok": true,
+        "source": "base",
+        "material": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "existing_draft": null,
+        "supplement_found": null
+      },
+      "return_summary": "已读取素材=M01; 来源=base",
+      "next_action": "check_rules",
+      "model_ms": 0.06,
+      "response_id": null,
+      "tool_ms": 0.12,
+      "elapsed_ms": 0.2
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 2,
+      "material_id": "M01",
+      "decision_source": "mock",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "已读到素材，核对规则与缺失字段",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=passed",
+      "next_action": "handoff_schedule",
+      "model_ms": 0.02,
+      "response_id": null,
+      "tool_ms": 0.01,
+      "elapsed_ms": 0.05
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 3,
+      "material_id": "M01",
+      "decision_source": "mock",
+      "tool": "handoff_schedule",
+      "parameters": {},
+      "decision_basis": "已通过实际审核，将排期交给专职 Agent",
+      "observation": {
+        "ok": true,
+        "from_agent": "reviewer",
+        "to_agent": "scheduler",
+        "handoff": {
+          "request_id": "web-1793674507782",
+          "item": {
+            "material_id": "M01",
+            "requested_slot": "2026-11-03T18:00:00+08:00",
+            "approved_slot": null
+          },
+          "material": {
+            "id": "M01",
+            "title": "字幕编辑功能介绍",
+            "description": "演示如何添加和编辑字幕。",
+            "platform": "douyin",
+            "rights": "owned",
+            "version": "2026-11-01.v1"
+          },
+          "review": {
+            "status": "passed",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1",
+            "material_version": "2026-11-01.v1"
+          },
+          "existing_draft": null,
+          "errors": []
+        }
+      },
+      "return_summary": "状态=ok",
+      "next_action": "query_slots",
+      "model_ms": 0.02,
+      "response_id": null,
+      "tool_ms": 0.05,
+      "elapsed_ms": 0.08
+    },
+    {
+      "agent_id": "scheduler",
+      "step": 4,
+      "material_id": "M01",
+      "decision_source": "mock",
+      "tool": "query_slots",
+      "parameters": {
+        "mode": "requested"
+      },
+      "decision_basis": "接收已审核交接包，先核对要求时段",
+      "observation": {
+        "ok": true,
+        "mode": "requested",
+        "target_slot": "2026-11-03T18:00:00+08:00",
+        "available_slots": [],
+        "unavailable_reason": "occupied",
+        "requires_confirmation": false,
+        "timezone": "Asia/Shanghai"
+      },
+      "return_summary": "可用时段=",
+      "next_action": "query_slots",
+      "model_ms": 0.01,
+      "response_id": null,
+      "tool_ms": 0.02,
+      "elapsed_ms": 0.04
+    },
+    {
+      "agent_id": "scheduler",
+      "step": 5,
+      "material_id": "M01",
+      "decision_source": "mock",
+      "tool": "query_slots",
+      "parameters": {
+        "mode": "alternatives"
+      },
+      "decision_basis": "指定时段不可用，查询同一天替代时段",
+      "observation": {
+        "ok": true,
+        "mode": "alternatives",
+        "target_slot": "2026-11-03T18:00:00+08:00",
+        "available_slots": [
+          "2026-11-03T19:00:00+08:00",
+          "2026-11-03T20:00:00+08:00"
+        ],
+        "unavailable_reason": null,
+        "requires_confirmation": true,
+        "timezone": "Asia/Shanghai"
+      },
+      "return_summary": "可用时段=2026-11-03T19:00:00+08:00, 2026-11-03T20:00:00+08:00",
+      "next_action": "save_draft",
+      "model_ms": 0.02,
+      "response_id": null,
+      "tool_ms": 0.26,
+      "elapsed_ms": 0.31
+    },
+    {
+      "agent_id": "scheduler",
+      "step": 6,
+      "material_id": "M01",
+      "decision_source": "mock",
+      "tool": "save_draft",
+      "parameters": {
+        "slot": "2026-11-03T19:00:00+08:00"
+      },
+      "decision_basis": "查询得到可用时段，保存并由工具判断是否待确认",
+      "observation": {
+        "ok": true,
+        "draft": {
+          "draft_id": 1,
+          "request_id": "web-1793674507782",
+          "material_id": "M01",
+          "platform": "douyin",
+          "requested_slot": "2026-11-03T18:00:00+08:00",
+          "suggested_slot": "2026-11-03T19:00:00+08:00",
+          "reserved_slot": null,
+          "confirmation_status": "pending_confirmation",
+          "audit": {
+            "status": "passed",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1",
+            "material_version": "2026-11-01.v1"
+          },
+          "published": false
+        },
+        "duplicate": false
+      },
+      "return_summary": "草稿=1; pending_confirmation",
+      "next_action": "finish",
+      "model_ms": 0.03,
+      "response_id": null,
+      "tool_ms": 1.91,
+      "elapsed_ms": 1.96
+    },
+    {
+      "agent_id": "scheduler",
+      "step": 7,
+      "material_id": "M01",
+      "decision_source": "mock",
+      "tool": "finish",
+      "parameters": {
+        "status": "pending_confirmation",
+        "suggested_slot": "2026-11-03T19:00:00+08:00"
+      },
+      "decision_basis": "保存工具已返回实际草稿与确认状态",
+      "observation": {
+        "ok": true,
+        "status": "pending_confirmation",
+        "published": false
+      },
+      "return_summary": "状态=pending_confirmation",
+      "next_action": "stop:pending_confirmation",
+      "model_ms": 0.04,
+      "response_id": null,
+      "tool_ms": 0.2,
+      "elapsed_ms": 0.25
+    }
+  ]
+}

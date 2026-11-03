@@ -4,13 +4,31 @@
 
 Python 标准库 + SQLite + 原生 Responses API 工具调用，不依赖 Agent 框架。提供真实模型接入和可复现的离线模拟入口。
 
-> **验证状态：已接入真实 DeepSeek `deepseek-flash`。** [真实正常路径](examples/live/deepseek-smoke/normal.json)与[真实冲突路径](examples/live/deepseek-smoke/conflict.json)已通过：模型观察时段冲突后查询替代时间，保存待确认草稿，再观察保存结果结束。完整验收结果见[真实模型汇总](examples/live/deepseek-final/summary.json)。Mock 与真实模型记录分开保存；一次通过不代表所有模型和任意输入都能通过。
+> **当前验证：67 个自动化测试通过，单 Agent / 双 Agent 离线验收各 21/21，真实 DeepSeek 双 Agent 最终验收 21/21。** [最终真实汇总](examples/live/deepseek-team-final/summary.json)包含更换占用后重复提交、确认边界和保存失败。早期单 Agent 的真实 18 组记录也保留。详见[评估与失败分析](docs/03-evaluation.md)。
+
+## 本机网页工作台
+
+无需部署服务器。在仓库根目录运行：
+
+```bash
+# 离线体验（无 API 密钥）
+PYTHONPATH=src python3 -m schedule_agent.server --demo
+
+# 已配置本机 .env 时，可在网页选择真实 DeepSeek
+PYTHONPATH=src python3 -m schedule_agent.server --env-file .env --demo
+```
+
+打开终端输出的完整 `http://127.0.0.1:8765/#token=...` 链接。只监听本机；访问口令与模型密钥不同，网页不接收或展示模型密钥。页面支持审核、替代建议、明确确认、重复提交、草稿列表和逐步 Trace；`--demo` 开放合成占用修改和保存失败注入。**默认 Mock，不消耗模型额度；选择 DeepSeek 才会调用真实 API。**
+
+网页默认双 Agent（审核 → 排期），也可选择单 Agent 对照。CLI 默认仍为单 Agent，可加 `--orchestration team`。不使用 LangGraph，角色工具权限和交接契约由原生运行器执行。
+
+详见[本机运行与 HTTP API](docs/06-local-workbench.md)；[跨天、多平台与安全扩展设计](docs/07-scaling-design.md)是未来设计，不是当前功能。
 
 ## 评审入口
 
 1. 运行 `python3 scripts/verify.py`，执行测试并重新生成离线验收记录。
-2. 查看 [测试结果](examples/test-results.txt)、[验证摘要](examples/verification.json) 和 [18 组案例汇总](examples/mock/summary.json)。
-3. 对比真实模型的 [正常路径](examples/live/deepseek-final/normal.json)、[冲突路径](examples/live/deepseek-final/conflict.json)、[更换占用时段](examples/live/deepseek-final/changed_occupancy.json)。离线对照记录保留在 `examples/mock/`。
+2. 查看 [测试结果](examples/test-results.txt)、[验证摘要](examples/verification.json) 和 [21 组案例汇总](examples/mock/summary.json)。
+3. 对比真实模型的 [正常路径](examples/live/deepseek-team-final/normal.json)、[冲突路径](examples/live/deepseek-team-final/conflict.json)、[更换占用时段](examples/live/deepseek-team-final/changed_occupancy.json)。离线对照记录保留在 `examples/mock/`。
 4. 查看 [Agent 循环](src/schedule_agent/agent.py)、[真实模型接入](src/schedule_agent/providers.py)、[工具边界](src/schedule_agent/tools.py) 与 [数据库事务](src/schedule_agent/storage.py)。
 5. 配置自己的模型密钥后执行本文的真实评估命令，复核模型动态决策；密钥不在仓库中。
 
@@ -92,9 +110,9 @@ PYTHONPATH=src python3 -m schedule_agent \
 python3 scripts/evaluate.py --provider deepseek --env-file .env \
   --cases normal conflict --output .runtime/live-smoke
 
-# 全部 18 组真实验收，会消耗 API 额度
+# 全部 21 组真实双 Agent 验收，会消耗 API 额度
 python3 scripts/evaluate.py --provider deepseek --env-file .env \
-  --output .runtime/live-full
+  --orchestration team --output .runtime/live-full
 ```
 
 DeepSeek 使用 Responses API 和非思考模式，保留公开的一句话行动依据，不收集内部思维过程。它不保证禁止并行工具调用，因此运行器会拒绝整批提议，将未执行结果逐一返回给模型，要求重新选择单个工具；次数计入共享执行上限。接口取舍见 [DeepSeek 官方兼容说明](https://api-docs.deepseek.com/guides/responses_api/)。
@@ -157,4 +175,4 @@ docs/05-retrospective.md  实现复盘与下一步
 scripts/                 一键验证、可切换真实模型的评估脚本
 ```
 
-GitHub 仓库：[1070297054/material-schedule-agent](https://github.com/1070297054/material-schedule-agent)。最终 commit SHA 可用 `git rev-parse HEAD` 获取，见 [提交清单](docs/submission.md)。不要将当前 Mock 证据描述为真实模型决策结果；候选人需要亲自运行、理解和修改，并如实补充个人贡献。
+GitHub 仓库：[1070297054/material-schedule-agent](https://github.com/1070297054/material-schedule-agent)。最终 commit SHA 可用 `git rev-parse HEAD` 获取，见 [提交清单](docs/submission.md)。不要将离线 Mock 证据描述为真实模型决策结果；候选人需要亲自运行、理解和修改，并如实补充个人贡献。

@@ -1,11 +1,12 @@
 {
-  "generated_at": "2026-11-02T10:15:17+00:00",
+  "generated_at": "2026-11-03T02:58:06+00:00",
   "provider": "mock",
   "model": "deterministic-offline-simulator",
   "service": "mock",
+  "orchestration": "single",
   "is_real_model": false,
-  "cases_total": 18,
-  "cases_passed": 18,
+  "cases_total": 21,
+  "cases_passed": 21,
   "cases": [
     {
       "case": "normal",
@@ -121,6 +122,60 @@
         "conflict_observed_then_replanned": true,
         "proposal_saved_not_reserved": true,
         "suggests_20": true
+      }
+    },
+    {
+      "case": "occupancy_repeat_before",
+      "file": "occupancy_repeat_before.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "conflict_observed_then_replanned": true,
+        "proposal_saved_not_reserved": true,
+        "one_row_19": true
+      }
+    },
+    {
+      "case": "occupancy_repeat_after",
+      "file": "occupancy_repeat_after.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "conflict_observed_then_replanned": true,
+        "proposal_saved_not_reserved": true,
+        "same_row_20": true,
+        "no_approval": true,
+        "original_preserved": true
+      }
+    },
+    {
+      "case": "occupancy_repeat_again",
+      "file": "occupancy_repeat_again.json",
+      "expected": "pending_confirmation",
+      "actual": "pending_confirmation",
+      "passed": true,
+      "assertions": {
+        "expected_status": true,
+        "never_published": true,
+        "bounded": true,
+        "trace_records_actual_calls": true,
+        "nonempty_trace": true,
+        "conflict_observed_then_replanned": true,
+        "proposal_saved_not_reserved": true,
+        "same_row_duplicate": true,
+        "still_pending": true
       }
     },
     {

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>素材排期工作台</title><link rel="stylesheet" href="/style.css"></head>
+<body>
+<header class="topbar"><a class="brand" href="/">影序<span>素材排期工作台</span></a><span class="local">● 本机运行 · 仅保存草稿</span></header>
+<main>
+<section class="intro"><div><p class="eyebrow">CONTENT OPERATIONS</p><h1>从素材审核，到一份可确认的排期。</h1><p class="subtitle">查看风险、处理冲突，让每次安排都有依据。</p></div><span class="tag">原生 Python · DeepSeek</span></section>
+<section id="access" class="access card"><label for="token">本机访问口令</label><input id="token" type="password" autocomplete="off" placeholder="从启动终端复制口令，或打开带口令的完整链接"><button id="connect">连接工作台</button><span id="connection">尚未连接</span></section>
+<div id="notice" role="status" aria-live="polite"></div>
+<div class="workspace">
+<aside class="card form-panel"><div class="section-head"><h2>安排一次任务</h2><span class="small">01 / 输入</span></div>
+<form id="run-form">
+<label for="scenario">选择演示场景</label><select id="scenario"><option value="normal">正常排期</option><option value="conflict">时段冲突 / 重复提交</option><option value="missing">资料不足</option><option value="risk">规则风险</option><option value="failure">保存失败（演示模式）</option><option value="supplement">补查资料后通过</option></select>
+<label for="request-id">业务请求 ID</label><div class="input-row"><input id="request-id" required maxlength="120"><button id="new-id" type="button" class="secondary">新请求</button></div><p class="hint">重复提交保留同一个 ID，验证草稿不会重复生成。</p>
+<label for="material">素材</label><select id="material"></select>
+<label for="slot">要求发布时间</label><select id="slot"></select><p class="hint">固定合成日期：2026-11-03。替代时间需明确确认。</p>
+<div class="two-cols"><div><label for="provider">决策服务</label><select id="provider"></select></div><div><label for="mode">协作方式</label><select id="mode"><option value="team">双 Agent 协作</option><option value="single">单 Agent 对照</option></select></div></div>
+<p id="provider-hint" class="hint">Mock 仅验证流程，不证明真实模型决策。</p>
+<fieldset id="demo-controls" hidden><legend>合成环境 · 已占用时段</legend><div id="occupied"></div><label class="check"><input id="fail-save" type="checkbox">本次注入一次保存失败</label><p class="hint">更换占用后，用同一请求 ID 再次提交。</p></fieldset>
+<button id="run" class="primary full" type="submit" disabled>审核并生成排期草稿</button><p class="hint center">不会发布内容，也不会自动同意改期。</p>
+</form></aside>
+<section class="results">
+<div class="card result-card"><div class="section-head"><h2>处理结果</h2><span id="run-state" class="badge neutral">等待输入</span></div>
+<div id="empty" class="empty"><div class="empty-mark">↗</div><h3>让每一步都有迹可循</h3><p>发起任务后，审核结果、建议时段与保存状态将在这里显示。</p><div class="flow-labels"><span>审核素材</span><span>→</span><span>安排时段</span><span>→</span><span>等待确认或结束</span></div></div>
+<div id="result" hidden></div>
+<div id="consent" class="consent" hidden><h3 id="consent-title">确认替代时间</h3><label class="check"><input id="consent-check" type="checkbox"><span id="consent-label"></span></label><button id="confirm-slot" class="primary" disabled>明确同意并保存确认草稿</button></div>
+<div class="result-actions"><button id="repeat" class="secondary" disabled>原请求再运行一次</button><button id="download" class="secondary" disabled>下载实际结果与 Trace</button></div></div>
+<div class="card"><div class="section-head"><h2>执行过程</h2><span id="trace-count" class="small">02 / 观察与决策</span></div><p id="trace-note" class="hint">双 Agent 通过结构化审核结果交接；原始时间要求始终保留。</p><ol id="trace" class="timeline"></ol></div>
+<div class="card"><div class="section-head"><h2>已保存草稿</h2><button id="refresh" class="text-button">刷新</button></div><p class="hint">草稿属于持久业务状态；待确认建议不占用时段。</p><div class="table-wrap"><table><thead><tr><th>ID / 素材</th><th>业务请求</th><th>建议时间</th><th>确认状态</th></tr></thead><tbody id="drafts"></tbody></table></div></div>
+</section></div>
+<footer>本地演示工作台 · 合成素材与规则 · 没有真实发布接口</footer>
+</main><script src="/app.js" defer></script>
+</body></html>

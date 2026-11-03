@@ -1,0 +1,187 @@
+{
+  "schema_version": "1.1",
+  "orchestration": "team",
+  "request_id": "review-001",
+  "task_status": "blocked",
+  "provider": {
+    "mode": "mock",
+    "model": "deterministic-offline-simulator",
+    "service": "mock",
+    "is_real_model": false
+  },
+  "started_at": "2026-11-03T02:58:06+00:00",
+  "finished_at": "2026-11-03T02:58:06+00:00",
+  "input": {
+    "request_id": "review-001",
+    "items": [
+      {
+        "material_id": "M05",
+        "requested_slot": "2026-11-03T19:00:00+08:00",
+        "approved_slot": null
+      }
+    ]
+  },
+  "limits": {
+    "max_steps": 24,
+    "steps_used": 3,
+    "scope": "entire_request",
+    "max_total_tokens": null,
+    "tokens_used": 0,
+    "max_seconds": null,
+    "elapsed_seconds": 0.0
+  },
+  "fault_injection": {},
+  "items": [
+    {
+      "material_id": "M05",
+      "task_status": "blocked",
+      "review": {
+        "status": "manual_review",
+        "missing_fields": [],
+        "risks": [
+          {
+            "code": "MANUAL_REVIEW",
+            "detail": "需要人工审核：抽奖",
+            "severity": "review"
+          }
+        ],
+        "rules_version": "synthetic-2026-11-01.v1",
+        "material_version": "2026-11-01.v1"
+      },
+      "requested_slot": "2026-11-03T19:00:00+08:00",
+      "approved_slot": null,
+      "suggested_slot": null,
+      "pending_items": [
+        "人工完成规则复核并更新资料"
+      ],
+      "save_status": "not_attempted",
+      "draft": null,
+      "duplicate": false,
+      "errors": [],
+      "stop_reason": "model_finish",
+      "outcome_reason": "审核存在阻断风险或人工复核项，未继续安排。",
+      "published": false,
+      "notice": "仅处理草稿，未发布任何内容。"
+    }
+  ],
+  "trace": [
+    {
+      "agent_id": "reviewer",
+      "step": 1,
+      "material_id": "M05",
+      "decision_source": "mock",
+      "tool": "read_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "先获取素材的真实元数据",
+      "observation": {
+        "ok": true,
+        "source": "base",
+        "material": {
+          "id": "M05",
+          "title": "活动抽奖预告",
+          "description": "奖品规则需要人工复核。",
+          "platform": "douyin",
+          "rights": "licensed",
+          "version": "2026-11-01.v1"
+        },
+        "existing_draft": null,
+        "supplement_found": null
+      },
+      "return_summary": "已读取素材=M05; 来源=base",
+      "next_action": "check_rules",
+      "model_ms": 0.01,
+      "response_id": null,
+      "tool_ms": 0.1,
+      "elapsed_ms": 0.13
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 2,
+      "material_id": "M05",
+      "decision_source": "mock",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "已读到素材，核对规则与缺失字段",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "manual_review",
+          "missing_fields": [],
+          "risks": [
+            {
+              "code": "MANUAL_REVIEW",
+              "detail": "需要人工审核：抽奖",
+              "severity": "review"
+            }
+          ],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=manual_review",
+      "next_action": "finish",
+      "model_ms": 0.01,
+      "response_id": null,
+      "tool_ms": 0.02,
+      "elapsed_ms": 0.04
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 3,
+      "material_id": "M05",
+      "decision_source": "mock",
+      "tool": "finish",
+      "parameters": {
+        "status": "blocked",
+        "suggested_slot": null
+      },
+      "decision_basis": "规则检查发现阻断风险或需要人工复核",
+      "observation": {
+        "ok": true,
+        "status": "blocked",
+        "published": false
+      },
+      "return_summary": "状态=blocked",
+      "next_action": "stop:blocked",
+      "model_ms": 0.01,
+      "response_id": null,
+      "tool_ms": 0.01,
+      "elapsed_ms": 0.03
+    }
+  ],
+  "usage": [
+    {},
+    {},
+    {}
+  ],
+  "validation_boundary": "离线模拟器只验证流程和工程约束，不证明真实模型决策效果。",
+  "published": false,
+  "evaluation_fixture": {
+    "case": "manual_review",
+    "input_file": "examples/inputs/manual_review.json",
+    "occupied": [
+      {
+        "platform": "douyin",
+        "slot": "2026-11-03T18:00:00+08:00"
+      }
+    ],
+    "slots": [
+      "2026-11-03T18:00:00+08:00",
+      "2026-11-03T19:00:00+08:00",
+      "2026-11-03T20:00:00+08:00"
+    ],
+    "expected_task_status": "blocked",
+    "assertions": {
+      "expected_status": true,
+      "never_published": true,
+      "bounded": true,
+      "trace_records_actual_calls": true,
+      "nonempty_trace": true,
+      "risk_observed_then_blocked": true
+    },
+    "database_group": "manual_review",
+    "database_rows_after": []
+  }
+}

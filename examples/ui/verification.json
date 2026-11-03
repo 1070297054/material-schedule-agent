@@ -1,0 +1,19 @@
+{
+  "method": "实际浏览器交互，HTTP 后端生成的原始结果逐文件复制；不是预写 Trace。",
+  "provider_boundary": "前四组为 Mock；deepseek_normal 为真实 DeepSeek 双 Agent。",
+  "sequence": [
+    "conflict",
+    "changed_occupancy",
+    "duplicate",
+    "confirmed",
+    "deepseek_normal"
+  ],
+  "assertions": {
+    "same_draft_across_conflict_change_repeat_confirm": true,
+    "duplicate_reported": true,
+    "explicit_confirmation_then_reserved": true,
+    "real_model_from_web": true
+  },
+  "browser_console_errors": [],
+  "screenshot": "workbench-live.png"
+}

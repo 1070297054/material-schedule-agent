@@ -1,0 +1,218 @@
+{
+  "schema_version": "1.1",
+  "orchestration": "team",
+  "request_id": "review-001",
+  "task_status": "blocked",
+  "provider": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "service": "deepseek",
+    "is_real_model": true
+  },
+  "started_at": "2026-11-03T02:58:38+00:00",
+  "finished_at": "2026-11-03T02:58:42+00:00",
+  "input": {
+    "request_id": "review-001",
+    "items": [
+      {
+        "material_id": "M05",
+        "requested_slot": "2026-11-03T19:00:00+08:00",
+        "approved_slot": null
+      }
+    ]
+  },
+  "limits": {
+    "max_steps": 24,
+    "steps_used": 3,
+    "scope": "entire_request",
+    "max_total_tokens": null,
+    "tokens_used": 4013,
+    "max_seconds": null,
+    "elapsed_seconds": 4.019
+  },
+  "fault_injection": {},
+  "items": [
+    {
+      "material_id": "M05",
+      "task_status": "blocked",
+      "review": {
+        "status": "manual_review",
+        "missing_fields": [],
+        "risks": [
+          {
+            "code": "MANUAL_REVIEW",
+            "detail": "需要人工审核：抽奖",
+            "severity": "review"
+          }
+        ],
+        "rules_version": "synthetic-2026-11-01.v1",
+        "material_version": "2026-11-01.v1"
+      },
+      "requested_slot": "2026-11-03T19:00:00+08:00",
+      "approved_slot": null,
+      "suggested_slot": null,
+      "pending_items": [
+        "人工完成规则复核并更新资料"
+      ],
+      "save_status": "not_attempted",
+      "draft": null,
+      "duplicate": false,
+      "errors": [],
+      "stop_reason": "model_finish",
+      "outcome_reason": "审核存在阻断风险或人工复核项，未继续安排。",
+      "published": false,
+      "notice": "仅处理草稿，未发布任何内容。"
+    }
+  ],
+  "trace": [
+    {
+      "agent_id": "reviewer",
+      "step": 1,
+      "material_id": "M05",
+      "decision_source": "live",
+      "tool": "read_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "需要读取素材 M05 的内容以进行审核。",
+      "observation": {
+        "ok": true,
+        "source": "base",
+        "material": {
+          "id": "M05",
+          "title": "活动抽奖预告",
+          "description": "奖品规则需要人工复核。",
+          "platform": "douyin",
+          "rights": "licensed",
+          "version": "2026-11-01.v1"
+        },
+        "existing_draft": null,
+        "supplement_found": null
+      },
+      "return_summary": "已读取素材=M05; 来源=base",
+      "next_action": "check_rules",
+      "model_ms": 1566.69,
+      "response_id": "2c3adbc0-2913-40b5-9580-257fabd6b87b",
+      "tool_ms": 0.77,
+      "elapsed_ms": 1568.11
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 2,
+      "material_id": "M05",
+      "decision_source": "live",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "素材描述表明奖品规则需人工复核，需检查规则风险。",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "manual_review",
+          "missing_fields": [],
+          "risks": [
+            {
+              "code": "MANUAL_REVIEW",
+              "detail": "需要人工审核：抽奖",
+              "severity": "review"
+            }
+          ],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=manual_review",
+      "next_action": "finish",
+      "model_ms": 844.28,
+      "response_id": "8a0c0bb7-84d7-4b9e-a0c3-531b190c5b88",
+      "tool_ms": 0.15,
+      "elapsed_ms": 844.6
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 3,
+      "material_id": "M05",
+      "decision_source": "live",
+      "tool": "finish",
+      "parameters": {
+        "status": "blocked",
+        "suggested_slot": null
+      },
+      "decision_basis": "审核结果显示抽奖内容需人工复核（MANUAL_REVIEW），已阻断排期。",
+      "observation": {
+        "ok": true,
+        "status": "blocked",
+        "published": false
+      },
+      "return_summary": "状态=blocked",
+      "next_action": "stop:blocked",
+      "model_ms": 1606.25,
+      "response_id": "111d66b6-e731-403c-9af7-185a31526d1c",
+      "tool_ms": 0.03,
+      "elapsed_ms": 1606.35
+    }
+  ],
+  "usage": [
+    {
+      "input_tokens": 1121,
+      "input_tokens_details": {
+        "cached_tokens": 896
+      },
+      "output_tokens": 58,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1179
+    },
+    {
+      "input_tokens": 1278,
+      "input_tokens_details": {
+        "cached_tokens": 1024
+      },
+      "output_tokens": 45,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1323
+    },
+    {
+      "input_tokens": 1425,
+      "input_tokens_details": {
+        "cached_tokens": 1280
+      },
+      "output_tokens": 86,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1511
+    }
+  ],
+  "validation_boundary": "真实模型调用记录；需结合用例断言判断效果。",
+  "published": false,
+  "evaluation_fixture": {
+    "case": "manual_review",
+    "input_file": "examples/inputs/manual_review.json",
+    "occupied": [
+      {
+        "platform": "douyin",
+        "slot": "2026-11-03T18:00:00+08:00"
+      }
+    ],
+    "slots": [
+      "2026-11-03T18:00:00+08:00",
+      "2026-11-03T19:00:00+08:00",
+      "2026-11-03T20:00:00+08:00"
+    ],
+    "expected_task_status": "blocked",
+    "assertions": {
+      "expected_status": true,
+      "never_published": true,
+      "bounded": true,
+      "trace_records_actual_calls": true,
+      "nonempty_trace": true,
+      "real_responses_identified": true,
+      "risk_observed_then_blocked": true
+    },
+    "database_group": "manual_review",
+    "database_rows_after": []
+  }
+}

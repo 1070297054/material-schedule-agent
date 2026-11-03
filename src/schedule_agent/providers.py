@@ -52,8 +52,8 @@ class OpenAIProvider:
         self.opener = opener or urllib.request.build_opener(NoRedirect(), urllib.request.HTTPSHandler(context=ssl.create_default_context()))
 
     def payload(self, history):
-        return {"model": self.model, "instructions": SYSTEM_PROMPT, "input": history,
-                   "tools": TOOL_SCHEMAS, "tool_choice": "required", "parallel_tool_calls": False,
+        return {"model": self.model, "instructions": getattr(self, "instructions", SYSTEM_PROMPT), "input": history,
+                   "tools": getattr(self, "tool_schemas", TOOL_SCHEMAS), "tool_choice": "required", "parallel_tool_calls": False,
                    "store": False, "include": ["reasoning.encrypted_content"], "max_output_tokens": 1800}
 
     def next(self, history):
@@ -92,8 +92,8 @@ class DeepSeekProvider(OpenAIProvider):
     def payload(self, history):
         # DeepSeek ignores parallel_tool_calls/include/store. Runtime rejects batches
         # without side effects and returns an observation asking the model to reselect.
-        return {"model": self.model, "instructions": SYSTEM_PROMPT, "input": history,
-                "tools": [{k: v for k, v in tool.items() if k != "strict"} for tool in TOOL_SCHEMAS],
+        return {"model": self.model, "instructions": getattr(self, "instructions", SYSTEM_PROMPT), "input": history,
+                "tools": [{k: v for k, v in tool.items() if k != "strict"} for tool in getattr(self, "tool_schemas", TOOL_SCHEMAS)],
                 "tool_choice": "required", "reasoning": {"effort": "none"}, "max_output_tokens": 1800}
 
 
@@ -131,6 +131,8 @@ class MockProvider:
         def finish(status, reason, slot=None):
             return call("finish", reason, status=status, suggested_slot=slot)
 
+        if not observations and getattr(self, "role", None) == "scheduler":
+            return call("query_slots", "接收已审核交接包，先核对要求时段", mode="requested")
         if not observations:
             return call("read_material", "先获取素材的真实元数据", source="base")
         last, action = observations[-1], actions[-1]
@@ -158,6 +160,8 @@ class MockProvider:
                 return finish("needs_input", "补查后仍缺少必要字段")
             if request["item"]["requested_slot"] is None:
                 return finish("needs_input", "输入未提供硬性发布时间要求")
+            if getattr(self, "role", None) == "reviewer":
+                return call("handoff_schedule", "已通过实际审核，将排期交给专职 Agent")
             return call("query_slots", "素材审核通过，查询用户指定时段", mode="requested")
         if name == "query_slots":
             if last["available_slots"]:

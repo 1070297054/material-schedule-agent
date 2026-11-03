@@ -49,8 +49,24 @@ test_native_responses_roundtrip_returns_tool_observations_to_provider (test_runt
 test_parallel_tool_calls_are_not_executed (test_runtime.RuntimeTests) ... ok
 test_plain_text_claim_does_not_become_success (test_runtime.RuntimeTests) ... ok
 test_repeated_call_id_stops_before_second_execution (test_runtime.RuntimeTests) ... ok
+test_auth_origin_body_and_path_boundaries (test_server.ServerTests) ... ok
+test_bounded_queue_rejects_ninth_pending_task (test_server.ServerTests) ... ok
+test_demo_overrides_not_available_without_explicit_switch (test_server.ServerTests) ... ok
+test_http_conflict_changed_occupancy_repeat_and_explicit_confirmation (test_server.ServerTests) ... ok
+test_http_save_failure_and_durable_trace (test_server.ServerTests) ... ok
+test_interrupted_job_has_no_fabricated_completed_status (test_server.ServerTests) ... ok
+test_actual_handoff_uses_observed_review_and_separate_roles (test_team.TeamTests) ... ok
+test_full_team_matrix_with_changed_occupancy_and_repetition (test_team.TeamTests) ... ok
+test_handoff_cannot_fabricate_review_or_consent (test_team.TeamTests) ... ok
+test_missing_fields_can_be_observed_before_formal_review (test_team.TeamTests) ... ok
+test_only_allowed_tools_and_role_prompt_sent_to_model (test_team.TeamTests) ... ok
+test_reviewer_cannot_query_or_save_even_if_model_requests_it (test_team.TeamTests) ... ok
+test_scheduler_can_handoff_back_and_budget_is_shared (test_team.TeamTests) ... ok
+test_scheduler_cannot_self_approve_or_recheck_rules (test_team.TeamTests) ... ok
+test_time_budget_and_zero_calls_do_not_claim_success (test_team.TeamTests) ... ok
+test_token_budget_stops_before_next_call_and_keeps_evidence (test_team.TeamTests) ... ok
 
 ----------------------------------------------------------------------
-Ran 51 tests in 0.452s
+Ran 67 tests in 3.665s
 
 OK

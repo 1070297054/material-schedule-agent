@@ -4,7 +4,7 @@ from pathlib import Path
 from .domain import InputError
 
 ALLOWED_ENV = {"OPENAI_API_KEY", "OPENAI_MODEL", "OPENAI_BASE_URL",
-               "DEEPSEEK_API_KEY", "DEEPSEEK_MODEL", "DEEPSEEK_BASE_URL"}
+               "DEEPSEEK_API_KEY", "DEEPSEEK_MODEL", "DEEPSEEK_BASE_URL", "SCHEDULE_API_TOKEN"}
 
 
 def load_env_file(filename):

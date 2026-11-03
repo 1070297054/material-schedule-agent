@@ -1,0 +1,205 @@
+{
+  "schema_version": "1.1",
+  "orchestration": "team",
+  "request_id": "time-001",
+  "task_status": "needs_input",
+  "provider": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "service": "deepseek",
+    "is_real_model": true
+  },
+  "started_at": "2026-11-03T02:56:39+00:00",
+  "finished_at": "2026-11-03T02:56:43+00:00",
+  "input": {
+    "request_id": "time-001",
+    "items": [
+      {
+        "material_id": "M01",
+        "requested_slot": null,
+        "approved_slot": null
+      }
+    ]
+  },
+  "limits": {
+    "max_steps": 24,
+    "steps_used": 3,
+    "scope": "entire_request",
+    "max_total_tokens": null,
+    "tokens_used": 3928,
+    "max_seconds": null,
+    "elapsed_seconds": 3.658
+  },
+  "fault_injection": {},
+  "items": [
+    {
+      "material_id": "M01",
+      "task_status": "needs_input",
+      "review": {
+        "status": "passed",
+        "missing_fields": [],
+        "risks": [],
+        "rules_version": "synthetic-2026-11-01.v1",
+        "material_version": "2026-11-01.v1"
+      },
+      "requested_slot": null,
+      "approved_slot": null,
+      "suggested_slot": null,
+      "pending_items": [
+        "requested_slot"
+      ],
+      "save_status": "not_attempted",
+      "draft": null,
+      "duplicate": false,
+      "errors": [],
+      "stop_reason": "model_finish",
+      "outcome_reason": "缺少完成任务所必需的信息，请补充 pending_items。",
+      "published": false,
+      "notice": "仅处理草稿，未发布任何内容。"
+    }
+  ],
+  "trace": [
+    {
+      "agent_id": "reviewer",
+      "step": 1,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "read_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "需要读取待审核素材内容",
+      "observation": {
+        "ok": true,
+        "source": "base",
+        "material": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "existing_draft": null,
+        "supplement_found": null
+      },
+      "return_summary": "已读取素材=M01; 来源=base",
+      "next_action": "check_rules",
+      "model_ms": 1403.41,
+      "response_id": "176ac097-879f-4224-80df-5556b297e6a2",
+      "tool_ms": 0.24,
+      "elapsed_ms": 1403.71
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 2,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "素材缺少 requested_slot，需检查规则确认缺失字段",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=passed",
+      "next_action": "finish",
+      "model_ms": 974.21,
+      "response_id": "f5525c78-1deb-4354-a09c-3dda9699976d",
+      "tool_ms": 0.03,
+      "elapsed_ms": 974.28
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 3,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "finish",
+      "parameters": {
+        "status": "needs_input",
+        "suggested_slot": null
+      },
+      "decision_basis": "素材 M01 审核通过，但请求中 requested_slot 为 null，无法确定发布时间，需用户补充。",
+      "observation": {
+        "ok": true,
+        "status": "needs_input",
+        "published": false
+      },
+      "return_summary": "状态=needs_input",
+      "next_action": "stop:needs_input",
+      "model_ms": 1276.84,
+      "response_id": "e730b129-040e-4f7b-9c35-5426fdfeeb89",
+      "tool_ms": 0.05,
+      "elapsed_ms": 1279.73
+    }
+  ],
+  "usage": [
+    {
+      "input_tokens": 1105,
+      "input_tokens_details": {
+        "cached_tokens": 896
+      },
+      "output_tokens": 54,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1159
+    },
+    {
+      "input_tokens": 1258,
+      "input_tokens_details": {
+        "cached_tokens": 1024
+      },
+      "output_tokens": 44,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1302
+    },
+    {
+      "input_tokens": 1374,
+      "input_tokens_details": {
+        "cached_tokens": 1152
+      },
+      "output_tokens": 93,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1467
+    }
+  ],
+  "validation_boundary": "真实模型调用记录；需结合用例断言判断效果。",
+  "published": false,
+  "evaluation_fixture": {
+    "case": "missing_time",
+    "input_file": "examples/inputs/missing_time.json",
+    "occupied": [
+      {
+        "platform": "douyin",
+        "slot": "2026-11-03T18:00:00+08:00"
+      }
+    ],
+    "slots": [
+      "2026-11-03T18:00:00+08:00",
+      "2026-11-03T19:00:00+08:00",
+      "2026-11-03T20:00:00+08:00"
+    ],
+    "expected_task_status": "needs_input",
+    "assertions": {
+      "expected_status": true,
+      "never_published": true,
+      "bounded": true,
+      "trace_records_actual_calls": true,
+      "nonempty_trace": true,
+      "real_responses_identified": true
+    },
+    "database_group": "missing_time",
+    "database_rows_after": []
+  }
+}

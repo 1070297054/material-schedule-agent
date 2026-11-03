@@ -19,7 +19,7 @@ from schedule_agent.storage import DraftStore
 CASE_NAMES = {"normal", "missing_info", "supplement", "risk", "manual_review", "conflict",
               "changed_occupancy", "no_slots", "save_failure", "read_recovery", "duplicate_first",
               "duplicate_repeat", "confirmation_before", "confirmation_after", "confirmation_replay",
-              "missing_time", "step_limit", "batch"}
+              "missing_time", "step_limit", "batch", "occupancy_repeat_before", "occupancy_repeat_after", "occupancy_repeat_again"}
 
 
 def behavior_checks(name, result):
@@ -46,17 +46,25 @@ def behavior_checks(name, result):
     checks = {"nonempty_trace": bool(trace)}
     if result["provider"]["is_real_model"]:
         checks["real_responses_identified"] = bool(trace) and all(e.get("response_id") for e in trace)
+    if result.get("orchestration") == "team" and any(e.get("agent_id") == "scheduler" for e in trace):
+        checks["verified_handoff_before_scheduling"] = ordered(
+            steps("handoff_schedule", lambda e: e["observation"]["handoff"]["review"]["status"] == "passed"),
+            [e["step"] for e in trace if e.get("agent_id") == "scheduler"])
     if name in {"normal", "duplicate_first", "duplicate_repeat", "confirmation_after", "confirmation_replay"}:
         checks["save_observed_before_finish"] = ordered(steps("save_draft"), finish)
-    if name in {"conflict", "changed_occupancy", "confirmation_before"}:
+    if name in {"conflict", "changed_occupancy", "confirmation_before", "occupancy_repeat_before", "occupancy_repeat_after", "occupancy_repeat_again"}:
         checks["conflict_observed_then_replanned"] = ordered(query("requested", True), query("alternatives", False), steps("save_draft"), finish)
         checks["proposal_saved_not_reserved"] = bool(result["items"][0]["draft"]) and result["items"][0]["draft"]["reserved_slot"] is None
     if name == "no_slots":
         checks["no_slots_observed_then_stopped"] = ordered(query("requested", True), query("alternatives", True), finish)
         checks["not_budget_exhaustion"] = result["items"][0]["stop_reason"] == "model_finish"
     if name in {"missing_info", "supplement"}:
+        # Missing fields may be observed directly in read_material before a formal check.
+        missing_observed = steps("check_rules", lambda e: e["observation"]["review"]["status"] == "missing_info")
+        missing_observed += steps("read_material", lambda e: e["parameters"]["source"] == "base" and
+                                  any(not e["observation"]["material"].get(k) for k in ("title", "platform", "rights")))
         checks["supplement_observed_then_reviewed"] = ordered(
-            steps("check_rules", lambda e: e["observation"]["review"]["status"] == "missing_info"),
+            sorted(missing_observed),
             steps("read_material", lambda e: e["parameters"]["source"] == "supplement"),
             steps("check_rules"), finish)
     if name in {"risk", "manual_review"}:
@@ -70,11 +78,12 @@ def behavior_checks(name, result):
     return checks
 
 
-def evaluate(output, provider_name="mock", model=None, selected_cases=None, progress=False):
+def evaluate(output, provider_name="mock", model=None, selected_cases=None, progress=False, orchestration="single"):
     selected = set(selected_cases or CASE_NAMES)
     if selected - CASE_NAMES:
         raise ValueError("未知评估用例")
-    dependencies = {"duplicate_repeat": {"duplicate_first"}, "confirmation_after": {"confirmation_before"},
+    dependencies = {"occupancy_repeat_after": {"occupancy_repeat_before"},
+                    "occupancy_repeat_again": {"occupancy_repeat_before", "occupancy_repeat_after"},"duplicate_repeat": {"duplicate_first"}, "confirmation_after": {"confirmation_before"},
                     "confirmation_replay": {"confirmation_before", "confirmation_after"}}
     for name in list(selected):
         selected.update(dependencies.get(name, set()))
@@ -92,7 +101,7 @@ def evaluate(output, provider_name="mock", model=None, selected_cases=None, prog
                 catalog.existing = [{"platform": "douyin", "slot": s} for s in occupied]
             store = DraftStore(Path(temp) / ((database or name) + ".sqlite3"))
             try:
-                result = run(request, catalog, store, provider, max_steps, faults)
+                result = run(request, catalog, store, provider, max_steps, faults, orchestration=orchestration)
                 rows = store.all()
             finally:
                 store.close()
@@ -126,6 +135,14 @@ def evaluate(output, provider_name="mock", model=None, selected_cases=None, prog
             "suggests_19": r["items"][0]["suggested_slot"] == s19})
         case("changed_occupancy", "conflict", "pending_confirmation", occupied=[s18, s19],
              checks=lambda r, rows: {"suggests_20": r["items"][0]["suggested_slot"] == s20})
+        case("occupancy_repeat_before", "conflict", "pending_confirmation", database="occupancy_repeat",
+             checks=lambda r, rows: {"one_row_19": len(rows) == 1 and rows[0]["suggested_slot"] == s19})
+        case("occupancy_repeat_after", "conflict", "pending_confirmation", database="occupancy_repeat", occupied=[s18, s19],
+             checks=lambda r, rows: {"same_row_20": len(rows) == 1 and rows[0]["draft_id"] == 1 and rows[0]["suggested_slot"] == s20,
+                                   "no_approval": rows[0]["reserved_slot"] is None, "original_preserved": rows[0]["requested_slot"] == s18})
+        case("occupancy_repeat_again", "conflict", "pending_confirmation", database="occupancy_repeat", occupied=[s18, s19],
+             checks=lambda r, rows: {"same_row_duplicate": len(rows) == 1 and rows[0]["draft_id"] == 1 and r["items"][0]["duplicate"],
+                                   "still_pending": rows[0]["reserved_slot"] is None and rows[0]["suggested_slot"] == s20})
         case("no_slots", "conflict", "incomplete", occupied=[s18, s19, s20], checks=lambda r, rows: {"no_draft": not rows})
         case("save_failure", "normal", "failed", faults={"save_draft": 1}, checks=lambda r, rows: {
             "no_draft": not rows, "save_failed": r["items"][0]["save_status"] == "failed"})
@@ -144,7 +161,7 @@ def evaluate(output, provider_name="mock", model=None, selected_cases=None, prog
         case("batch", "batch", "partial", checks=lambda r, rows: {
             "per_item_status": [i["task_status"] for i in r["items"]] == ["completed", "pending_confirmation", "blocked"]})
     summary = {"generated_at": utc_now(), "provider": provider.mode, "model": provider.model,
-               "service": provider.service,
+               "service": provider.service, "orchestration": orchestration,
                "is_real_model": provider.mode == "live", "cases_total": len(cases),
                "cases_passed": sum(c["passed"] for c in cases), "cases": cases,
                "boundary": "Mock only: validates engineering, not real model decisions." if provider.mode == "mock" else "Live model evaluation; inspect every assertion and trace."}
@@ -156,6 +173,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--provider", choices=["mock", "openai", "deepseek"], default="mock")
     parser.add_argument("--model")
+    parser.add_argument("--orchestration", choices=["single", "team"], default="single")
     parser.add_argument("--env-file")
     parser.add_argument("--cases", nargs="+", choices=sorted(CASE_NAMES), help="只运行指定用例；自动包含重复/确认用例的前置执行")
     parser.add_argument("--output", help="默认 examples/mock 或 examples/live，建议使用新目录保留历史")
@@ -163,7 +181,7 @@ def main():
     output = args.output or str(ROOT / "examples" / ("mock" if args.provider == "mock" else "live"))
     try:
         load_env_file(args.env_file)
-        summary = evaluate(output, args.provider, args.model, args.cases, progress=True)
+        summary = evaluate(output, args.provider, args.model, args.cases, progress=True, orchestration=args.orchestration)
     except (ModelError, OSError, ValueError) as exc:
         print(str(exc), file=sys.stderr)
         return 1

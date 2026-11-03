@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-02T10:15:17+00:00",
+  "generated_at": "2026-11-03T02:58:06+00:00",
   "python": "3.9.6",
   "platform": "macOS-26.4.1-arm64-arm-64bit",
   "test_command": "PYTHONPATH=src python3 -m unittest discover -s tests -v",
   "tests_exit_code": 0,
   "test_log": "test-results.txt",
-  "mock_cases_total": 18,
-  "mock_cases_passed": 18,
+  "mock_cases_total": 21,
+  "mock_cases_passed": 21,
   "real_model_validation": "not_run_by_this_command",
   "real_model_reason": "此命令仅执行离线测试；已有真实证据见 examples/live，复现使用 scripts/evaluate.py --provider deepseek --env-file .env"
 }

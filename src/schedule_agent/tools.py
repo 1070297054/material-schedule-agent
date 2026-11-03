@@ -219,6 +219,8 @@ class ToolContext:
         outcome_reason = reasons[status]
         if self.stop_reason == "step_limit":
             outcome_reason = "已达到整个请求的模型调用上限，当前素材未完成。"
+        elif self.stop_reason in {"token_budget", "time_budget"}:
+            outcome_reason = "已达到请求的 Token 或时间预算，未继续发起模型调用。"
         elif status == "incomplete" and self.last_query and self.last_query["unavailable_reason"] == "no_alternatives":
             outcome_reason = "指定时段不可用，同日也没有可用替代时段。"
             pending.append("用户调整发布时间要求或补充可用时段")

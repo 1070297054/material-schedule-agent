@@ -1,0 +1,431 @@
+{
+  "schema_version": "1.1",
+  "orchestration": "team",
+  "request_id": "conflict-001",
+  "task_status": "pending_confirmation",
+  "provider": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "service": "deepseek",
+    "is_real_model": true
+  },
+  "started_at": "2026-11-03T02:58:50+00:00",
+  "finished_at": "2026-11-03T02:58:58+00:00",
+  "input": {
+    "request_id": "conflict-001",
+    "items": [
+      {
+        "material_id": "M01",
+        "requested_slot": "2026-11-03T18:00:00+08:00",
+        "approved_slot": null
+      }
+    ]
+  },
+  "limits": {
+    "max_steps": 24,
+    "steps_used": 7,
+    "scope": "entire_request",
+    "max_total_tokens": null,
+    "tokens_used": 10759,
+    "max_seconds": null,
+    "elapsed_seconds": 8.242
+  },
+  "fault_injection": {},
+  "items": [
+    {
+      "material_id": "M01",
+      "task_status": "pending_confirmation",
+      "review": {
+        "status": "passed",
+        "missing_fields": [],
+        "risks": [],
+        "rules_version": "synthetic-2026-11-01.v1",
+        "material_version": "2026-11-01.v1"
+      },
+      "requested_slot": "2026-11-03T18:00:00+08:00",
+      "approved_slot": null,
+      "suggested_slot": "2026-11-03T20:00:00+08:00",
+      "pending_items": [
+        "用户确认改为 2026-11-03T20:00:00+08:00；原始要求仍保留"
+      ],
+      "save_status": "saved",
+      "draft": {
+        "draft_id": 1,
+        "request_id": "conflict-001",
+        "material_id": "M01",
+        "platform": "douyin",
+        "requested_slot": "2026-11-03T18:00:00+08:00",
+        "suggested_slot": "2026-11-03T20:00:00+08:00",
+        "reserved_slot": null,
+        "confirmation_status": "pending_confirmation",
+        "audit": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        },
+        "published": false
+      },
+      "duplicate": false,
+      "errors": [],
+      "stop_reason": "model_finish",
+      "outcome_reason": "候选时间与已授权要求不同，等待用户明确确认。",
+      "published": false,
+      "notice": "仅处理草稿，未发布任何内容。"
+    }
+  ],
+  "trace": [
+    {
+      "agent_id": "reviewer",
+      "step": 1,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "read_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "需读取素材 M01 以进行审核",
+      "observation": {
+        "ok": true,
+        "source": "base",
+        "material": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "existing_draft": null,
+        "supplement_found": null
+      },
+      "return_summary": "已读取素材=M01; 来源=base",
+      "next_action": "check_rules",
+      "model_ms": 1372.67,
+      "response_id": "8641048c-ab43-414c-858a-c654237e3296",
+      "tool_ms": 0.32,
+      "elapsed_ms": 1373.07
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 2,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "素材字段已读取，需检查缺失字段与风险",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=passed",
+      "next_action": "handoff_schedule",
+      "model_ms": 1108.86,
+      "response_id": "95dfd8d4-27a1-4158-b0aa-835329f2bf62",
+      "tool_ms": 0.03,
+      "elapsed_ms": 1108.93
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 3,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "handoff_schedule",
+      "parameters": {},
+      "decision_basis": "M01 审核通过且 requested_slot 为 2026-11-03T18:00:00+08:00，交给排期 Agent",
+      "observation": {
+        "ok": true,
+        "from_agent": "reviewer",
+        "to_agent": "scheduler",
+        "handoff": {
+          "request_id": "conflict-001",
+          "item": {
+            "material_id": "M01",
+            "requested_slot": "2026-11-03T18:00:00+08:00",
+            "approved_slot": null
+          },
+          "material": {
+            "id": "M01",
+            "title": "字幕编辑功能介绍",
+            "description": "演示如何添加和编辑字幕。",
+            "platform": "douyin",
+            "rights": "owned",
+            "version": "2026-11-01.v1"
+          },
+          "review": {
+            "status": "passed",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1",
+            "material_version": "2026-11-01.v1"
+          },
+          "existing_draft": null,
+          "errors": []
+        }
+      },
+      "return_summary": "状态=ok",
+      "next_action": "query_slots",
+      "model_ms": 1248.02,
+      "response_id": "7de1cca3-7e59-4cc6-9c3e-f259cd1bb8d6",
+      "tool_ms": 0.42,
+      "elapsed_ms": 1248.55
+    },
+    {
+      "agent_id": "scheduler",
+      "step": 4,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "query_slots",
+      "parameters": {
+        "mode": "requested"
+      },
+      "decision_basis": "交接包显示审核已通过，需查询用户要求的 2026-11-03T18:00:00+08:00 时段。",
+      "observation": {
+        "ok": true,
+        "mode": "requested",
+        "target_slot": "2026-11-03T18:00:00+08:00",
+        "available_slots": [],
+        "unavailable_reason": "occupied",
+        "requires_confirmation": false,
+        "timezone": "Asia/Shanghai"
+      },
+      "return_summary": "可用时段=",
+      "next_action": "query_slots",
+      "model_ms": 1308.02,
+      "response_id": "bc365895-eb34-421a-b553-3db70ac2498a",
+      "tool_ms": 0.09,
+      "elapsed_ms": 1308.21
+    },
+    {
+      "agent_id": "scheduler",
+      "step": 5,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "query_slots",
+      "parameters": {
+        "mode": "alternatives"
+      },
+      "decision_basis": "原时段 2026-11-03T18:00 已被占用，需查询同日替代时段。",
+      "observation": {
+        "ok": true,
+        "mode": "alternatives",
+        "target_slot": "2026-11-03T18:00:00+08:00",
+        "available_slots": [
+          "2026-11-03T20:00:00+08:00"
+        ],
+        "unavailable_reason": null,
+        "requires_confirmation": true,
+        "timezone": "Asia/Shanghai"
+      },
+      "return_summary": "可用时段=2026-11-03T20:00:00+08:00",
+      "next_action": "save_draft",
+      "model_ms": 1338.66,
+      "response_id": "7fb4ea1a-62f8-48e0-9e35-3f378d4d9da4",
+      "tool_ms": 0.43,
+      "elapsed_ms": 1339.14
+    },
+    {
+      "agent_id": "scheduler",
+      "step": 6,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "save_draft",
+      "parameters": {
+        "slot": "2026-11-03T20:00:00+08:00"
+      },
+      "decision_basis": "原时段被占用，同日 20:00 为已查询到的可用替代时段，按规则保存为待确认建议稿。",
+      "observation": {
+        "ok": true,
+        "draft": {
+          "draft_id": 1,
+          "request_id": "conflict-001",
+          "material_id": "M01",
+          "platform": "douyin",
+          "requested_slot": "2026-11-03T18:00:00+08:00",
+          "suggested_slot": "2026-11-03T20:00:00+08:00",
+          "reserved_slot": null,
+          "confirmation_status": "pending_confirmation",
+          "audit": {
+            "status": "passed",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1",
+            "material_version": "2026-11-01.v1"
+          },
+          "published": false
+        },
+        "duplicate": false
+      },
+      "return_summary": "草稿=1; pending_confirmation",
+      "next_action": "finish",
+      "model_ms": 932.73,
+      "response_id": "948f1958-a170-40a1-bb1b-eb61a1986d03",
+      "tool_ms": 1.92,
+      "elapsed_ms": 934.74
+    },
+    {
+      "agent_id": "scheduler",
+      "step": 7,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "finish",
+      "parameters": {
+        "status": "pending_confirmation",
+        "suggested_slot": "2026-11-03T20:00:00+08:00"
+      },
+      "decision_basis": "原时段 2026-11-03T18:00 已被占用，已保存同日 20:00 建议稿，draft 状态为 pending_confirmation。",
+      "observation": {
+        "ok": true,
+        "status": "pending_confirmation",
+        "published": false
+      },
+      "return_summary": "状态=pending_confirmation",
+      "next_action": "stop:pending_confirmation",
+      "model_ms": 928.85,
+      "response_id": "6915f848-4dc0-4416-a3ef-5ffac2f2221a",
+      "tool_ms": 0.12,
+      "elapsed_ms": 929.01
+    }
+  ],
+  "usage": [
+    {
+      "input_tokens": 1122,
+      "input_tokens_details": {
+        "cached_tokens": 896
+      },
+      "output_tokens": 57,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1179
+    },
+    {
+      "input_tokens": 1278,
+      "input_tokens_details": {
+        "cached_tokens": 1024
+      },
+      "output_tokens": 43,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1321
+    },
+    {
+      "input_tokens": 1393,
+      "input_tokens_details": {
+        "cached_tokens": 1152
+      },
+      "output_tokens": 66,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1459
+    },
+    {
+      "input_tokens": 1333,
+      "input_tokens_details": {
+        "cached_tokens": 1152
+      },
+      "output_tokens": 79,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1412
+    },
+    {
+      "input_tokens": 1496,
+      "input_tokens_details": {
+        "cached_tokens": 1280
+      },
+      "output_tokens": 71,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1567
+    },
+    {
+      "input_tokens": 1667,
+      "input_tokens_details": {
+        "cached_tokens": 1408
+      },
+      "output_tokens": 90,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1757
+    },
+    {
+      "input_tokens": 1944,
+      "input_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "output_tokens": 120,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2064
+    }
+  ],
+  "validation_boundary": "真实模型调用记录；需结合用例断言判断效果。",
+  "published": false,
+  "evaluation_fixture": {
+    "case": "changed_occupancy",
+    "input_file": "examples/inputs/conflict.json",
+    "occupied": [
+      {
+        "platform": "douyin",
+        "slot": "2026-11-03T18:00:00+08:00"
+      },
+      {
+        "platform": "douyin",
+        "slot": "2026-11-03T19:00:00+08:00"
+      }
+    ],
+    "slots": [
+      "2026-11-03T18:00:00+08:00",
+      "2026-11-03T19:00:00+08:00",
+      "2026-11-03T20:00:00+08:00"
+    ],
+    "expected_task_status": "pending_confirmation",
+    "assertions": {
+      "expected_status": true,
+      "never_published": true,
+      "bounded": true,
+      "trace_records_actual_calls": true,
+      "nonempty_trace": true,
+      "real_responses_identified": true,
+      "verified_handoff_before_scheduling": true,
+      "conflict_observed_then_replanned": true,
+      "proposal_saved_not_reserved": true,
+      "suggests_20": true
+    },
+    "database_group": "changed_occupancy",
+    "database_rows_after": [
+      {
+        "draft_id": 1,
+        "request_id": "conflict-001",
+        "material_id": "M01",
+        "platform": "douyin",
+        "requested_slot": "2026-11-03T18:00:00+08:00",
+        "suggested_slot": "2026-11-03T20:00:00+08:00",
+        "reserved_slot": null,
+        "confirmation_status": "pending_confirmation",
+        "audit": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        },
+        "published": false
+      }
+    ]
+  }
+}

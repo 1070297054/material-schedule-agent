@@ -1,0 +1,422 @@
+{
+  "schema_version": "1.1",
+  "orchestration": "team",
+  "request_id": "normal-001",
+  "task_status": "completed",
+  "provider": {
+    "mode": "live",
+    "model": "deepseek-flash",
+    "service": "deepseek",
+    "is_real_model": true
+  },
+  "started_at": "2026-11-03T02:59:58+00:00",
+  "finished_at": "2026-11-03T03:00:05+00:00",
+  "input": {
+    "request_id": "normal-001",
+    "items": [
+      {
+        "material_id": "M01",
+        "requested_slot": "2026-11-03T19:00:00+08:00",
+        "approved_slot": null
+      }
+    ]
+  },
+  "limits": {
+    "max_steps": 24,
+    "steps_used": 6,
+    "scope": "entire_request",
+    "max_total_tokens": null,
+    "tokens_used": 9732,
+    "max_seconds": null,
+    "elapsed_seconds": 7.406
+  },
+  "fault_injection": {},
+  "items": [
+    {
+      "material_id": "M01",
+      "task_status": "completed",
+      "review": {
+        "status": "passed",
+        "missing_fields": [],
+        "risks": [],
+        "rules_version": "synthetic-2026-11-01.v1",
+        "material_version": "2026-11-01.v1"
+      },
+      "requested_slot": "2026-11-03T19:00:00+08:00",
+      "approved_slot": null,
+      "suggested_slot": "2026-11-03T19:00:00+08:00",
+      "pending_items": [],
+      "save_status": "saved",
+      "draft": {
+        "draft_id": 1,
+        "request_id": "normal-001",
+        "material_id": "M01",
+        "platform": "douyin",
+        "requested_slot": "2026-11-03T19:00:00+08:00",
+        "suggested_slot": "2026-11-03T19:00:00+08:00",
+        "reserved_slot": "2026-11-03T19:00:00+08:00",
+        "confirmation_status": "confirmed",
+        "audit": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        },
+        "published": false
+      },
+      "duplicate": true,
+      "errors": [],
+      "stop_reason": "model_finish",
+      "outcome_reason": "审核通过，已保存符合用户要求或既有确认的草稿。",
+      "published": false,
+      "notice": "仅处理草稿，未发布任何内容。"
+    }
+  ],
+  "trace": [
+    {
+      "agent_id": "reviewer",
+      "step": 1,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "read_material",
+      "parameters": {
+        "source": "base"
+      },
+      "decision_basis": "读取素材 M01 以进行审核",
+      "observation": {
+        "ok": true,
+        "source": "base",
+        "material": {
+          "id": "M01",
+          "title": "字幕编辑功能介绍",
+          "description": "演示如何添加和编辑字幕。",
+          "platform": "douyin",
+          "rights": "owned",
+          "version": "2026-11-01.v1"
+        },
+        "existing_draft": {
+          "draft_id": 1,
+          "request_id": "normal-001",
+          "material_id": "M01",
+          "platform": "douyin",
+          "requested_slot": "2026-11-03T19:00:00+08:00",
+          "suggested_slot": "2026-11-03T19:00:00+08:00",
+          "reserved_slot": "2026-11-03T19:00:00+08:00",
+          "confirmation_status": "confirmed",
+          "audit": {
+            "status": "passed",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1",
+            "material_version": "2026-11-01.v1"
+          },
+          "published": false
+        },
+        "supplement_found": null
+      },
+      "return_summary": "已读取素材=M01; 来源=base",
+      "next_action": "check_rules",
+      "model_ms": 1129.46,
+      "response_id": "ab2cc41b-e489-4aa9-b7e0-3b85a36acbd0",
+      "tool_ms": 0.23,
+      "elapsed_ms": 1129.74
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 2,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "check_rules",
+      "parameters": {},
+      "decision_basis": "素材字段齐全且已有已确认草稿，需按规则重新审核",
+      "observation": {
+        "ok": true,
+        "review": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        }
+      },
+      "return_summary": "审核=passed",
+      "next_action": "handoff_schedule",
+      "model_ms": 928.88,
+      "response_id": "87ddbef2-e060-480e-8d5c-845802558883",
+      "tool_ms": 0.03,
+      "elapsed_ms": 928.95
+    },
+    {
+      "agent_id": "reviewer",
+      "step": 3,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "handoff_schedule",
+      "parameters": {},
+      "decision_basis": "审核通过且存在 requested_slot 2026-11-03T19:00:00+08:00，交排期 Agent 处理",
+      "observation": {
+        "ok": true,
+        "from_agent": "reviewer",
+        "to_agent": "scheduler",
+        "handoff": {
+          "request_id": "normal-001",
+          "item": {
+            "material_id": "M01",
+            "requested_slot": "2026-11-03T19:00:00+08:00",
+            "approved_slot": null
+          },
+          "material": {
+            "id": "M01",
+            "title": "字幕编辑功能介绍",
+            "description": "演示如何添加和编辑字幕。",
+            "platform": "douyin",
+            "rights": "owned",
+            "version": "2026-11-01.v1"
+          },
+          "review": {
+            "status": "passed",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1",
+            "material_version": "2026-11-01.v1"
+          },
+          "existing_draft": {
+            "draft_id": 1,
+            "request_id": "normal-001",
+            "material_id": "M01",
+            "platform": "douyin",
+            "requested_slot": "2026-11-03T19:00:00+08:00",
+            "suggested_slot": "2026-11-03T19:00:00+08:00",
+            "reserved_slot": "2026-11-03T19:00:00+08:00",
+            "confirmation_status": "confirmed",
+            "audit": {
+              "status": "passed",
+              "missing_fields": [],
+              "risks": [],
+              "rules_version": "synthetic-2026-11-01.v1",
+              "material_version": "2026-11-01.v1"
+            },
+            "published": false
+          },
+          "errors": []
+        }
+      },
+      "return_summary": "状态=ok",
+      "next_action": "query_slots",
+      "model_ms": 1045.68,
+      "response_id": "3f184b69-2a04-4a77-8192-f1c91766243d",
+      "tool_ms": 0.21,
+      "elapsed_ms": 1045.95
+    },
+    {
+      "agent_id": "scheduler",
+      "step": 4,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "query_slots",
+      "parameters": {
+        "mode": "requested"
+      },
+      "decision_basis": "交接包审核已通过，需查询请求时段 2026-11-03T19:00:00+08:00 的可用性。",
+      "observation": {
+        "ok": true,
+        "mode": "requested",
+        "target_slot": "2026-11-03T19:00:00+08:00",
+        "available_slots": [
+          "2026-11-03T19:00:00+08:00"
+        ],
+        "unavailable_reason": null,
+        "requires_confirmation": false,
+        "timezone": "Asia/Shanghai"
+      },
+      "return_summary": "可用时段=2026-11-03T19:00:00+08:00",
+      "next_action": "save_draft",
+      "model_ms": 1377.8,
+      "response_id": "30ca344c-9deb-4c67-9d0d-cad8903d5be7",
+      "tool_ms": 0.39,
+      "elapsed_ms": 1378.28
+    },
+    {
+      "agent_id": "scheduler",
+      "step": 5,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "save_draft",
+      "parameters": {
+        "slot": "2026-11-03T19:00:00+08:00"
+      },
+      "decision_basis": "请求时段 2026-11-03T19:00:00+08:00 查询可用，且既有草稿为已确认状态，复用该时段保存草稿。",
+      "observation": {
+        "ok": true,
+        "draft": {
+          "draft_id": 1,
+          "request_id": "normal-001",
+          "material_id": "M01",
+          "platform": "douyin",
+          "requested_slot": "2026-11-03T19:00:00+08:00",
+          "suggested_slot": "2026-11-03T19:00:00+08:00",
+          "reserved_slot": "2026-11-03T19:00:00+08:00",
+          "confirmation_status": "confirmed",
+          "audit": {
+            "status": "passed",
+            "missing_fields": [],
+            "risks": [],
+            "rules_version": "synthetic-2026-11-01.v1",
+            "material_version": "2026-11-01.v1"
+          },
+          "published": false
+        },
+        "duplicate": true
+      },
+      "return_summary": "草稿=1; confirmed",
+      "next_action": "finish",
+      "model_ms": 1713.61,
+      "response_id": "c52e6deb-f36d-4b18-964e-44f4421e19eb",
+      "tool_ms": 2.6,
+      "elapsed_ms": 1716.28
+    },
+    {
+      "agent_id": "scheduler",
+      "step": 6,
+      "material_id": "M01",
+      "decision_source": "live",
+      "tool": "finish",
+      "parameters": {
+        "status": "completed",
+        "suggested_slot": "2026-11-03T19:00:00+08:00"
+      },
+      "decision_basis": "草稿已保存，请求时段查询可用，既有草稿确认状态为 confirmed（未发布）。",
+      "observation": {
+        "ok": true,
+        "status": "completed",
+        "published": false
+      },
+      "return_summary": "状态=completed",
+      "next_action": "stop:completed",
+      "model_ms": 1205.6,
+      "response_id": "b3c4a649-6463-475a-8154-1f39f6afe95f",
+      "tool_ms": 0.34,
+      "elapsed_ms": 1206.05
+    }
+  ],
+  "usage": [
+    {
+      "input_tokens": 1121,
+      "input_tokens_details": {
+        "cached_tokens": 896
+      },
+      "output_tokens": 56,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1177
+    },
+    {
+      "input_tokens": 1443,
+      "input_tokens_details": {
+        "cached_tokens": 1152
+      },
+      "output_tokens": 47,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1490
+    },
+    {
+      "input_tokens": 1562,
+      "input_tokens_details": {
+        "cached_tokens": 1408
+      },
+      "output_tokens": 64,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1626
+    },
+    {
+      "input_tokens": 1498,
+      "input_tokens_details": {
+        "cached_tokens": 1280
+      },
+      "output_tokens": 80,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1578
+    },
+    {
+      "input_tokens": 1678,
+      "input_tokens_details": {
+        "cached_tokens": 1536
+      },
+      "output_tokens": 101,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1779
+    },
+    {
+      "input_tokens": 1979,
+      "input_tokens_details": {
+        "cached_tokens": 1664
+      },
+      "output_tokens": 103,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 2082
+    }
+  ],
+  "validation_boundary": "真实模型调用记录；需结合用例断言判断效果。",
+  "published": false,
+  "evaluation_fixture": {
+    "case": "duplicate_repeat",
+    "input_file": "examples/inputs/normal.json",
+    "occupied": [
+      {
+        "platform": "douyin",
+        "slot": "2026-11-03T18:00:00+08:00"
+      }
+    ],
+    "slots": [
+      "2026-11-03T18:00:00+08:00",
+      "2026-11-03T19:00:00+08:00",
+      "2026-11-03T20:00:00+08:00"
+    ],
+    "expected_task_status": "completed",
+    "assertions": {
+      "expected_status": true,
+      "never_published": true,
+      "bounded": true,
+      "trace_records_actual_calls": true,
+      "nonempty_trace": true,
+      "real_responses_identified": true,
+      "verified_handoff_before_scheduling": true,
+      "save_observed_before_finish": true,
+      "one_row": true,
+      "duplicate_reported": true
+    },
+    "database_group": "duplicate",
+    "database_rows_after": [
+      {
+        "draft_id": 1,
+        "request_id": "normal-001",
+        "material_id": "M01",
+        "platform": "douyin",
+        "requested_slot": "2026-11-03T19:00:00+08:00",
+        "suggested_slot": "2026-11-03T19:00:00+08:00",
+        "reserved_slot": "2026-11-03T19:00:00+08:00",
+        "confirmation_status": "confirmed",
+        "audit": {
+          "status": "passed",
+          "missing_fields": [],
+          "risks": [],
+          "rules_version": "synthetic-2026-11-01.v1",
+          "material_version": "2026-11-01.v1"
+        },
+        "published": false
+      }
+    ]
+  }
+}

@@ -37,6 +37,9 @@ def parse_faults(values):
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description="素材审核与发布排期 Agent（仅草稿）")
+    parser.add_argument("--orchestration", choices=["single", "team"], default="single")
+    parser.add_argument("--max-total-tokens", type=int)
+    parser.add_argument("--max-seconds", type=float)
     parser.add_argument("--input", required=True, help="请求 JSON 文件")
     parser.add_argument("--provider", choices=["mock", "openai", "deepseek"], default="mock")
     parser.add_argument("--model", help="真实模型名称，默认读取相应服务的 MODEL 环境变量")
@@ -55,7 +58,8 @@ def main(argv=None):
         provider = create_provider(args.provider, args.model)
         faults = parse_faults(args.fail)
         store = DraftStore(args.db)
-        result = run(raw, catalog, store, provider, args.max_steps, faults)
+        result = run(raw, catalog, store, provider, args.max_steps, faults, args.orchestration,
+                     args.max_total_tokens, args.max_seconds)
         if args.output:
             write_json(args.output, result)
         print(json.dumps(result, ensure_ascii=False, indent=2))

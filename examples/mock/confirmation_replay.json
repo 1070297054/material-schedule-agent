@@ -1,5 +1,6 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
+  "orchestration": "single",
   "request_id": "conflict-001",
   "task_status": "completed",
   "provider": {
@@ -8,8 +9,8 @@
     "service": "mock",
     "is_real_model": false
   },
-  "started_at": "2026-11-02T10:15:17+00:00",
-  "finished_at": "2026-11-02T10:15:17+00:00",
+  "started_at": "2026-11-03T02:58:06+00:00",
+  "finished_at": "2026-11-03T02:58:06+00:00",
   "input": {
     "request_id": "conflict-001",
     "items": [
@@ -23,7 +24,11 @@
   "limits": {
     "max_steps": 24,
     "steps_used": 6,
-    "scope": "entire_request"
+    "scope": "entire_request",
+    "max_total_tokens": null,
+    "tokens_used": 0,
+    "max_seconds": null,
+    "elapsed_seconds": 0.001
   },
   "fault_injection": {},
   "items": [
@@ -70,6 +75,7 @@
   ],
   "trace": [
     {
+      "agent_id": "generalist",
       "step": 1,
       "material_id": "M01",
       "decision_source": "mock",
@@ -111,9 +117,13 @@
       },
       "return_summary": "已读取素材=M01; 来源=base",
       "next_action": "check_rules",
-      "response_id": null
+      "model_ms": 0.01,
+      "response_id": null,
+      "tool_ms": 0.05,
+      "elapsed_ms": 0.08
     },
     {
+      "agent_id": "generalist",
       "step": 2,
       "material_id": "M01",
       "decision_source": "mock",
@@ -132,9 +142,13 @@
       },
       "return_summary": "审核=passed",
       "next_action": "query_slots",
-      "response_id": null
+      "model_ms": 0.01,
+      "response_id": null,
+      "tool_ms": 0.01,
+      "elapsed_ms": 0.04
     },
     {
+      "agent_id": "generalist",
       "step": 3,
       "material_id": "M01",
       "decision_source": "mock",
@@ -154,9 +168,13 @@
       },
       "return_summary": "可用时段=",
       "next_action": "query_slots",
-      "response_id": null
+      "model_ms": 0.03,
+      "response_id": null,
+      "tool_ms": 0.01,
+      "elapsed_ms": 0.06
     },
     {
+      "agent_id": "generalist",
       "step": 4,
       "material_id": "M01",
       "decision_source": "mock",
@@ -179,9 +197,13 @@
       },
       "return_summary": "可用时段=2026-11-03T19:00:00+08:00, 2026-11-03T20:00:00+08:00",
       "next_action": "save_draft",
-      "response_id": null
+      "model_ms": 0.02,
+      "response_id": null,
+      "tool_ms": 0.05,
+      "elapsed_ms": 0.08
     },
     {
+      "agent_id": "generalist",
       "step": 5,
       "material_id": "M01",
       "decision_source": "mock",
@@ -214,9 +236,13 @@
       },
       "return_summary": "草稿=1; confirmed",
       "next_action": "finish",
-      "response_id": null
+      "model_ms": 0.02,
+      "response_id": null,
+      "tool_ms": 0.58,
+      "elapsed_ms": 0.61
     },
     {
+      "agent_id": "generalist",
       "step": 6,
       "material_id": "M01",
       "decision_source": "mock",
@@ -233,7 +259,10 @@
       },
       "return_summary": "状态=completed",
       "next_action": "stop:completed",
-      "response_id": null
+      "model_ms": 0.03,
+      "response_id": null,
+      "tool_ms": 0.03,
+      "elapsed_ms": 0.06
     }
   ],
   "usage": [
